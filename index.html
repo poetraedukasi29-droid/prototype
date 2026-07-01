@@ -1,11 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beranda</title>
+    <title>LocalOutdoor</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
+
 <body>
-    cek
+
+<header>
+
+    <div class="logo">
+        <!-- Nanti tinggal ganti dengan logo -->
+        <h2>🏕️ LocalOutdoor</h2>
+    </div>
+
+    <nav>
+        <a href="#">BERANDA</a>
+        <a href="#">PANDUAN BOOKING</a>
+        <a href="#">CEK KUOTA</a>
+    </nav>
+
+</header>
+
+<section class="slider">
+
+    <button class="arrow left" onclick="prevSlide()">
+        <i class="fa-solid fa-circle-arrow-left"></i>
+    </button>
+
+    <div class="banner">
+        <img id="slide" src="Image/Sindoro1.jpeg" alt="Banner">
+    </div>
+
+    <button class="arrow right" onclick="nextSlide()">
+        <i class="fa-solid fa-circle-arrow-right"></i>
+    </button>
+
+</section>
+
+<script src="script.js"></script>
+
 </body>
 </html>
