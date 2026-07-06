@@ -1,11 +1,810 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Online</title>
+<meta charset="UTF-8">
+<title>Localoutdoor - Booking Online</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Merriweather:wght@400;700&display=swap');
+
+  :root {
+    --bg-green: #3d6a5a;
+    --bg-green-dark: #2f5546;
+    --card-bg: #dcdcdc;
+    --panel-bg: #eaeaea;
+    --text-dark: #1f4438;
+    --line-color: #2f5546;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg-green);
+    font-family: 'Merriweather', serif;
+    color: var(--text-dark);
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.6);
+  }
+
+  .brand { display: flex; align-items: center; gap: 10px; }
+
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #f2f2f2;
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  .logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #6b4b2a, #3a2b18 70%);
+    border: 2px solid #caa24a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e8c97a;
+    font-size: 8px;
+    text-align: center;
+    line-height: 1.1;
+    padding: 4px;
+  }
+
+  .booking-pill {
+    flex: 1;
+    background: var(--card-bg);
+    border-radius: 30px;
+    text-align: center;
+    padding: 14px 0;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 16px;
+  }
+
+  main {
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+  }
+
+  .card {
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 700px;
+    border-radius: 24px;
+    padding: 30px 40px 40px;
+  }
+
+  .card h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0 0 16px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--line-color);
+  }
+
+  .field {
+    position: relative;
+    padding: 24px 0;
+    border-bottom: 2px solid var(--line-color);
+  }
+
+  .field:last-of-type { border-bottom: none; }
+
+  .select-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100%;
+    padding: 0;
+    color: var(--text-dark);
+    font-family: 'Playfair Display', serif;
+  }
+
+  .arrow {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 12px solid var(--text-dark);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .arrow.open { transform: rotate(180deg); }
+
+  .info-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100%;
+    padding: 0;
+    text-align: left;
+  }
+
+  .info-row .icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .info-row .icon svg {
+    width: 44px;
+    height: 44px;
+    stroke: var(--text-dark);
+    fill: none;
+    stroke-width: 1.6;
+  }
+
+  .info-row .label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--text-dark);
+  }
+
+  .field-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 20px;
+    margin: 0 0 14px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+  }
+
+  .next-btn {
+    background: var(--bg-green);
+    color: #e8e8e8;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    border: none;
+    padding: 16px 60px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: filter 0.15s ease;
+  }
+
+  .next-btn:hover { filter: brightness(1.1); }
+
+  .next-btn:focus-visible,
+  .select-row:focus-visible,
+  .info-row:focus-visible {
+    outline: 3px solid #4d7c68;
+    outline-offset: 3px;
+  }
+
+  /* --- Dropdown panel (jalur) --- */
+  .panel {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    margin-top: 10px;
+    background: var(--panel-bg);
+    border: 2px solid var(--line-color);
+    border-radius: 14px;
+    padding: 8px;
+    z-index: 10;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+  }
+
+  .panel.show { display: block; }
+
+  .jalur-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .jalur-option:hover { background: rgba(61,106,90,0.15); }
+
+  .jalur-option.selected {
+    background: var(--bg-green);
+    color: #f2f2f2;
+  }
+
+  .jalur-option .check { visibility: hidden; }
+  .jalur-option.selected .check { visibility: visible; }
+
+  /* --- Calendar panel --- */
+  .calendar-panel { width: 320px; }
+
+  .cal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 6px 12px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .cal-nav {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--text-dark);
+    padding: 4px 10px;
+    border-radius: 8px;
+  }
+
+  .cal-nav:hover { background: rgba(61,106,90,0.15); }
+
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    text-align: center;
+  }
+
+  .cal-dow {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--bg-green-dark);
+    padding: 4px 0;
+  }
+
+  .cal-day {
+    padding: 8px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .cal-day:hover:not(.empty):not(.selected) { background: rgba(61,106,90,0.15); }
+
+  .cal-day.empty { cursor: default; }
+
+  .cal-day.selected {
+    background: var(--bg-green);
+    color: #f2f2f2;
+    font-weight: 700;
+  }
+
+  .cal-day.today:not(.selected) {
+    border: 1px solid var(--bg-green-dark);
+  }
+
+  /* --- Pendaki counter panel --- */
+  .counter-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 6px;
+  }
+
+  .counter-row + .counter-row {
+    border-top: 1px solid rgba(47,85,70,0.25);
+  }
+
+  .counter-label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .counter-sub {
+    font-size: 12px;
+    color: #3d6a5a;
+    font-family: 'Merriweather', serif;
+  }
+
+  .counter-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .counter-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--bg-green);
+    background: none;
+    color: var(--bg-green);
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .counter-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  .counter-btn:hover:not(:disabled) {
+    background: var(--bg-green);
+    color: #fff;
+  }
+
+  .counter-value {
+    min-width: 18px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .panel-done {
+    width: 100%;
+    margin-top: 8px;
+    background: var(--bg-green);
+    color: #f2f2f2;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .summary-card{
+    margin-top:30px;
+    background:#f8f8f8;
+    border-radius:18px;
+    padding:20px;
+    border:2px solid #2f5546;
+}
+
+.summary-card h2{
+    margin-top:0;
+    margin-bottom:18px;
+    color:#2f5546;
+    font-family:'Playfair Display',serif;
+}
+
+.summary-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:12px 0;
+    font-size:16px;
+}
+
+.summary-item span:last-child{
+    font-weight:bold;
+}
+
+.summary-card hr{
+    border:none;
+    border-top:1px solid #bdbdbd;
+    margin:18px 0;
+}
+
+.total{
+    font-size:20px;
+    color:#2f5546;
+    font-weight:bold;
+}
+
+  @media (max-width: 600px) {
+    header { flex-wrap: wrap; }
+    .card { padding: 24px 20px 30px; }
+    .card h1 { font-size: 24px; }
+    .select-row, .info-row .label, .field-title { font-size: 17px; }
+    .calendar-panel { width: 100%; }
+  }
+</style>
 </head>
 <body>
-    
+
+<header>
+  <div class="brand">
+    <div class="logo">BIMBA RAYA</div>
+    <div class="brand-name">Localoutdoor</div>
+  </div>
+  <div class="booking-pill">BOOKING ONLINE</div>
+</header>
+
+<main>
+  <div class="card">
+    <h1>Localoutdoor</h1>
+
+    <!-- JALUR -->
+    <div class="field" id="jalurField">
+      <button class="select-row" id="jalurToggle" aria-expanded="false">
+        <span id="jalurText">Pilih Jalur</span>
+        <span class="arrow" id="jalurArrow"></span>
+      </button>
+      <div class="panel" id="jalurPanel">
+        <div class="jalur-option selected" data-jalur="Jalur Sindoro">
+          <span>Jalur Sindoro</span><span class="check">✓</span>
+        </div>
+        <div class="jalur-option" data-jalur="Jalur Merbabu">
+          <span>Jalur Merbabu</span><span class="check">✓</span>
+        </div>
+        <div class="jalur-option" data-jalur="Jalur Prau">
+          <span>Jalur Prau</span><span class="check">✓</span>
+        </div>
+        <div class="jalur-option" data-jalur="Jalur Slamet">
+          <span>Jalur Slamet</span><span class="check">✓</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TANGGAL -->
+    <div class="field" id="dateField">
+      <button class="info-row" id="dateToggle" aria-expanded="false">
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="5" width="18" height="16" rx="2"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+            <line x1="8" y1="3" x2="8" y2="7"/>
+            <line x1="16" y1="3" x2="16" y2="7"/>
+          </svg>
+        </div>
+        <span class="label" id="dateText">Pilih Tanggal</span>
+      </button>
+      <div class="panel calendar-panel" id="calendarPanel">
+        <div class="cal-header">
+          <button class="cal-nav" id="calPrev" type="button">&#8249;</button>
+          <span id="calMonthLabel"></span>
+          <button class="cal-nav" id="calNext" type="button">&#8250;</button>
+        </div>
+        <div class="cal-grid" id="calGrid"></div>
+      </div>
+    </div>
+
+    <!-- PENDAKI -->
+    <div class="field" id="pendakiField">
+      <p class="field-title">Pendaki</p>
+      <button class="info-row" id="pendakiToggle" aria-expanded="false">
+        <div class="icon">
+          <svg viewBox="0 0 24 24">
+            <circle cx="9" cy="7" r="3"/>
+            <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
+            <circle cx="17" cy="6" r="2.3"/>
+            <path d="M15.5 12.5c2.6.3 4.5 2.4 4.5 5.5"/>
+          </svg>
+        </div>
+        <span class="label" id="pendakiText">Jumlah Orang</span>
+      </button>
+      <div class="panel" id="pendakiPanel">
+        <div class="counter-row">
+          <div>
+            <div class="counter-label">Dewasa</div>
+            <div class="counter-sub">Usia 13 tahun ke atas</div>
+          </div>
+          <div class="counter-controls">
+            <button class="counter-btn" id="dewasaMinus" type="button">&#8722;</button>
+            <span class="counter-value" id="dewasaValue">1</span>
+            <button class="counter-btn" id="dewasaPlus" type="button">+</button>
+          </div>
+        </div>
+        <div class="counter-row">
+          <div>
+            <div class="counter-label">Anak</div>
+            <div class="counter-sub">Usia di bawah 13 tahun</div>
+          </div>
+          <div class="counter-controls">
+            <button class="counter-btn" id="anakMinus" type="button">&#8722;</button>
+            <span class="counter-value" id="anakValue">0</span>
+            <button class="counter-btn" id="anakPlus" type="button">+</button>
+          </div>
+        </div>
+        <button class="panel-done" id="pendakiDone" type="button">Selesai</button>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="summary-card">
+
+    <h2>📋 Ringkasan Booking</h2>
+
+    <div class="summary-item">
+        <span>🏔 Jalur</span>
+        <span id="summaryJalur">Jalur Sindoro</span>
+    </div>
+
+    <div class="summary-item">
+        <span>📅 Tanggal</span>
+        <span id="summaryTanggal">Kamis, 9 April 2026</span>
+    </div>
+
+    <div class="summary-item">
+        <span>👥 Pendaki</span>
+        <span id="summaryPendaki">1 Dewasa</span>
+    </div>
+
+    <hr>
+
+    <div class="summary-item total">
+        <span>💰 Total Harga</span>
+        <span id="summaryHarga">Rp35.000</span>
+    </div>
+
+    </div>
+    <div class="actions">
+      <button class="next-btn">Next</button>
+    </div>
+  </div>
+</main>
+
+<script>
+  // ---------- Utility: close all panels ----------
+  function closeAllPanels(except) {
+    document.querySelectorAll('.panel').forEach(p => {
+      if (p !== except) p.classList.remove('show');
+    });
+    document.getElementById('jalurArrow').classList.remove('open');
+    document.getElementById('jalurToggle').setAttribute('aria-expanded', 'false');
+    document.getElementById('dateToggle').setAttribute('aria-expanded', 'false');
+    document.getElementById('pendakiToggle').setAttribute('aria-expanded', 'false');
+  }
+
+  function togglePanel(panel, toggleBtn, arrowEl) {
+    const willOpen = !panel.classList.contains('show');
+    closeAllPanels(willOpen ? panel : null);
+    panel.classList.toggle('show', willOpen);
+    if (toggleBtn) toggleBtn.setAttribute('aria-expanded', String(willOpen));
+    if (arrowEl) arrowEl.classList.toggle('open', willOpen);
+  }
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.field')) closeAllPanels();
+  });
+
+  // ---------- JALUR dropdown ----------
+  const jalurToggle = document.getElementById('jalurToggle');
+  const jalurPanel = document.getElementById('jalurPanel');
+  const jalurArrow = document.getElementById('jalurArrow');
+  const jalurText = document.getElementById('jalurText');
+
+  jalurToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    togglePanel(jalurPanel, jalurToggle, jalurArrow);
+  });
+
+  jalurPanel.querySelectorAll('.jalur-option').forEach(opt => {
+    opt.addEventListener('click', (e) => {
+      e.stopPropagation();
+      jalurPanel.querySelectorAll('.jalur-option').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      jalurText.textContent = opt.dataset.jalur;
+
+      updateSummary(); 
+
+      togglePanel(jalurPanel, jalurToggle, jalurArrow);
+    });
+  });
+
+  // ---------- TANGGAL / calendar ----------
+  const dateToggle = document.getElementById('dateToggle');
+  const calendarPanel = document.getElementById('calendarPanel');
+  const dateText = document.getElementById('dateText');
+  const calGrid = document.getElementById('calGrid');
+  const calMonthLabel = document.getElementById('calMonthLabel');
+  const calPrev = document.getElementById('calPrev');
+  const calNext = document.getElementById('calNext');
+
+  const hariList = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
+  const bulanList = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+  const dowShort = ['M','S','S','R','K','J','S'];
+
+  let selectedDate = new Date(2026, 3, 14); // 14 April 2026
+  let viewYear = selectedDate.getFullYear();
+  let viewMonth = selectedDate.getMonth();
+
+  function formatFullDate(d) {
+    return `${hariList[d.getDay()]}, ${d.getDate()} ${bulanList[d.getMonth()]} ${d.getFullYear()}`;
+  }
+
+  function renderCalendar() {
+    calMonthLabel.textContent = `${bulanList[viewMonth]} ${viewYear}`;
+    calGrid.innerHTML = '';
+
+    dowShort.forEach(d => {
+      const el = document.createElement('div');
+      el.className = 'cal-dow';
+      el.textContent = d;
+      calGrid.appendChild(el);
+    });
+
+    const firstDow = new Date(viewYear, viewMonth, 1).getDay();
+    const daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+    const today = new Date();
+
+    for (let i = 0; i < firstDow; i++) {
+      const empty = document.createElement('div');
+      empty.className = 'cal-day empty';
+      calGrid.appendChild(empty);
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const el = document.createElement('div');
+      el.className = 'cal-day';
+      el.textContent = day;
+
+      const isSelected = day === selectedDate.getDate() &&
+        viewMonth === selectedDate.getMonth() &&
+        viewYear === selectedDate.getFullYear();
+      const isToday = day === today.getDate() &&
+        viewMonth === today.getMonth() &&
+        viewYear === today.getFullYear();
+
+      if (isSelected) el.classList.add('selected');
+      if (isToday) el.classList.add('today');
+
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        selectedDate = new Date(viewYear, viewMonth, day);
+        dateText.textContent = formatFullDate(selectedDate);
+
+        updateSummary();
+
+        renderCalendar();
+        togglePanel(calendarPanel, dateToggle, null);
+      });
+
+      calGrid.appendChild(el);
+    }
+  }
+
+  calPrev.addEventListener('click', (e) => {
+    e.stopPropagation();
+    viewMonth--;
+    if (viewMonth < 0) { viewMonth = 11; viewYear--; }
+    renderCalendar();
+  });
+
+  calNext.addEventListener('click', (e) => {
+    e.stopPropagation();
+    viewMonth++;
+    if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+    renderCalendar();
+  });
+
+  dateToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    viewYear = selectedDate.getFullYear();
+    viewMonth = selectedDate.getMonth();
+    renderCalendar();
+    togglePanel(calendarPanel, dateToggle, null);
+  });
+
+  // ---------- PENDAKI counter ----------
+  const pendakiToggle = document.getElementById('pendakiToggle');
+  const pendakiPanel = document.getElementById('pendakiPanel');
+  const pendakiText = document.getElementById('pendakiText');
+  const pendakiDone = document.getElementById('pendakiDone');
+
+  const dewasaValueEl = document.getElementById('dewasaValue');
+  const anakValueEl = document.getElementById('anakValue');
+  const dewasaMinus = document.getElementById('dewasaMinus');
+  const dewasaPlus = document.getElementById('dewasaPlus');
+  const anakMinus = document.getElementById('anakMinus');
+  const anakPlus = document.getElementById('anakPlus');
+
+  const summaryJalur = document.getElementById("summaryJalur");
+  const summaryTanggal = document.getElementById("summaryTanggal");
+  const summaryPendaki = document.getElementById("summaryPendaki");
+  const summaryHarga = document.getElementById("summaryHarga");
+
+  let dewasa = 1;
+  let anak = 0;
+  const MIN_DEWASA = 1;
+  const MAX_TOTAL = 20;
+
+  function updatePendakiText() {
+    let parts = [];
+    parts.push(`${dewasa} Dewasa`);
+    if (anak > 0) parts.push(`${anak} Anak`);
+    pendakiText.textContent = parts.join(', ');
+  }
+
+  function updateSummary() {
+
+    summaryJalur.textContent = jalurText.textContent;
+    summaryTanggal.textContent = dateText.textContent;
+    summaryPendaki.textContent = pendakiText.textContent;
+
+    const hargaDewasa = 35000;
+    const hargaAnak = 20000;
+
+    const total =
+        (dewasa * hargaDewasa) +
+        (anak * hargaAnak);
+
+    summaryHarga.textContent =
+        "Rp" + total.toLocaleString("id-ID");
+  }
+
+  function updateCounterUI() {
+    dewasaValueEl.textContent = dewasa;
+    anakValueEl.textContent = anak;
+    dewasaMinus.disabled = dewasa <= MIN_DEWASA;
+    dewasaPlus.disabled = (dewasa + anak) >= MAX_TOTAL;
+    anakMinus.disabled = anak <= 0;
+    anakPlus.disabled = (dewasa + anak) >= MAX_TOTAL;
+  }
+
+  dewasaMinus.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (dewasa > MIN_DEWASA) dewasa--;
+    updateCounterUI();
+    updatePendakiText();
+    updateSummary();
+  });
+
+  dewasaPlus.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (dewasa + anak < MAX_TOTAL) dewasa++;
+    updateCounterUI();
+    updatePendakiText();
+    updateSummary();
+  });
+
+  anakMinus.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (anak > 0) anak--;
+    updateCounterUI();
+    updatePendakiText();
+    updateSummary();
+  });
+
+  anakPlus.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (dewasa + anak < MAX_TOTAL) anak++;
+    updateCounterUI();
+    updatePendakiText();
+    updateSummary();
+  });
+
+  pendakiToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+
+    updatePendakiText();
+    updateSummary();
+
+    togglePanel(pendakiPanel, pendakiToggle, null);
+  });
+
+  pendakiDone.addEventListener('click', (e) => {
+    e.stopPropagation();
+    togglePanel(pendakiPanel, pendakiToggle, null);
+  });
+
+  updateCounterUI();
+  updateSummary();
+</script>
+
 </body>
 </html>
