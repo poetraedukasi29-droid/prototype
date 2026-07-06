@@ -1,16 +1,10 @@
-/* =======================
-   RESET
-======================= */
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
-/* =======================
-   BODY
-======================= */
 body{
     min-height:100vh;
     display:flex;
@@ -27,9 +21,8 @@ footer{
     color:#555;
 }
 
-/* =======================
-   HEADER
-======================= */
+/* HEADER */
+
 header{
     background: #d8d7be;
     display: flex;
@@ -530,26 +523,86 @@ nav a:hover{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin:12px 0;
-    font-size:16px;
+    padding:20px 40px;
 }
 
-.summary-item span:last-child{
+.logo h2{
+    color:#555;
+    font-size:34px;
+}
+
+nav{
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    text-decoration:none;
+    background:#8c7a68;
+    color:white;
+    padding:18px 40px;
+    border-radius:40px;
+    font-size:22px;
     font-weight:bold;
+    transition:.3s;
 }
 
-.summary-card hr{
+nav a:hover{
+    background:#6d5d50;
+}
+
+/* SLIDER */
+
+.slider{
+    width:100%;
+    max-width:900px;
+    height:500px;
+
+    margin:40px auto;
+
+    background:#ddd;
+
+    border-radius:25px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:20px;
+}
+
+.banner{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.banner img{
+    width:100%;
+    max-width:1000px;
+    height:500px;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    transition:.5s;
+}
+
+.arrow{
+    background:none;
     border:none;
-    border-top:1px solid #bdbdbd;
-    margin:18px 0;
+    font-size:50px;
+    color:#2f6d58;
+    cursor:pointer;
 }
 
-.total{
-    font-size:20px;
-    color:#2f5546;
-    font-weight:bold;
+.arrow:hover{
+    transform:scale(1.1);
 }
 
+<<<<<<< HEAD
   @media (max-width: 600px) {
     header { flex-wrap: wrap; }
     .card { padding: 24px 20px 30px; }
@@ -762,29 +815,31 @@ width:70%;
 
 }
 
+=======
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+header{
+    flex-direction:column;
+    gap:20px;
+>>>>>>> 097af96934bc08d90d49db250be96d58480618a7
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+nav{
+    flex-direction:column;
 }
 
-body {
-    background-color: #1a503a; /* Hijau Tua */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+nav a{
+    text-align:center;
 }
 
-.main-container {
-    width: 100%;
-    max-width: 800px;
+.slider{
+    height:auto;
+    flex-direction:column;
 }
 
+<<<<<<< HEAD
 /* Header Styles */
 header {
     display: flex;
@@ -933,4 +988,8 @@ header {
     color: #1a503a;
     margin-top: 3px;
 
+=======
+.banner img{
+    height:250px;
+>>>>>>> 097af96934bc08d90d49db250be96d58480618a7
 }
