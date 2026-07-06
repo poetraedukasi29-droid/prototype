@@ -3,89 +3,317 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LocalOutdoor</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Panduan Booking</title>
+     <style>
+        *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
 
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    body{
+        background:#3f705f;
+        font-family:Georgia, serif;
+    }
+
+    /* HEADER */
+
+    header{
+
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+
+        padding:20px 40px;
+    }
+
+    .logo img{
+
+        width:120px;
+    }
+
+    nav{
+
+        display:flex;
+        gap:20px;
+    }
+
+    nav a{
+
+        text-decoration:none;
+
+        background:#ddd;
+
+        color:#244335;
+
+        padding:10px 25px;
+
+        border-radius:30px;
+
+        font-weight:bold;
+
+        transition:.3s;
+    }
+
+    nav a:hover,
+    nav .active{
+
+        background:white;
+    }
+
+    /* MAIN */
+
+    main{
+
+        display:flex;
+
+        gap:40px;
+
+        padding:30px 40px;
+    }
+
+    /* KONTEN */
+
+    .panduan{
+
+        flex:1;
+
+        color:white;
+
+        border-right:2px solid rgba(255,255,255,.4);
+
+        padding-right:40px;
+    }
+
+    .panduan h2{
+
+        margin-bottom:20px;
+    }
+
+    .panduan ol{
+
+        padding-left:20px;
+
+        line-height:2;
+    }
+
+    /* SIDEBAR */
+
+    aside{
+
+        width:230px;
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:15px;
+    }
+
+    aside button{
+
+        border:none;
+
+        padding:10px;
+
+        border-radius:30px;
+
+        background:#ddd;
+
+        cursor:pointer;
+
+        font-weight:bold;
+
+        color:#244335;
+
+        transition:.3s;
+    }
+
+    aside button:hover{
+
+        background:white;
+    }
+
+    /* KALENDER */
+
+    .kalender{
+
+        background:white;
+
+        margin-top:20px;
+
+        padding:10px;
+    }
+
+    .kalender h3{
+
+        text-align:center;
+
+        margin-bottom:10px;
+
+        color:#244335;
+    }
+
+    table{
+
+        width:100%;
+
+        border-collapse:collapse;
+    }
+
+    td{
+
+        border:1px solid #999;
+
+        width:14%;
+
+        height:25px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+    header{
+
+        flex-direction:column;
+
+        gap:20px;
+    }
+
+    main{
+
+        flex-direction:column;
+    }
+
+    .panduan{
+
+        border:none;
+
+        padding-right:0;
+    }
+
+    aside{
+
+        width:100%;
+    }
+    }
+     </style>
+    
 </head>
 <body>
 
-<div class="container">
-    <header>
+<header>
 
-        <div class="logo">
-            <img src="logo.png" alt="Logo">
-            <h4>LocalOutdoor</h4>
+    <div class="logo">
+
+        <img src="logo.png" alt="Logo">
+
+    </div>
+
+    <nav>
+
+        <a href="index.html">BERANDA</a>
+        <a href="Panduan_Booking.html" class="active">PANDUAN BOOKING</a>
+        <a href="Cek_Kuota.html">CEK KUOTA</a>
+
+    </nav>
+
+</header>
+
+<main>
+
+    <section class="panduan">
+
+        <h2>Persyaratan Pembuatan Simaksi Sindoro</h2>
+
+        <ol>
+
+            <li>Mengisi formulir booking online.</li>
+
+            <li>Upload KTP/Kartu Pelajar.</li>
+
+            <li>Membayar biaya registrasi.</li>
+
+            <li>Membawa surat keterangan sehat.</li>
+
+            <li>Mematuhi seluruh peraturan pendakian.</li>
+
+        </ol>
+
+        <br>
+
+        <h2>Alur Booking Gunung Sindoro</h2>
+
+        <ol>
+
+            <li>Klik tombol Booking Online.</li>
+
+            <li>Isi seluruh data pendaki.</li>
+
+            <li>Pilih tanggal pendakian.</li>
+
+            <li>Lakukan pembayaran.</li>
+
+            <li>Unduh bukti booking.</li>
+
+        </ol>
+
+    </section>
+
+    <aside>
+
+        <button id="booking">Booking Online</button>
+
+        <button id="kontak">Kontak</button>
+
+        <div class="kalender">
+
+            <h3>Kalender</h3>
+
+            <table id="calendar"></table>
+
         </div>
 
-        <nav>
-            <nav>
-                <a href="index.html">BERANDA</a>
-                <a href="Panduan_Booking.html">PANDUAN BOOKING</a>
-                <a href="Cek_Kuota.html">CEK KUOTA</a>
-            </nav>
-        </nav>
+    </aside>
 
-    </header>
+</main>
 
-    <!-- Isi -->
-    <main>
+<script>
+    // Tombol Booking
 
-        <section class="content">
+    document.getElementById("booking").onclick = function(){
 
-            <h2>Persyaratan Pembuatan Simaksi Sindoro</h2>
+        window.location.href="Booking_Online/pendaftaran.html";
 
-            <hr>
-            <hr>
-            <hr>
-            <hr>
+    }
 
-            <br><br>
+    // Tombol Kontak
 
-            <h2>Layanan Booking Gunung Sindoro</h2>
+    document.getElementById("kontak").onclick = function(){
 
-            <hr>
-            <hr>
-            <hr>
+        alert("Hubungi Admin LocalOutdoor");
+    }
 
-        </section>
+    // Kalender sederhana
 
-        <!-- Sidebar -->
-        <aside>
+    const table = document.getElementById("calendar");
 
-            <button><a href="Booking_Online/pendaftaran.html">Booking Online</a></button>
-            <button>Kontak</button>
+    for(let i=0;i<5;i++){
 
-            <div class="calendar">
+        let row=document.createElement("tr");
 
-                <h3>Kalender</h3>
+        for(let j=0;j<7;j++){
 
-                <table>
-                    <tr>
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                </table>
+            let cell=document.createElement("td");
 
-            </div>
+            row.appendChild(cell);
 
-        </aside>
+        }
 
-    </main>
-
-</div>
+        table.appendChild(row);
+}
+</script>
 
 </body>
 </html>
