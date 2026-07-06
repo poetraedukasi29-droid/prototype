@@ -1,611 +1,613 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LocalOutdoor | Cek Kuota</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-    /* ==========================
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ==========================
    RESET
 ========================== */
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-body{
-    background:#5e603a;
-    color:#fff;
-}
+        body {
+            background: #5e603a;
+            color: #fff;
+        }
 
-/* ==========================
+        /* ==========================
    HEADER
    Iki Punyaku Ahahahahahaha
 ========================== */
 
-header{
-    width:100%;
-    height:90px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:0 50px;
-    border-bottom:2px solid rgba(255,255,255,.3);
-}
+        header {
+            width: 100%;
+            height: 90px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            border-bottom: 2px solid rgba(255, 255, 255, .3);
+        }
 
-.logo{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-.logo img{
-    width:60px;
-    height:60px;
-    border-radius:50%;
-}
+        .logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
 
-.logo h2{
-    font-size:38px;
-    font-weight:700;
-}
+        .logo h2 {
+            font-size: 38px;
+            font-weight: 700;
+        }
 
-.logo span{
-    font-size:15px;
-    color:#d8f0e5;
-}
+        .logo span {
+            font-size: 15px;
+            color: #d8f0e5;
+        }
 
-nav{
-    display:flex;
-    gap:20px;
-}
+        nav {
+            display: flex;
+            gap: 20px;
+        }
 
-nav a{
-    text-decoration:none;
-    background:#F2F2F2;
-    color:#5e603a;
-    padding:15px 35px;
-    border-radius:50px;
-    font-weight:600;
-    transition:.3s;
-}
+        nav a {
+            text-decoration: none;
+            background: #F2F2F2;
+            color: #5e603a;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: .3s;
+        }
 
-nav a:hover,
-nav .active{
-    background:white;
-    transform:translateY(-2px);
-}
+        nav a:hover,
+        nav .active {
+            background: white;
+            transform: translateY(-2px);
+        }
 
-/* ==========================
+        /* ==========================
    MAIN
 ========================== */
 
-main{
-    width:92%;
-    margin:40px auto;
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    gap:40px;
-}
+        main {
+            width: 92%;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
 
-/* ==========================
+        /* ==========================
    LEFT
 ========================== */
 
-.left h2{
-    margin-bottom:10px;
-}
+        .left h2 {
+            margin-bottom: 10px;
+        }
 
-.left select{
-    width:100%;
-    padding:15px;
-    margin-bottom:25px;
-    border:none;
-    border-radius:10px;
-    font-size:16px;
-    outline:none;
-}
+        .left select {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+        }
 
-.kuota-box{
-    margin-top:30px;
-    background:white;
-    color:#5e603a;
-    border-radius:15px;
-    padding:30px;
-    text-align:center;
-    box-shadow:0 8px 20px rgba(0,0,0,.25);
-}
+        .kuota-box {
+            margin-top: 30px;
+            background: white;
+            color: #5e603a;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
+        }
 
-.kuota-box h3{
-    margin-bottom:15px;
-}
+        .kuota-box h3 {
+            margin-bottom: 15px;
+        }
 
-.kuota-box h1{
-    font-size:45px;
-}
+        .kuota-box h1 {
+            font-size: 45px;
+        }
 
-/* ==========================
+        /* ==========================
    RIGHT
 ========================== */
 
-.right{
-    border-left:2px solid rgba(255,255,255,.3);
-    padding-left:35px;
-}
+        .right {
+            border-left: 2px solid rgba(255, 255, 255, .3);
+            padding-left: 35px;
+        }
 
-.menu-button{
-    display:block;
-    width:100%;
-    text-align:center;
-    text-decoration:none;
-    background:#F2F2F2;
-    color:#5e603a;
-    padding:18px;
-    border-radius:50px;
-    margin-bottom:20px;
-    font-size:20px;
-    font-weight:600;
-    transition:.3s;
-}
+        .menu-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            background: #F2F2F2;
+            color: #5e603a;
+            padding: 18px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            font-size: 20px;
+            font-weight: 600;
+            transition: .3s;
+        }
 
-.menu-button:hover{
-    background:white;
-    transform:scale(1.03);
-}
+        .menu-button:hover {
+            background: white;
+            transform: scale(1.03);
+        }
 
-/* ==========================
+        /* ==========================
    CALENDAR
 ========================== */
 
-.calendar{
-    margin-top:35px;
-    background:white;
-    color:#5e603a;
-    border-radius:18px;
-    padding:20px;
-    box-shadow:0 8px 20px rgba(0,0,0,.25);
-}
+        .calendar {
+            margin-top: 35px;
+            background: white;
+            color: #5e603a;
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
+        }
 
-.calendar-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
-}
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
 
-.calendar-header h3{
-    font-size:20px;
-}
+        .calendar-header h3 {
+            font-size: 20px;
+        }
 
-.calendar-header button{
-    width:38px;
-    height:38px;
-    border:none;
-    border-radius:8px;
-    background:#5e603a;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
-    transition:.3s;
-}
+        .calendar-header button {
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 8px;
+            background: #5e603a;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: .3s;
+        }
 
-.calendar-header button:hover{
-    background:#5e603a;
-}
+        .calendar-header button:hover {
+            background: #5e603a;
+        }
 
-.weekdays{
-    display:grid;
-    grid-template-columns:repeat(7,1fr);
-    text-align:center;
-    font-weight:600;
-    margin-bottom:12px;
-}
+        .weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
 
-#calendarDays{
-    display:grid;
-    grid-template-columns:repeat(7,1fr);
-    gap:8px;
-}
+        #calendarDays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
 
-.day{
-    height:38px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:8px;
-    cursor:pointer;
-    transition:.3s;
-}
+        .day {
+            height: 38px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: .3s;
+        }
 
-.day:hover{
-    background:#5e603a;
-    color:white;
-}
+        .day:hover {
+            background: #5e603a;
+            color: white;
+        }
 
-.today{
-    background:#5e603a;
-    color:white;
-    font-weight:bold;
-}
+        .today {
+            background: #5e603a;
+            color: white;
+            font-weight: bold;
+        }
 
-.empty{
-    visibility:hidden;
-}
+        .empty {
+            visibility: hidden;
+        }
 
-/* ==========================
+        /* ==========================
    RESPONSIVE
 ========================== */
 
-@media(max-width:992px){
-
-main{
-    grid-template-columns:1fr;
-}
-
-.right{
-    border-left:none;
-    border-top:2px solid rgba(255,255,255,.3);
-    padding-left:0;
-    padding-top:30px;
-}
-
-}
-
-@media(max-width:768px){
-
-header{
-    flex-direction:column;
-    height:auto;
-    padding:20px;
-}
-
-.logo{
-    margin-bottom:20px;
-}
-
-nav{
-    flex-wrap:wrap;
-    justify-content:center;
-}
-
-nav a{
-    margin-bottom:10px;
-}
-
-.logo h2{
-    font-size:28px;
-}
-
-.calendar{
-    width:100%;
-}
-
-.day{
-    height:34px;
-}
-
-}
-</style>
-</head>
-<body>
-
-<!-- ================= HEADER ================= -->
-
-<header>
-
-    <div class="logo">
-
-        <img src="assets/logo.png" alt="Logo">
-
-        <div>
-
-            <h2>LocalOutdoor</h2>
-
-            <span>Explore Nature</span>
-
-        </div>
-
-    </div>
-
-    <nav>
-
-        <a href="index.html">Beranda</a>
-
-        <a href="Panduan_Booking.html">Panduan Booking</a>
-
-        <a href="Cek_Kuota.html" class="active">Cek Kuota</a>
-
-    </nav>
-
-</header>
-
-<!-- ================= MAIN ================= -->
-
-<main>
-
-    <!-- ================= KIRI ================= -->
-
-    <section class="left">
-
-        <h2>Periode</h2>
-
-        <select id="bulan">
-
-            <option>Januari 2026</option>
-            <option>Februari 2026</option>
-            <option>Maret 2026</option>
-            <option>April 2026</option>
-            <option>Mei 2026</option>
-            <option>Juni 2026</option>
-            <option>Juli 2026</option>
-            <option selected>Agustus 2026</option>
-            <option>September 2026</option>
-            <option>Oktober 2026</option>
-            <option>November 2026</option>
-            <option>Desember 2026</option>
-
-        </select>
-
-        <h2>Jalur Pendakian</h2>
-
-        <select id="jalur">
-
-            <option>Kledung</option>
-            <option>Alang-Alang Sewu</option>
-            <option>Ndoro Arum</option>
-            <option>Sigedang</option>
-            <option>Bansari</option>
-            <option>Bedakah</option>
-            <option>Bowongso</option>
-            <option>Anggrunggondok</option>
-
-        </select>
-
-        <h2>Tanggal Pendakian</h2>
-
-        <select id="tanggal">
-
-            <!-- Diisi oleh JavaScript -->
-
-        </select>
-
-        <div class="kuota-box">
-
-            <h3>Sisa Kuota</h3>
-
-            <h1 id="kuota">120 Orang</h1>
-
-        </div>
-
-    </section>
-
-    <!-- ================= KANAN ================= -->
-
-    <section class="right">
-
-        <a href="booking.html" class="menu-button">
-            Booking Online
-        </a>
-
-        <a href="kontak.html" class="menu-button">
-            Kontak
-        </a>
-
-        <div class="calendar">
-
-            <div class="calendar-header">
-
-                <button id="prevMonth">&#10094;</button>
-
-                <h3 id="monthYear"></h3>
-
-                <button id="nextMonth">&#10095;</button>
-
-            </div>
-
-            <div class="weekdays">
-
-                <span>Min</span>
-                <span>Sen</span>
-                <span>Sel</span>
-                <span>Rab</span>
-                <span>Kam</span>
-                <span>Jum</span>
-                <span>Sab</span>
-
-            </div>
-
-            <div id="calendarDays"></div>
-
-        </div>
-
-    </section>
-
-</main>
-
-<script>
-    // ===============================
-// DATA KUOTA
-// ===============================
-
-const kuotaData = {
-    "Kledung": [120,115,110,108,104,100,98,96,94,92,90,88,86,84,82,80,78,76,74,72,70,68,66,64,62,60,58,56,54,52,50],
-
-    "Alang-Alang Sewu": [100,98,96,94,92,90,88,86,84,82,80,78,76,74,72,70,68,66,64,62,60,58,56,54,52,50,48,46,44,42,40],
-
-    "Ndoro Arum": [90,88,86,84,82,80,78,76,74,72,70,68,66,64,62,60,58,56,54,52,50,48,46,44,42,40,38,36,34,32,30],
-
-    "Sigedang": [110,108,106,104,102,100,98,96,94,92,90,88,86,84,82,80,78,76,74,72,70,68,66,64,62,60,58,56,54,52,50],
-
-    "Bansari": [80,79,78,77,76,75,74,73,72,71,70,69,68,67,66,65,64,63,62,61,60,59,58,57,56,55,54,53,52,51,50],
-
-    "Bedakah": [105,103,101,99,97,95,93,91,89,87,85,83,81,79,77,75,73,71,69,67,65,63,61,59,57,55,53,51,49,47,45],
-
-    "Bowongso": [70,69,68,67,66,65,64,63,62,61,60,59,58,57,56,55,54,53,52,51,50,49,48,47,46,45,44,43,42,41,40],
-
-    "Anggrunggondok": [130,128,126,124,122,120,118,116,114,112,110,108,106,104,102,100,98,96,94,92,90,88,86,84,82,80,78,76,74,72,70]
-};
-
-// ===============================
-// ELEMENT
-// ===============================
-
-const bulan = document.getElementById("bulan");
-const jalur = document.getElementById("jalur");
-const tanggal = document.getElementById("tanggal");
-const kuota = document.getElementById("kuota");
-
-// ===============================
-// ISI TANGGAL
-// ===============================
-
-for(let i=1;i<=31;i++){
-
-    tanggal.innerHTML += `<option value="${i}">${i}</option>`;
-
-}
-
-// ===============================
-// UPDATE KUOTA
-// ===============================
-
-function updateKuota(){
-
-    let pilihJalur = jalur.value;
-
-    let pilihTanggal = Number(tanggal.value)-1;
-
-    kuota.innerHTML = kuotaData[pilihJalur][pilihTanggal] + " Orang";
-
-}
-
-jalur.addEventListener("change",updateKuota);
-
-tanggal.addEventListener("change",updateKuota);
-
-updateKuota();
-
-// ===============================
-// KALENDER
-// ===============================
-
-const calendarDays = document.getElementById("calendarDays");
-const monthYear = document.getElementById("monthYear");
-
-const months = [
-"Januari","Februari","Maret","April","Mei","Juni",
-"Juli","Agustus","September","Oktober","November","Desember"
-];
-
-let month = 7;
-let year = 2026;
-
-function renderCalendar(){
-
-    calendarDays.innerHTML="";
-
-    monthYear.innerHTML = months[month]+" "+year;
-
-    let firstDay = new Date(year,month,1).getDay();
-
-    let lastDate = new Date(year,month+1,0).getDate();
-
-    for(let i=0;i<firstDay;i++){
-
-        let div=document.createElement("div");
-
-        div.className="empty";
-
-        calendarDays.appendChild(div);
-
-    }
-
-    for(let d=1;d<=lastDate;d++){
-
-        let div=document.createElement("div");
-
-        div.className="day";
-
-        div.innerHTML=d;
-
-        div.onclick=function(){
-
-            tanggal.value=d;
-
-            updateKuota();
-
-            document.querySelectorAll(".day").forEach(x=>x.classList.remove("today"));
-
-            div.classList.add("today");
+        @media(max-width:992px) {
+
+            main {
+                grid-template-columns: 1fr;
+            }
+
+            .right {
+                border-left: none;
+                border-top: 2px solid rgba(255, 255, 255, .3);
+                padding-left: 0;
+                padding-top: 30px;
+            }
 
         }
 
-        calendarDays.appendChild(div);
+        @media(max-width:768px) {
 
-    }
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 20px;
+            }
 
-}
+            .logo {
+                margin-bottom: 20px;
+            }
 
-renderCalendar();
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
 
-// ===============================
-// PINDAH BULAN
-// ===============================
+            nav a {
+                margin-bottom: 10px;
+            }
 
-document.getElementById("prevMonth").onclick=function(){
+            .logo h2 {
+                font-size: 28px;
+            }
 
-    month--;
+            .calendar {
+                width: 100%;
+            }
 
-    if(month<0){
+            .day {
+                height: 34px;
+            }
 
-        month=11;
+        }
+    </style>
+</head>
 
-        year--;
+<body>
 
-    }
+    <!-- ================= HEADER ================= -->
 
-    bulan.selectedIndex=month;
+    <header>
 
-    renderCalendar();
+        <div class="logo">
 
-}
+            <img src="assets/logo.png" alt="Logo">
 
-document.getElementById("nextMonth").onclick=function(){
+            <div>
 
-    month++;
+                <h2>LocalOutdoor</h2>
 
-    if(month>11){
+                <span>Explore Nature</span>
 
-        month=0;
+            </div>
 
-        year++;
+        </div>
 
-    }
+        <nav>
 
-    bulan.selectedIndex=month;
+            <a href="index.html">Beranda</a>
 
-    renderCalendar();
+            <a href="Panduan_Booking.html">Panduan Booking</a>
 
-}
+            <a href="Cek_Kuota.html" class="active">Cek Kuota</a>
 
-// ===============================
-// DROPDOWN BULAN
-// ===============================
+        </nav>
 
-bulan.addEventListener("change",function(){
+    </header>
 
-    month=this.selectedIndex;
+    <!-- ================= MAIN ================= -->
 
-    renderCalendar();
+    <main>
 
-});
-</script>
+        <!-- ================= KIRI ================= -->
+
+        <section class="left">
+
+            <h2>Periode</h2>
+
+            <select id="bulan">
+
+                <option>Januari 2026</option>
+                <option>Februari 2026</option>
+                <option>Maret 2026</option>
+                <option>April 2026</option>
+                <option>Mei 2026</option>
+                <option>Juni 2026</option>
+                <option>Juli 2026</option>
+                <option selected>Agustus 2026</option>
+                <option>September 2026</option>
+                <option>Oktober 2026</option>
+                <option>November 2026</option>
+                <option>Desember 2026</option>
+
+            </select>
+
+            <h2>Jalur Pendakian</h2>
+
+            <select id="jalur">
+
+                <option>Kledung</option>
+                <option>Alang-Alang Sewu</option>
+                <option>Ndoro Arum</option>
+                <option>Sigedang</option>
+                <option>Bansari</option>
+                <option>Bedakah</option>
+                <option>Bowongso</option>
+                <option>Anggrunggondok</option>
+
+            </select>
+
+            <h2>Tanggal Pendakian</h2>
+
+            <select id="tanggal">
+
+                <!-- Diisi oleh JavaScript -->
+
+            </select>
+
+            <div class="kuota-box">
+
+                <h3>Sisa Kuota</h3>
+
+                <h1 id="kuota">120 Orang</h1>
+
+            </div>
+
+        </section>
+
+        <!-- ================= KANAN ================= -->
+
+        <section class="right">
+
+            <a href="Booking_Online/pendaftaran.html" class="menu-button">
+                Booking Online
+            </a>
+
+            <a href="kontak.html" class="menu-button">
+                Kontak
+            </a>
+
+            <div class="calendar">
+
+                <div class="calendar-header">
+
+                    <button id="prevMonth">&#10094;</button>
+
+                    <h3 id="monthYear"></h3>
+
+                    <button id="nextMonth">&#10095;</button>
+
+                </div>
+
+                <div class="weekdays">
+
+                    <span>Min</span>
+                    <span>Sen</span>
+                    <span>Sel</span>
+                    <span>Rab</span>
+                    <span>Kam</span>
+                    <span>Jum</span>
+                    <span>Sab</span>
+
+                </div>
+
+                <div id="calendarDays"></div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        // ===============================
+        // DATA KUOTA
+        // ===============================
+
+        const kuotaData = {
+            "Kledung": [120, 115, 110, 108, 104, 100, 98, 96, 94, 92, 90, 88, 86, 84, 82, 80, 78, 76, 74, 72, 70, 68, 66, 64, 62, 60, 58, 56, 54, 52, 50],
+
+            "Alang-Alang Sewu": [100, 98, 96, 94, 92, 90, 88, 86, 84, 82, 80, 78, 76, 74, 72, 70, 68, 66, 64, 62, 60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40],
+
+            "Ndoro Arum": [90, 88, 86, 84, 82, 80, 78, 76, 74, 72, 70, 68, 66, 64, 62, 60, 58, 56, 54, 52, 50, 48, 46, 44, 42, 40, 38, 36, 34, 32, 30],
+
+            "Sigedang": [110, 108, 106, 104, 102, 100, 98, 96, 94, 92, 90, 88, 86, 84, 82, 80, 78, 76, 74, 72, 70, 68, 66, 64, 62, 60, 58, 56, 54, 52, 50],
+
+            "Bansari": [80, 79, 78, 77, 76, 75, 74, 73, 72, 71, 70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50],
+
+            "Bedakah": [105, 103, 101, 99, 97, 95, 93, 91, 89, 87, 85, 83, 81, 79, 77, 75, 73, 71, 69, 67, 65, 63, 61, 59, 57, 55, 53, 51, 49, 47, 45],
+
+            "Bowongso": [70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40],
+
+            "Anggrunggondok": [130, 128, 126, 124, 122, 120, 118, 116, 114, 112, 110, 108, 106, 104, 102, 100, 98, 96, 94, 92, 90, 88, 86, 84, 82, 80, 78, 76, 74, 72, 70]
+        };
+
+        // ===============================
+        // ELEMENT
+        // ===============================
+
+        const bulan = document.getElementById("bulan");
+        const jalur = document.getElementById("jalur");
+        const tanggal = document.getElementById("tanggal");
+        const kuota = document.getElementById("kuota");
+
+        // ===============================
+        // ISI TANGGAL
+        // ===============================
+
+        for (let i = 1; i <= 31; i++) {
+
+            tanggal.innerHTML += `<option value="${i}">${i}</option>`;
+
+        }
+
+        // ===============================
+        // UPDATE KUOTA
+        // ===============================
+
+        function updateKuota() {
+
+            let pilihJalur = jalur.value;
+
+            let pilihTanggal = Number(tanggal.value) - 1;
+
+            kuota.innerHTML = kuotaData[pilihJalur][pilihTanggal] + " Orang";
+
+        }
+
+        jalur.addEventListener("change", updateKuota);
+
+        tanggal.addEventListener("change", updateKuota);
+
+        updateKuota();
+
+        // ===============================
+        // KALENDER
+        // ===============================
+
+        const calendarDays = document.getElementById("calendarDays");
+        const monthYear = document.getElementById("monthYear");
+
+        const months = [
+            "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+            "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+        ];
+
+        let month = 7;
+        let year = 2026;
+
+        function renderCalendar() {
+
+            calendarDays.innerHTML = "";
+
+            monthYear.innerHTML = months[month] + " " + year;
+
+            let firstDay = new Date(year, month, 1).getDay();
+
+            let lastDate = new Date(year, month + 1, 0).getDate();
+
+            for (let i = 0; i < firstDay; i++) {
+
+                let div = document.createElement("div");
+
+                div.className = "empty";
+
+                calendarDays.appendChild(div);
+
+            }
+
+            for (let d = 1; d <= lastDate; d++) {
+
+                let div = document.createElement("div");
+
+                div.className = "day";
+
+                div.innerHTML = d;
+
+                div.onclick = function () {
+
+                    tanggal.value = d;
+
+                    updateKuota();
+
+                    document.querySelectorAll(".day").forEach(x => x.classList.remove("today"));
+
+                    div.classList.add("today");
+
+                }
+
+                calendarDays.appendChild(div);
+
+            }
+
+        }
+
+        renderCalendar();
+
+        // ===============================
+        // PINDAH BULAN
+        // ===============================
+
+        document.getElementById("prevMonth").onclick = function () {
+
+            month--;
+
+            if (month < 0) {
+
+                month = 11;
+
+                year--;
+
+            }
+
+            bulan.selectedIndex = month;
+
+            renderCalendar();
+
+        }
+
+        document.getElementById("nextMonth").onclick = function () {
+
+            month++;
+
+            if (month > 11) {
+
+                month = 0;
+
+                year++;
+
+            }
+
+            bulan.selectedIndex = month;
+
+            renderCalendar();
+
+        }
+
+        // ===============================
+        // DROPDOWN BULAN
+        // ===============================
+
+        bulan.addEventListener("change", function () {
+
+            month = this.selectedIndex;
+
+            renderCalendar();
+
+        });
+    </script>
 
 </body>
 </html>
->>>>>>> e960961baa31c3d5ac5f6dd4432f4dbe5754d2f5
