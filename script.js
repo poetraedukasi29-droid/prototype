@@ -35,3 +35,4 @@ function prevSlide(){
 }
 
 setInterval(nextSlide,3000);
+
