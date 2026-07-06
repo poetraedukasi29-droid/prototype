@@ -377,6 +377,65 @@
     cursor: pointer;
   }
 
+  .summary-card{
+    margin-top:35px;
+    background:#ffffff;
+    border-radius:22px;
+    padding:28px;
+    box-shadow:0 12px 28px rgba(0,0,0,.08);
+    border:1px solid #e6e6e6;
+}
+
+.summary-title{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:24px;
+}
+
+.summary-title h2{
+    margin:0;
+    font-family:'Playfair Display', serif;
+    font-size:32px;
+    color:var(--text-dark);
+}
+
+.summary-icon{
+    font-size:30px;
+}
+
+.summary-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+    border-bottom:1px solid #dddddd;
+    font-size:18px;
+}
+
+.summary-item:last-child{
+    border-bottom:none;
+}
+
+.summary-item span:first-child{
+    font-weight:700;
+}
+
+.summary-item span:last-child{
+    font-weight:700;
+    color:var(--text-dark);
+}
+
+.summary-item.total{
+    padding-top:24px;
+    font-size:22px;
+}
+
+.summary-item.total span:last-child{
+    font-size:28px;
+    color:var(--bg-green);
+}
+
   @media (max-width: 600px) {
     header { flex-wrap: wrap; }
     .card { padding: 24px 20px 30px; }
@@ -486,35 +545,34 @@
       </div>
     </div>
 
-    <hr>
-
     <div class="summary-card">
 
-    <h2>📋 Ringkasan Booking</h2>
+    <div class="summary-title">
+        <span class="summary-icon">📋</span>
+        <h2>Ringkasan Booking</h2>
+    </div>
 
     <div class="summary-item">
         <span>🏔 Jalur</span>
-        <span id="summaryJalur">Jalur Sindoro</span>
+        <span id="summaryJalur">Pilih Jalur</span>
     </div>
 
     <div class="summary-item">
         <span>📅 Tanggal</span>
-        <span id="summaryTanggal">Kamis, 9 April 2026</span>
+        <span id="summaryTanggal">Pilih Tanggal</span>
     </div>
 
     <div class="summary-item">
         <span>👥 Pendaki</span>
-        <span id="summaryPendaki">1 Dewasa</span>
+        <span id="summaryPendaki">Jumlah Orang</span>
     </div>
-
-    <hr>
-
+    
     <div class="summary-item total">
         <span>💰 Total Harga</span>
-        <span id="summaryHarga">Rp35.000</span>
+        <span id="summaryHarga">Rp0</span>
     </div>
+</div>
 
-    </div>
     <div class="actions">
       <button class="next-btn">Next</button>
     </div>
