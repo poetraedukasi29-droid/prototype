@@ -37,6 +37,21 @@ function prevSlide(){
 setInterval(nextSlide,3000);
 
 <<<<<<< HEAD
+function copyWA(){
+
+navigator.clipboard.writeText("0823xxxxxxxx");
+
+alert("Nomor WhatsApp berhasil disalin.");
+
+}
+
+function instagram(){
+
+window.open("https://instagram.com/localoutdoor","_blank");
+
+}
+=======
+<<<<<<< HEAD
 =======
 document.addEventListener('DOMContentLoaded', () => {
     const participantList = document.getElementById('participant-list');
@@ -111,3 +126,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 >>>>>>> b4632a0 (tambah)
+>>>>>>> ec87ae5ad31d6cdcc4381584f329964a16b37f31
