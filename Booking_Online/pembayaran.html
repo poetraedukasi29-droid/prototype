@@ -1,11 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panduan Booking</title>
+    <title>Booking Online - Localoutdoor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    
+
+    <div class="main-container">
+        <header>
+            <div class="logo-area">
+                <div class="logo-circle">
+                    <i class="fas fa-mountain"></i>
+                </div>
+                <span>Localoutdoor</span>
+            </div>
+            <div class="title-bar">
+                BOOKING ONLINE
+            </div>
+        </header>
+
+        <main class="card">
+            <form id="bookingForm">
+                <div id="participant-list">
+                    <div class="participant-row">
+                        <div class="input-group name-group">
+                            <i class="fas fa-users"></i>
+                            <input type="text" class="input-name" placeholder="Pendaki 1" required>
+                        </div>
+                        <div class="input-group age-group">
+                            <input type="number" class="input-age" placeholder="Umur" required>
+                        </div>
+                    </div>
+                    <div class="participant-row">
+                        <div class="input-group name-group">
+                            <i class="fas fa-users"></i>
+                            <input type="text" class="input-name" placeholder="Pendaki 2" required>
+                        </div>
+                        <div class="input-group age-group">
+                            <input type="number" class="input-age" placeholder="Umur" required>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" id="add-participant-btn" class="btn-add">
+                    <i class="fas fa-plus-circle"></i> Tambah Peserta
+                </button>
+
+                <div class="footer-actions">
+                    <div class="upload-section">
+                        <div class="upload-box">
+                            <input type="file" id="upload-simaksi" hidden>
+                            <button type="button" onclick="document.getElementById('upload-simaksi').click()" class="btn-dark">
+                                <i class="far fa-image"></i> Unggah Berkas SIMAKSI
+                            </button>
+                            <span id="name-simaksi" class="file-name"></span>
+                        </div>
+
+                        <div class="upload-box">
+                            <input type="file" id="upload-payment" accept="image/*" hidden>
+                            <button type="button" onclick="document.getElementById('upload-payment').click()" class="btn-dark">
+                                <i class="far fa-image"></i> Pembayaran
+                            </button>
+                            <span id="name-payment" class="file-name"></span>
+                        </div>
+                    </div>
+
+                    <div class="booking-section">
+                        <button type="submit" class="btn-booking">Booking</button>
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
