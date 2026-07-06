@@ -557,6 +557,7 @@ nav a:hover{
     .select-row, .info-row .label, .field-title { font-size: 17px; }
     .calendar-panel { width: 100%; }
   }
+
 }
 
 *{
@@ -760,5 +761,176 @@ width:90%;
 width:70%;
 
 }
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #1a503a; /* Hijau Tua */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Header Styles */
+header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo-area {
+    color: white;
+    text-align: center;
+    margin-right: 20px;
+    font-size: 12px;
+}
+
+.logo-circle {
+    width: 50px;
+    height: 50px;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.title-bar {
+    background-color: #cbd5e1; /* Abu-abu terang */
+    flex-grow: 1;
+    text-align: center;
+    padding: 12px;
+    border-radius: 25px;
+    font-weight: bold;
+    color: #1a503a;
+    letter-spacing: 2px;
+}
+
+/* Card Styles */
+.card {
+    background-color: #d1d5db; /* Perak keabu-abuan */
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.participant-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #1a503a;
+    padding-bottom: 5px;
+}
+
+.name-group { flex: 2; }
+.age-group { flex: 1; }
+
+.input-group i {
+    color: #1a503a;
+    font-size: 30px;
+    margin-right: 15px;
+}
+
+.input-group input {
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 18px;
+    color: #1a503a;
+}
+
+.input-group input::placeholder {
+    color: #1a503a;
+    opacity: 0.7;
+}
+
+/* Buttons */
+.btn-add {
+    background: none;
+    border: none;
+    color: #1a503a;
+    cursor: pointer;
+    font-weight: bold;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.footer-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 30px;
+}
+
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.upload-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-dark {
+    background-color: #123c2d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    width: fit-content;
+}
+
+.btn-booking {
+    background-color: #123c2d;
+    color: white;
+    border: none;
+    padding: 15px 50px;
+    border-radius: 25px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-booking:hover, .btn-dark:hover {
+    background-color: #1a503a;
+}
+
+.file-name {
+    font-size: 11px;
+    color: #1a503a;
+    margin-top: 3px;
 
 }
