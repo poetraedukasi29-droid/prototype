@@ -602,7 +602,6 @@ nav a:hover{
     transform:scale(1.1);
 }
 
-<<<<<<< HEAD
   @media (max-width: 600px) {
     heade { flex-wrap: wrap; }
     .card { padding: 24px 20px 30px; }
@@ -614,15 +613,6 @@ nav a:hover{
 }
 
 
-=======
-/* RESPONSIVE */
-
-@media(max-width:768px){
-
-header{
-    flex-direction:column;
-    gap:20px;
->>>>>>> 097af96934bc08d90d49db250be96d58480618a7
 }
 
 nav{
@@ -638,7 +628,6 @@ nav a{
     flex-direction:column;
 }
 
-<<<<<<< HEAD
 /* Header Styles */
 header {
     display: flex;
@@ -787,8 +776,4 @@ header {
     color: #1a503a;
     margin-top: 3px;
 
-=======
-.banner img{
-    height:250px;
->>>>>>> 097af96934bc08d90d49db250be96d58480618a7
 }
