@@ -1,8 +1,9 @@
 const images = [
-    "Image/Sindoro1.jpeg",
-    "Image/Sindoro2.jpeg",
-    "Image/Sindoro3.jpeg",
-    "Image/Sindoro4.jpeg"
+    "Image/Sindoro1.jpg",
+    "Image/Sindoro2.jpg",
+    "Image/Sindoro3.jpg",
+    "Image/Sindoro4.jpg",
+    "Image/Sindoro5.jpg"
 ];
 
 let current = 0;

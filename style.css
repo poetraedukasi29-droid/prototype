@@ -12,7 +12,19 @@
    BODY
 ======================= */
 body{
-    background: #8d8f5d;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    background:#8d8f5d;
+}
+
+footer{
+    margin-top:auto;
+    width:100%;
+    background:#d8d7be;
+    padding:20px;
+    text-align:center;
+    color:#555;
 }
 
 /* =======================
