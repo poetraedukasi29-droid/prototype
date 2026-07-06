@@ -3,89 +3,384 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LocalOutdoor</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Panduan Booking</title>
+     <style>
+        *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
 
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    body{
+     background:#6d745f;
+        font-family:Georgia, serif;
+    }
+
+    /* HEADER */
+
+    header{
+        background:#7d7642;
+        height:70px;
+
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+
+        padding:0 40px;
+
+        border-bottom:2px solid rgba(255,255,255,.15);
+    }
+
+    .logo{
+        display:flex;
+        align-items:center;
+    }
+
+    .logo img{
+
+        width:55px;
+        height:55px;
+        border-radius:50%;
+    }
+
+    nav{
+
+        display:flex;
+        gap:18px;
+    }
+
+    nav a{
+
+        text-decoration:none;
+
+        background:#65592d;
+
+        color:white;
+
+        padding:10px 28px;
+
+        border-radius:25px;
+
+        font-size:14px;
+
+        font-weight:bold;
+
+        transition:.3s;
+    }
+
+    nav a:hover{
+
+        background:#8f7c3f;
+    }
+
+    nav .active{
+
+        background:#8f7c3f;
+    }
+
+    /* MAIN */
+
+    main{
+
+        display:flex;
+
+        gap:40px;
+
+        padding:30px 40px;
+    }
+
+    /* KONTEN */
+
+    .panduan{
+
+        flex:1;
+
+        color:white;
+
+        border-right:2px solid rgba(255,255,255,.4);
+
+        padding-right:40px;
+    }
+
+    .panduan h2{
+
+        margin-bottom:20px;
+    }
+
+    .panduan ol{
+
+        padding-left:20px;
+
+        line-height:2;
+    }
+
+    /* SIDEBAR */
+
+    aside{
+
+        width:230px;
+
+        display:flex;
+
+        flex-direction:column;
+
+        gap:15px;
+    }
+
+    aside button{
+
+        background:#ece8de;
+
+        color:#344330;
+
+        font-weight:bold;
+
+        border:none;
+
+        border-radius:20px;
+
+        padding:12px;
+
+        cursor:pointer;
+    }
+
+    aside button:hover{
+
+        background:white;
+    }
+
+    /* KALENDER */
+
+    .kalender{
+
+        background:white;
+
+        margin-top:20px;
+
+        padding:10px;
+    }
+
+    .kalender h3{
+
+        text-align:center;
+
+        margin-bottom:10px;
+
+        color:#244335;
+    }
+
+    table{
+
+        width:100%;
+
+        border-collapse:collapse;
+    }
+
+    td{
+
+        border:1px solid #999;
+
+        width:14%;
+
+        height:25px;
+    }
+
+    th{
+
+        background:#7d7642;
+        color:white;
+        height:30px;
+    }
+
+    td{
+
+        width:35px;
+        height:35px;
+
+        text-align:center;
+
+        border:1px solid #ccc;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:768px){
+
+    header{
+
+        flex-direction:column;
+
+        gap:20px;
+    }
+
+    main{
+
+        flex-direction:column;
+    }
+
+    .panduan{
+
+        border:none;
+
+        padding-right:0;
+    }
+
+    aside{
+
+        width:100%;
+    }
+    }
+     </style>
+    
 </head>
 <body>
 
-<div class="container">
-    <header>
+<header>
 
-        <div class="logo">
-            <img src="logo.png" alt="Logo">
-            <h4>LocalOutdoor</h4>
+    <div class="logo">
+
+        <img src="logo.png" alt="Logo">
+
+    </div>
+
+    <nav>
+
+        <a href="index.html">BERANDA</a>
+        <a href="Panduan_Booking.html" class="active">PANDUAN BOOKING</a>
+        <a href="Cek_Kuota.html">CEK KUOTA</a>
+
+    </nav>
+
+</header>
+
+<main>
+
+    <section class="panduan">
+
+        <h2>Persyaratan Pembuatan Simaksi Sindoro</h2>
+
+        <ol>
+
+            <li>Mengisi formulir booking online.</li>
+
+            <li>Upload KTP/Kartu Pelajar.</li>
+
+            <li>Membayar biaya registrasi.</li>
+
+            <li>Membawa surat keterangan sehat.</li>
+
+            <li>Mematuhi seluruh peraturan pendakian.</li>
+
+        </ol>
+
+        <br>
+
+        <h2>Alur Booking Gunung Sindoro</h2>
+
+        <ol>
+
+            <li>Klik tombol Booking Online.</li>
+
+            <li>Isi seluruh data pendaki.</li>
+
+            <li>Pilih tanggal pendakian.</li>
+
+            <li>Lakukan pembayaran.</li>
+
+            <li>Unduh bukti booking.</li>
+
+        </ol>
+
+    </section>
+
+    <aside>
+
+        <button id="booking">Booking Online</button>
+
+        <button id="kontak">Kontak</button>
+
+        <div class="kalender">
+
+            <h3>Kalender</h3>
+
+            <table id="calendar"></table>
+
         </div>
 
-        <nav>
-            <nav>
-                <a href="index.html">BERANDA</a>
-                <a href="Panduan_Booking.html">PANDUAN BOOKING</a>
-                <a href="Cek_Kuota.html">CEK KUOTA</a>
-            </nav>
-        </nav>
+    </aside>
 
-    </header>
+</main>
 
-    <!-- Isi -->
-    <main>
+<script>
+    const calendar = document.getElementById("calendar");
 
-        <section class="content">
+    const today = new Date();
 
-            <h2>Persyaratan Pembuatan Simaksi Sindoro</h2>
+    const month = today.getMonth();
 
-            <hr>
-            <hr>
-            <hr>
-            <hr>
+    const year = today.getFullYear();
 
-            <br><br>
+    const firstDay = new Date(year, month, 1).getDay();
 
-            <h2>Layanan Booking Gunung Sindoro</h2>
+    const lastDate = new Date(year, month + 1, 0).getDate();
 
-            <hr>
-            <hr>
-            <hr>
+    const monthName = today.toLocaleString("id-ID",{
+        month:"long",
+        year:"numeric"
+    });
 
-        </section>
+    document.querySelector(".kalender h3").innerHTML = monthName;
 
-        <!-- Sidebar -->
-        <aside>
+    let row = document.createElement("tr");
 
-            <button><a href="Booking_Online/pendaftaran.html">Booking Online</a></button>
-            <button>Kontak</button>
+    const hari = ["M","S","S","R","K","J","S"];
 
-            <div class="calendar">
+    hari.forEach(h=>{
 
-                <h3>Kalender</h3>
+        let th=document.createElement("th");
 
-                <table>
-                    <tr>
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                    <tr>
-                        <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-                    </tr>
-                </table>
+        th.innerHTML=h;
 
-            </div>
+        row.appendChild(th);
 
-        </aside>
+    });
 
-    </main>
+    calendar.appendChild(row);
 
-</div>
+    row=document.createElement("tr");
+
+    for(let i=0;i<firstDay;i++){
+
+        row.appendChild(document.createElement("td"));
+    }
+
+    for(let d=1; d<=lastDate; d++){
+
+        if((firstDay+d-1)%7===0){
+
+            calendar.appendChild(row);
+
+            row=document.createElement("tr");
+        }
+
+        let td=document.createElement("td");
+
+        td.innerHTML=d;
+
+        if(d===today.getDate()){
+
+            td.style.background="#7d7642";
+
+            td.style.color="white";
+
+            td.style.fontWeight="bold";
+        }
+
+        row.appendChild(td);
+    }
+
+    calendar.appendChild(row);
+</script>
 
 </body>
 </html>
