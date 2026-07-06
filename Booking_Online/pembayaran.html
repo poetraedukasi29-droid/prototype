@@ -4,78 +4,395 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking Online - Localoutdoor</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #1b4332; /* Warna hijau tua sesuai background utama */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Header Style */
+        .header-container {
+            width: 100%;
+            max-width: 900px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding: 10px 0;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .logo-text {
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .logo-wrapper {
+            width: 60px;
+            height: 60px;
+            background-color: #2d6a4f;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Memotong gambar agar berbentuk bulat sempurna */
+        }
+
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Menyesuaikan gambar proporsional di dalam lingkaran */
+        }
+
+        .banner-title {
+            background-color: #d8f3dc; /* Warna abu-abu kehijauan terang */
+            color: #1b4332;
+            padding: 12px 50px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-align: center;
+            flex-grow: 1;
+            margin-left: 20px;
+            text-transform: uppercase;
+        }
+
+        /* Main Form Card */
+        .booking-card {
+            background-color: #e2eafc; /* Warna abu-abu terang padat */
+            border-radius: 30px;
+            width: 100%;
+            max-width: 900px;
+            padding: 40px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Control Jumlah Pendaki */
+        .control-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            background-color: rgba(27, 67, 50, 0.1);
+            padding: 10px 20px;
+            border-radius: 15px;
+            width: fit-content;
+        }
+
+        .control-group label {
+            color: #1b4332;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .control-group input {
+            width: 70px;
+            padding: 5px;
+            border: 2px solid #1b4332;
+            border-radius: 8px;
+            font-weight: bold;
+            text-align: center;
+            color: #1b4332;
+            background: transparent;
+            font-size: 1rem;
+        }
+
+        /* Dynamic Form List */
+        .hikers-list {
+            margin-bottom: 30px;
+            max-height: 300px;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .hiker-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            gap: 40px;
+        }
+
+        .input-wrapper {
+            display: flex;
+            align-items: flex-end;
+            border-bottom: 2px solid #1b4332; /* Garis bawah khas input di gambar */
+            padding-bottom: 5px;
+            flex: 1;
+        }
+
+        .input-wrapper i {
+            color: #1b4332;
+            font-size: 1.8rem;
+            margin-right: 15px;
+            margin-bottom: 2px;
+        }
+
+        .input-wrapper input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #1b4332;
+            font-size: 1.1rem;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .input-wrapper input::placeholder {
+            color: rgba(27, 67, 50, 0.6);
+        }
+
+        /* Age Input Wrapper */
+        .age-wrapper {
+            max-width: 250px;
+        }
+
+        /* Action Buttons Area */
+        .action-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 20px;
+        }
+
+        .upload-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Custom Button Styles */
+        .btn {
+            background-color: #2d6a4f;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 20px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            min-width: 260px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            background-color: #1b4332;
+            transform: translateY(-2px);
+        }
+
+        .btn-booking {
+            background-color: #2d6a4f;
+            padding: 14px 60px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            min-width: auto;
+        }
+
+        /* Hidden standard file inputs */
+        .hidden-file-input {
+            display: none;
+        }
+
+        /* File Upload Status Text */
+        .file-status {
+            font-size: 0.8rem;
+            color: #1b4332;
+            margin-top: -10px;
+            margin-left: 10px;
+            font-style: italic;
+            max-width: 260px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Custom Scrollbar for Hikers List */
+        .hikers-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        .hikers-list::-webkit-scrollbar-thumb {
+            background-color: #1b4332;
+            border-radius: 10px;
+        }
+    </style>
 </head>
 <body>
 
-    <div class="main-container">
-        <header>
-            <div class="logo-area">
-                <div class="logo-circle">
-                    <i class="fas fa-mountain"></i>
-                </div>
-                <span>Localoutdoor</span>
+    <div class="header-container">
+        <div class="logo-section">
+            <div class="logo-wrapper">
+                <img src="logo.jpg" alt="Logo" class="logo-img" onerror="this.style.display='none'; document.getElementById('fallback-icon').style.display='block';">
+                <i class="fas fa-mountain" id="fallback-icon" style="display: none; font-size: 1.5rem; color: white;"></i>
             </div>
-            <div class="title-bar">
-                BOOKING ONLINE
-            </div>
-        </header>
-
-        <main class="card">
-            <form id="bookingForm">
-                <div id="participant-list">
-                    <div class="participant-row">
-                        <div class="input-group name-group">
-                            <i class="fas fa-users"></i>
-                            <input type="text" class="input-name" placeholder="Pendaki 1" required>
-                        </div>
-                        <div class="input-group age-group">
-                            <input type="number" class="input-age" placeholder="Umur" required>
-                        </div>
-                    </div>
-                    <div class="participant-row">
-                        <div class="input-group name-group">
-                            <i class="fas fa-users"></i>
-                            <input type="text" class="input-name" placeholder="Pendaki 2" required>
-                        </div>
-                        <div class="input-group age-group">
-                            <input type="number" class="input-age" placeholder="Umur" required>
-                        </div>
-                    </div>
-                </div>
-
-                <button type="button" id="add-participant-btn" class="btn-add">
-                    <i class="fas fa-plus-circle"></i> Tambah Peserta
-                </button>
-
-                <div class="footer-actions">
-                    <div class="upload-section">
-                        <div class="upload-box">
-                            <input type="file" id="upload-simaksi" hidden>
-                            <button type="button" onclick="document.getElementById('upload-simaksi').click()" class="btn-dark">
-                                <i class="far fa-image"></i> Unggah Berkas SIMAKSI
-                            </button>
-                            <span id="name-simaksi" class="file-name"></span>
-                        </div>
-
-                        <div class="upload-box">
-                            <input type="file" id="upload-payment" accept="image/*" hidden>
-                            <button type="button" onclick="document.getElementById('upload-payment').click()" class="btn-dark">
-                                <i class="far fa-image"></i> Pembayaran
-                            </button>
-                            <span id="name-payment" class="file-name"></span>
-                        </div>
-                    </div>
-
-                    <div class="booking-section">
-                        <button type="submit" class="btn-booking">Booking</button>
-                    </div>
-                </div>
-            </form>
-        </main>
+            <span class="logo-text">Localoutdoor</span>
+        </div>
+        <div class="banner-title">Booking Online</div>
     </div>
 
-    <script src="script.js"></script>
+    <div class="booking-card">
+        
+        <div class="control-group">
+            <label for="jumlah-pendaki">Jumlah Peserta/Pendaki:</label>
+            <input type="number" id="jumlah-pendaki" min="1" max="20" value="2">
+        </div>
+
+        <div class="hikers-list" id="hikers-container">
+            </div>
+
+        <div class="action-area">
+            <div class="upload-buttons">
+                <button type="button" class="btn" onclick="document.getElementById('file-simaksi').click()">
+                    <i class="far fa-image"></i> Unggah Berkas SIMAKSI
+                </button>
+                <input type="file" id="file-simaksi" class="hidden-file-input" onchange="updateFileStatus('file-simaksi', 'status-simaksi')">
+                <div class="file-status" id="status-simaksi">Belum ada berkas terpilih</div>
+
+                <button type="button" class="btn" onclick="document.getElementById('file-pembayaran').click()">
+                    <i class="far fa-image"></i> Pembayaran
+                </button>
+                <input type="file" id="file-pembayaran" accept="image/*" class="hidden-file-input" onchange="updateFileStatus('file-pembayaran', 'status-pembayaran')">
+                <div class="file-status" id="status-pembayaran">Belum ada foto bukti pembayaran</div>
+            </div>
+
+            <div>
+                <button type="button" class="btn btn-booking" id="btn-booking" onclick="saveBookingData()">
+                    Booking
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const hikersContainer = document.getElementById('hikers-container');
+        const jumlahPendakiInput = document.getElementById('jumlah-pendaki');
+
+        // Fungsi untuk membuat baris input pendaki berdasarkan jumlah yang dimasukkan
+        function generateHikerRows(count) {
+            hikersContainer.innerHTML = ''; // Reset container terlebih dahulu
+            
+            for (let i = 1; i <= count; i++) {
+                const row = document.createElement('div');
+                row.className = 'hiker-row';
+                row.innerHTML = `
+                    <div class="input-wrapper">
+                        <i class="fas fa-users"></i>
+                        <input type="text" class="hiker-name" placeholder="Pendaki ${i}" required>
+                    </div>
+                    <div class="input-wrapper age-wrapper">
+                        <input type="number" class="hiker-age" placeholder="Umur" min="1" max="100" required>
+                    </div>
+                `;
+                hikersContainer.appendChild(row);
+            }
+        }
+
+        // Listener ketika jumlah pendaki diubah
+        jumlahPendakiInput.addEventListener('input', (e) => {
+            let value = parseInt(e.target.value);
+            if (isNaN(value) || value < 1) value = 1;
+            generateHikerRows(value);
+        });
+
+        // Tampilkan default 2 pendaki saat pertama kali dimuat
+        generateHikerRows(2);
+
+        // Fungsi untuk memperbarui teks status nama file saat berkas dipilih
+        function updateFileStatus(inputId, statusId) {
+            const input = document.getElementById(inputId);
+            const statusDiv = document.getElementById(statusId);
+            if (input.files.length > 0) {
+                statusDiv.innerText = `Terpilih: ${input.files[0].name}`;
+                statusDiv.style.color = "#2d6a4f";
+                statusDiv.style.fontWeight = "bold";
+            } else {
+                statusDiv.innerText = "Belum ada berkas terpilih";
+                statusDiv.style.color = "#1b4332";
+                statusDiv.style.fontWeight = "normal";
+            }
+        }
+
+        // Fungsi utama untuk memvalidasi dan menyimpan seluruh data ke LocalStorage
+        function saveBookingData() {
+            const names = document.querySelectorAll('.hiker-name');
+            const ages = document.querySelectorAll('.hiker-age');
+            const simaksiFile = document.getElementById('file-simaksi').files[0];
+            const pembayaranFile = document.getElementById('file-pembayaran').files[0];
+
+            let hikersData = [];
+            let isValid = true;
+
+            // Validasi input data pendaki
+            names.forEach((nameInput, index) => {
+                const name = nameInput.value.trim();
+                const age = ages[index].value.trim();
+
+                if (!name || !age) {
+                    isValid = false;
+                } else {
+                    hikersData.push({
+                        no: index + 1,
+                        nama: name,
+                        umur: age
+                    });
+                }
+            });
+
+            if (!isValid) {
+                alert("Mohon lengkapi semua data nama dan umur pendaki terlebih dahulu!");
+                return;
+            }
+
+            if (!simaksiFile || !pembayaranFile) {
+                alert("Mohon unggah berkas SIMAKSI dan bukti pembayaran sebelum melakukan Booking!");
+                return;
+            }
+
+            // Mempersiapkan objek data final
+            const bookingData = {
+                waktu_booking: new Date().toLocaleString('id-ID'),
+                total_peserta: hikersData.length,
+                daftar_pendaki: hikersData,
+                nama_berkas_simaksi: simaksiFile.name,
+                nama_berkas_pembayaran: pembayaranFile.name
+            };
+
+            // Menyimpan ke LocalStorage browser
+            localStorage.setItem('data_booking_terakhir', JSON.stringify(bookingData));
+
+            // Notifikasi sukses beserta rincian data yang tersimpan
+            alert(`🎉 Booking Berhasil Disimpan!\n\nData telah berhasil direkam secara lokal di browser kamu.\nJumlah Pendaki: ${bookingData.total_peserta} orang.`);
+            console.log("Data Booking Tersimpan:", bookingData);
+        }
+    </script>
 </body>
 </html>
+
++

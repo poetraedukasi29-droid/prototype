@@ -5,6 +5,445 @@
 <meta charset="UTF-8">
 <title>Localoutdoor - Booking Online</title>
 
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Merriweather:wght@400;700&display=swap');
+
+  :root {
+    --bg-green: #3d6a5a;
+    --bg-green-dark: #2f5546;
+    --card-bg: #dcdcdc;
+    --panel-bg: #eaeaea;
+    --text-dark: #1f4438;
+    --line-color: #2f5546;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg-green);
+    font-family: 'Merriweather', serif;
+    color: var(--text-dark);
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 30px;
+    border-bottom: 1px solid rgba(255,255,255,0.6);
+  }
+
+  .brand { display: flex; align-items: center; gap: 10px; }
+
+  .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #f2f2f2;
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  .logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #6b4b2a, #3a2b18 70%);
+    border: 2px solid #caa24a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e8c97a;
+    font-size: 8px;
+    text-align: center;
+    line-height: 1.1;
+    padding: 4px;
+  }
+
+  .booking-pill {
+    flex: 1;
+    background: var(--card-bg);
+    border-radius: 30px;
+    text-align: center;
+    padding: 14px 0;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 16px;
+  }
+
+  main {
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+  }
+
+  .card {
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 700px;
+    border-radius: 24px;
+    padding: 30px 40px 40px;
+  }
+
+  .card h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0 0 16px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--line-color);
+  }
+
+  .field {
+    position: relative;
+    padding: 24px 0;
+    border-bottom: 2px solid var(--line-color);
+  }
+
+  .field:last-of-type { border-bottom: none; }
+
+  .select-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100%;
+    padding: 0;
+    color: var(--text-dark);
+    font-family: 'Playfair Display', serif;
+  }
+
+  .arrow {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 12px solid var(--text-dark);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .arrow.open { transform: rotate(180deg); }
+
+  .info-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100%;
+    padding: 0;
+    text-align: left;
+  }
+
+  .info-row .icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .info-row .icon svg {
+    width: 44px;
+    height: 44px;
+    stroke: var(--text-dark);
+    fill: none;
+    stroke-width: 1.6;
+  }
+
+  .info-row .label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--text-dark);
+  }
+
+  .field-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 20px;
+    margin: 0 0 14px;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+  }
+
+  .next-btn {
+    background: var(--bg-green);
+    color: #e8e8e8;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 18px;
+    border: none;
+    padding: 16px 60px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: filter 0.15s ease;
+  }
+
+  .next-btn:hover { filter: brightness(1.1); }
+
+  .next-btn:focus-visible,
+  .select-row:focus-visible,
+  .info-row:focus-visible {
+    outline: 3px solid #4d7c68;
+    outline-offset: 3px;
+  }
+
+  /* --- Dropdown panel (jalur) --- */
+  .panel {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    margin-top: 10px;
+    background: var(--panel-bg);
+    border: 2px solid var(--line-color);
+    border-radius: 14px;
+    padding: 8px;
+    z-index: 10;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+  }
+
+  .panel.show { display: block; }
+
+  .jalur-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .jalur-option:hover { background: rgba(61,106,90,0.15); }
+
+  .jalur-option.selected {
+    background: var(--bg-green);
+    color: #f2f2f2;
+  }
+
+  .jalur-option .check { visibility: hidden; }
+  .jalur-option.selected .check { visibility: visible; }
+
+  /* --- Calendar panel --- */
+  .calendar-panel { width: 320px; }
+
+  .cal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 6px 12px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .cal-nav {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--text-dark);
+    padding: 4px 10px;
+    border-radius: 8px;
+  }
+
+  .cal-nav:hover { background: rgba(61,106,90,0.15); }
+
+  .cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    text-align: center;
+  }
+
+  .cal-dow {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--bg-green-dark);
+    padding: 4px 0;
+  }
+
+  .cal-day {
+    padding: 8px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .cal-day:hover:not(.empty):not(.selected) { background: rgba(61,106,90,0.15); }
+
+  .cal-day.empty { cursor: default; }
+
+  .cal-day.selected {
+    background: var(--bg-green);
+    color: #f2f2f2;
+    font-weight: 700;
+  }
+
+  .cal-day.today:not(.selected) {
+    border: 1px solid var(--bg-green-dark);
+  }
+
+  /* --- Pendaki counter panel --- */
+  .counter-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 6px;
+  }
+
+  .counter-row + .counter-row {
+    border-top: 1px solid rgba(47,85,70,0.25);
+  }
+
+  .counter-label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .counter-sub {
+    font-size: 12px;
+    color: #3d6a5a;
+    font-family: 'Merriweather', serif;
+  }
+
+  .counter-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .counter-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--bg-green);
+    background: none;
+    color: var(--bg-green);
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .counter-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  .counter-btn:hover:not(:disabled) {
+    background: var(--bg-green);
+    color: #fff;
+  }
+
+  .counter-value {
+    min-width: 18px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  .panel-done {
+    width: 100%;
+    margin-top: 8px;
+    background: var(--bg-green);
+    color: #f2f2f2;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .summary-card{
+    margin-top:35px;
+    background:#ffffff;
+    border-radius:22px;
+    padding:28px;
+    box-shadow:0 12px 28px rgba(0,0,0,.08);
+    border:1px solid #e6e6e6;
+}
+
+.summary-title{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:24px;
+}
+
+.summary-title h2{
+    margin:0;
+    font-family:'Playfair Display', serif;
+    font-size:32px;
+    color:var(--text-dark);
+}
+
+.summary-icon{
+    font-size:30px;
+}
+
+.summary-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 0;
+    border-bottom:1px solid #dddddd;
+    font-size:18px;
+}
+
+.summary-item:last-child{
+    border-bottom:none;
+}
+
+.summary-item span:first-child{
+    font-weight:700;
+}
+
+.summary-item span:last-child{
+    font-weight:700;
+    color:var(--text-dark);
+}
+
+.summary-item.total{
+    padding-top:24px;
+    font-size:22px;
+}
+
+.summary-item.total span:last-child{
+    font-size:28px;
+    color:var(--bg-green);
+}
+
+  @media (max-width: 600px) {
+    header { flex-wrap: wrap; }
+    .card { padding: 24px 20px 30px; }
+    .card h1 { font-size: 24px; }
+    .select-row, .info-row .label, .field-title { font-size: 17px; }
+    .calendar-panel { width: 100%; }
+  }
+</style>
 </head>
 <body>
 
@@ -106,37 +545,36 @@
       </div>
     </div>
 
-    <hr>
-
     <div class="summary-card">
 
-    <h2>📋 Ringkasan Booking</h2>
+    <div class="summary-title">
+        <span class="summary-icon">📋</span>
+        <h2>Ringkasan Booking</h2>
+    </div>
 
     <div class="summary-item">
         <span>🏔 Jalur</span>
-        <span id="summaryJalur">Jalur Sindoro</span>
+        <span id="summaryJalur">Pilih Jalur</span>
     </div>
 
     <div class="summary-item">
         <span>📅 Tanggal</span>
-        <span id="summaryTanggal">Kamis, 9 April 2026</span>
+        <span id="summaryTanggal">Pilih Tanggal</span>
     </div>
 
     <div class="summary-item">
         <span>👥 Pendaki</span>
-        <span id="summaryPendaki">1 Dewasa</span>
+        <span id="summaryPendaki">Jumlah Orang</span>
     </div>
-
-    <hr>
-
+    
     <div class="summary-item total">
         <span>💰 Total Harga</span>
-        <span id="summaryHarga">Rp35.000</span>
+        <span id="summaryHarga">Rp0</span>
     </div>
+</div>
 
-    </div>
     <div class="actions">
-      <button class="next-btn">Next</button>
+      <button class="next-btn" onclick="window.location.href='pembayaran.html'">Next</button>
     </div>
   </div>
 </main>
