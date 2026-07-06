@@ -36,3 +36,16 @@ function prevSlide(){
 
 setInterval(nextSlide,3000);
 
+function copyWA(){
+
+navigator.clipboard.writeText("0823xxxxxxxx");
+
+alert("Nomor WhatsApp berhasil disalin.");
+
+}
+
+function instagram(){
+
+window.open("https://instagram.com/localoutdoor","_blank");
+
+}
