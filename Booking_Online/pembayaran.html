@@ -6,7 +6,6 @@
     <title>Booking Online - Localoutdoor</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-    
         * {
             box-sizing: border-box;
             margin: 0;
@@ -184,6 +183,13 @@
             gap: 15px;
         }
 
+        /* Submit/Right side buttons wrapper */
+        .submit-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
         /* Custom Button Styles */
         .btn {
             background-color: #2d6a4f;
@@ -196,15 +202,30 @@
             cursor: pointer;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 12px;
             transition: all 0.3s ease;
             min-width: 260px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-decoration: none; /* Reset untuk tag <a> */
         }
 
         .btn:hover {
             background-color: #1b4332;
             transform: translateY(-2px);
+        }
+
+        /* Tombol Kembali khusus */
+        .btn-back {
+           background-color: #2d6a4f;
+            padding: 14px 30px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            min-width: auto;
+        }
+
+        .btn-back:hover {
+              background-color: #1b4332;
         }
 
         .btn-booking {
@@ -281,7 +302,10 @@
                 <div class="file-status" id="status-pembayaran">Belum ada foto bukti pembayaran</div>
             </div>
 
-            <div>
+            <div class="submit-buttons">
+                <a href="#" class="btn btn-back" onclick="event.preventDefault(); window.history.back();">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </a>
                 <button type="button" class="btn btn-booking" id="btn-booking" onclick="saveBookingData()">
                     Booking
                 </button>
@@ -392,7 +416,33 @@
             console.log("Data Booking Tersimpan:", bookingData);
         }
     </script>
+    <script>
+        // Jika ada draft dari halaman pendaftaran, muat dan tampilkan ringkasan serta jumlah pendaki
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                const draftRaw = localStorage.getItem('bookingDraft');
+                if (!draftRaw) return;
+                const draft = JSON.parse(draftRaw);
+                if (!draft) return;
+
+                // Tampilkan ringkasan singkat di atas kontrol jumlah
+                const info = document.createElement('div');
+                info.style.marginBottom = '12px';
+                info.style.fontWeight = '700';
+                info.style.color = '#1b4332';
+                info.textContent = `Jalur: ${draft.jalur || '-'} • Tanggal: ${draft.tanggal || '-'} • Total: ${draft.total_pendaki || '-'} orang • ${draft.harga || ''}`;
+                const bookingCard = document.querySelector('.booking-card');
+                if (bookingCard) bookingCard.insertBefore(info, bookingCard.firstChild.nextSibling);
+
+                // Set jumlah dan buat baris input sesuai draft
+                if (draft.total_pendaki && Number(draft.total_pendaki) > 0) {
+                    jumlahPendakiInput.value = Number(draft.total_pendaki);
+                    generateHikerRows(Number(draft.total_pendaki));
+                }
+            } catch (e) {
+                console.warn('Gagal memuat draft booking:', e);
+            }
+        });
+    </script>
 </body>
 </html>
-
-+
