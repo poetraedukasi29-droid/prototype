@@ -12,53 +12,70 @@
     }
 
     body{
-        background:#3f705f;
+     background:#6d745f;
         font-family:Georgia, serif;
     }
 
     /* HEADER */
 
     header{
+        background:#7d7642;
+        height:70px;
 
         display:flex;
-        justify-content:space-between;
         align-items:center;
+        justify-content:space-between;
 
-        padding:20px 40px;
+        padding:0 40px;
+
+        border-bottom:2px solid rgba(255,255,255,.15);
+    }
+
+    .logo{
+        display:flex;
+        align-items:center;
     }
 
     .logo img{
 
-        width:120px;
+        width:55px;
+        height:55px;
+        border-radius:50%;
     }
 
     nav{
 
         display:flex;
-        gap:20px;
+        gap:18px;
     }
 
     nav a{
 
         text-decoration:none;
 
-        background:#ddd;
+        background:#65592d;
 
-        color:#244335;
+        color:white;
 
-        padding:10px 25px;
+        padding:10px 28px;
 
-        border-radius:30px;
+        border-radius:25px;
+
+        font-size:14px;
 
         font-weight:bold;
 
         transition:.3s;
     }
 
-    nav a:hover,
+    nav a:hover{
+
+        background:#8f7c3f;
+    }
+
     nav .active{
 
-        background:white;
+        background:#8f7c3f;
     }
 
     /* MAIN */
@@ -112,21 +129,19 @@
 
     aside button{
 
-        border:none;
+        background:#ece8de;
 
-        padding:10px;
-
-        border-radius:30px;
-
-        background:#ddd;
-
-        cursor:pointer;
+        color:#344330;
 
         font-weight:bold;
 
-        color:#244335;
+        border:none;
 
-        transition:.3s;
+        border-radius:20px;
+
+        padding:12px;
+
+        cursor:pointer;
     }
 
     aside button:hover{
@@ -168,6 +183,23 @@
         width:14%;
 
         height:25px;
+    }
+
+    th{
+
+        background:#7d7642;
+        color:white;
+        height:30px;
+    }
+
+    td{
+
+        width:35px;
+        height:35px;
+
+        text-align:center;
+
+        border:1px solid #ccc;
     }
 
     /* RESPONSIVE */
@@ -280,39 +312,74 @@
 </main>
 
 <script>
-    // Tombol Booking
+    const calendar = document.getElementById("calendar");
 
-    document.getElementById("booking").onclick = function(){
+    const today = new Date();
 
-        window.location.href="Booking_Online/pendaftaran.html";
+    const month = today.getMonth();
 
+    const year = today.getFullYear();
+
+    const firstDay = new Date(year, month, 1).getDay();
+
+    const lastDate = new Date(year, month + 1, 0).getDate();
+
+    const monthName = today.toLocaleString("id-ID",{
+        month:"long",
+        year:"numeric"
+    });
+
+    document.querySelector(".kalender h3").innerHTML = monthName;
+
+    let row = document.createElement("tr");
+
+    const hari = ["M","S","S","R","K","J","S"];
+
+    hari.forEach(h=>{
+
+        let th=document.createElement("th");
+
+        th.innerHTML=h;
+
+        row.appendChild(th);
+
+    });
+
+    calendar.appendChild(row);
+
+    row=document.createElement("tr");
+
+    for(let i=0;i<firstDay;i++){
+
+        row.appendChild(document.createElement("td"));
     }
 
-    // Tombol Kontak
+    for(let d=1; d<=lastDate; d++){
 
-    document.getElementById("kontak").onclick = function(){
+        if((firstDay+d-1)%7===0){
 
-        alert("Hubungi Admin LocalOutdoor");
-    }
+            calendar.appendChild(row);
 
-    // Kalender sederhana
-
-    const table = document.getElementById("calendar");
-
-    for(let i=0;i<5;i++){
-
-        let row=document.createElement("tr");
-
-        for(let j=0;j<7;j++){
-
-            let cell=document.createElement("td");
-
-            row.appendChild(cell);
-
+            row=document.createElement("tr");
         }
 
-        table.appendChild(row);
-}
+        let td=document.createElement("td");
+
+        td.innerHTML=d;
+
+        if(d===today.getDate()){
+
+            td.style.background="#7d7642";
+
+            td.style.color="white";
+
+            td.style.fontWeight="bold";
+        }
+
+        row.appendChild(td);
+    }
+
+    calendar.appendChild(row);
 </script>
 
 </body>
