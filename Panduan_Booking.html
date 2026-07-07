@@ -10,19 +10,10 @@
         rel="stylesheet">
     <link rel="stylesheet" href="header.css">
     <style>
-        main{
-            width:420px;
-            margin:50px auto;
-        }
-
-        /* ==========================
-   RIGHT
-========================== */
-
-        .right{
-            width:100%;
-            padding-left:0;
-            border-left:none;
+        .right {
+            width: 100%;
+            padding-left: 0;
+            border-left: none;
         }
 
         /* ==========================
@@ -134,98 +125,101 @@
         .empty {
             visibility: hidden;
         }
-main{
-    width:90%;
-    margin:40px auto;
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    gap:40px;
-    align-items:start;
-}
 
-/* BAGIAN KIRI */
+        main {
+            width: 90%;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
 
-.left{
-    color:white;
-    padding-right:30px;
-}
+        /* BAGIAN KIRI */
 
-.left h1{
-    font-size:40px;
-    margin-bottom:20px;
-}
+        .left {
+            color: white;
+            padding-right: 30px;
+        }
 
-.left p{
-    font-size:20px;
-    line-height:1.8;
-    text-align:justify;
-}
+        .left h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
 
-/* BAGIAN KANAN */
+        .left p {
+            font-size: 20px;
+            line-height: 1.8;
+            text-align: justify;
+        }
 
-.right{
-    border-left:2px solid rgba(255,255,255,.3);
-    padding-left:35px;
-}
-        @media(max-width:992px){
+        /* BAGIAN KANAN */
 
-    .right{
-        padding-left:0;
-        border-left:none;
-        border-top:2px solid rgba(255,255,255,.3);
-        padding-top:30px;
-    }
+        .right {
+            border-left: 2px solid rgba(255, 255, 255, .3);
+            padding-left: 35px;
+        }
 
-    .menu-button{
-        height:60px;
-        font-size:18px;
-    }
+        @media(max-width:992px) {
 
-    .calendar{
-        padding:18px;
-    }
-    .left{
-    color:#fff;
-    padding-right:35px;
-}
+            .right {
+                padding-left: 0;
+                border-left: none;
+                border-top: 2px solid rgba(255, 255, 255, .3);
+                padding-top: 30px;
+            }
 
-.left h1{
-    font-size:40px;
-    margin-bottom:20px;
-}
+            .menu-button {
+                height: 60px;
+                font-size: 18px;
+            }
 
-.left p{
-    font-size:18px;
-    line-height:1.8;
-    margin-bottom:30px;
-    text-align:justify;
-}
+            .calendar {
+                padding: 18px;
+            }
 
-.syarat-box{
-    background:#ffffff;
-    border-radius:20px;
-    padding:25px 30px;
-    box-shadow:0 8px 20px rgba(0,0,0,.15);
-}
+            .left {
+                color: #fff;
+                padding-right: 35px;
+            }
 
-.syarat-box h2{
-    color:#5E603A;
-    margin-bottom:15px;
-    font-size:26px;
-}
+            .left h1 {
+                font-size: 40px;
+                margin-bottom: 20px;
+            }
 
-.syarat-box ul{
-    padding-left:20px;
-}
+            .left p {
+                font-size: 18px;
+                line-height: 1.8;
+                margin-bottom: 30px;
+                text-align: justify;
+            }
 
-.syarat-box li{
-    color:#444;
-    margin-bottom:12px;
-    line-height:1.7;
-    font-size:16px;
-}
+            .syarat-box {
+                background: #ffffff;
+                border-radius: 20px;
+                padding: 25px 30px;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
+            }
 
-}
+            .syarat-box h2 {
+                color: #5E603A;
+                margin-bottom: 15px;
+                font-size: 26px;
+            }
+
+            .syarat-box ul {
+                padding-left: 20px;
+            }
+
+            .syarat-box li {
+                color: #444;
+                margin-bottom: 12px;
+                line-height: 1.7;
+                font-size: 16px;
+            }
+
+        }
     </style>
 
 <body>
@@ -239,8 +233,7 @@ main{
                 <svg class="logo-svg" viewBox="0 0 300 200">
 
                     <defs>
-                        <path id="curve"
-                            d="M45,145 A105,105 0 0,1 255,145" />
+                        <path id="curve" d="M45,145 A105,105 0 0,1 255,145" />
                     </defs>
 
                     <text>
@@ -268,190 +261,165 @@ main{
     <!-- ================= MAIN ================= -->
 
     <main>
-    
 
-            <!-- KIRI -->
-            <section class="left">
 
-                <h1>Layanan Booking</h1>
+        <!-- KIRI -->
+        <section class="left">
 
-                <p>
-                    Selamat datang di layanan booking pendakian Gunung Sindoro.
-                    Silakan melakukan pemesanan tiket secara online melalui tombol
-                    <b>Booking Online</b>. Pastikan Anda memilih tanggal pendakian
-                    sesuai dengan kuota yang masih tersedia.
-                </p>
+            <h1>Layanan Booking</h1>
 
-                <div class="syarat-box">
+            <p>
+                Selamat datang di layanan booking pendakian Gunung Sindoro.
+                Silakan melakukan pemesanan tiket secara online melalui tombol
+                <b>Booking Online</b>. Pastikan Anda memilih tanggal pendakian
+                sesuai dengan kuota yang masih tersedia.
+            </p>
 
-                    <h2>Persyaratan SIMAKSI Sindoro</h2>
+            <div class="syarat-box">
 
-                    <ul>
-                        <li>Mengisi formulir pendaftaran secara lengkap.</li>
-                        <li>Membawa kartu identitas (KTP/KTM/SIM).</li>
-                        <li>Dalam kondisi sehat jasmani dan rohani.</li>
-                        <li>Membawa perlengkapan pendakian yang sesuai standar.</li>
-                        <li>Mematuhi seluruh peraturan Basecamp dan pengelola.</li>
-                        <li>Tidak membuang sampah di jalur pendakian.</li>
-                        <li>Melakukan registrasi ulang saat tiba di basecamp.</li>
-                    </ul>
+                <h2>Persyaratan SIMAKSI Sindoro</h2>
 
+                <ul>
+                    <li>Mengisi formulir pendaftaran secara lengkap.</li>
+                    <li>Membawa kartu identitas (KTP/KTM/SIM).</li>
+                    <li>Dalam kondisi sehat jasmani dan rohani.</li>
+                    <li>Membawa perlengkapan pendakian yang sesuai standar.</li>
+                    <li>Mematuhi seluruh peraturan Basecamp dan pengelola.</li>
+                    <li>Tidak membuang sampah di jalur pendakian.</li>
+                    <li>Melakukan registrasi ulang saat tiba di basecamp.</li>
+                </ul>
+
+            </div>
+
+        </section>
+
+        <!-- KANAN -->
+        <section class="right">
+
+            <a href="Booking_Online/pendaftaran.html" class="menu-button">
+                Booking Online
+            </a>
+
+            <a href="kontak.html" class="menu-button">
+                Kontak
+            </a>
+
+            <div class="calendar">
+
+                <div class="calendar-header">
+                    <button id="prevMonth">&#10094;</button>
+                    <h3 id="monthYear"></h3>
+                    <button id="nextMonth">&#10095;</button>
                 </div>
 
-            </section>
-
-            <!-- KANAN -->
-            <section class="right">
-
-                <a href="Booking_Online/pendaftaran.html" class="menu-button">
-                    Booking Online
-                </a>
-
-                <a href="kontak.html" class="menu-button">
-                    Kontak
-                </a>
-
-                <div class="calendar">
-
-                    <div class="calendar-header">
-                        <button id="prevMonth">&#10094;</button>
-                        <h3 id="monthYear"></h3>
-                        <button id="nextMonth">&#10095;</button>
-                    </div>
-
-                    <div class="weekdays">
-                        <span>Min</span>
-                        <span>Sen</span>
-                        <span>Sel</span>
-                        <span>Rab</span>
-                        <span>Kam</span>
-                        <span>Jum</span>
-                        <span>Sab</span>
-                    </div>
-
-                    <div id="calendarDays"></div>
-
+                <div class="weekdays">
+                    <span>Min</span>
+                    <span>Sen</span>
+                    <span>Sel</span>
+                    <span>Rab</span>
+                    <span>Kam</span>
+                    <span>Jum</span>
+                    <span>Sab</span>
                 </div>
 
-            </section>
+                <div id="calendarDays"></div>
+
+            </div>
+
+        </section>
 
     </main>
 
-            <script>
-                for (let i = 1; i <= 31; i++) {
+    <script>
 
-                    tanggal.innerHTML += `<option value="${i}">${i}</option>`;
+        const calendarDays = document.getElementById("calendarDays");
+        const monthYear = document.getElementById("monthYear");
+
+        const months = [
+            "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+            "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+        ];
+
+        const today = new Date();
+
+        let month = today.getMonth();
+        let year = today.getFullYear();
+
+        function renderCalendar() {
+
+            calendarDays.innerHTML = "";
+
+            monthYear.innerHTML = months[month] + " " + year;
+
+            let firstDay = new Date(year, month, 1).getDay();
+            let lastDate = new Date(year, month + 1, 0).getDate();
+
+            for (let i = 0; i < firstDay; i++) {
+
+                let div = document.createElement("div");
+                div.className = "empty";
+                calendarDays.appendChild(div);
+
+            }
+
+            for (let d = 1; d <= lastDate; d++) {
+
+                let div = document.createElement("div");
+                div.className = "day";
+                div.innerHTML = d;
+
+                if (
+                    d === today.getDate() &&
+                    month === today.getMonth() &&
+                    year === today.getFullYear()
+                ) {
+                    div.classList.add("today");
+                }
+
+                div.onclick = function () {
+
+                    document.querySelectorAll(".day")
+                        .forEach(x => x.classList.remove("today"));
+
+                    div.classList.add("today");
 
                 }
 
-                // ===============================
-                // KALENDER
-                // ===============================
+                calendarDays.appendChild(div);
 
-                const calendarDays = document.getElementById("calendarDays");
-                const monthYear = document.getElementById("monthYear");
+            }
 
-                const months = [
-                    "Januari", "Februari", "Maret", "April", "Mei", "Juni",
-                    "Juli", "Agustus", "September", "Oktober", "November", "Desember"
-                ];
+        }
 
-                let month = 7;
-                let year = 2026;
+        renderCalendar();
 
-                function renderCalendar() {
+        document.getElementById("prevMonth").onclick = function () {
 
-                    calendarDays.innerHTML = "";
+            month--;
 
-                    monthYear.innerHTML = months[month] + " " + year;
+            if (month < 0) {
+                month = 11;
+                year--;
+            }
 
-                    let firstDay = new Date(year, month, 1).getDay();
+            renderCalendar();
 
-                    let lastDate = new Date(year, month + 1, 0).getDate();
+        };
 
-                    for (let i = 0; i < firstDay; i++) {
+        document.getElementById("nextMonth").onclick = function () {
 
-                        let div = document.createElement("div");
+            month++;
 
-                        div.className = "empty";
+            if (month > 11) {
+                month = 0;
+                year++;
+            }
 
-                        calendarDays.appendChild(div);
+            renderCalendar();
 
-                    }
+        };
 
-                    for (let d = 1; d <= lastDate; d++) {
-
-                        let div = document.createElement("div");
-
-                        div.className = "day";
-
-                        div.innerHTML = d;
-
-                        div.onclick = function () {
-                        document.querySelectorAll(".day").forEach(x => x.classList.remove("today"));
-                        div.classList.add("today");
-                    }
-
-                        calendarDays.appendChild(div);
-
-                    }
-
-                }
-
-                renderCalendar();
-
-                // ===============================
-                // PINDAH BULAN
-                // ===============================
-
-                document.getElementById("prevMonth").onclick = function () {
-
-                    month--;
-
-                    if (month < 0) {
-
-                        month = 11;
-
-                        year--;
-
-                    }
-
-                    bulan.selectedIndex = month;
-
-                    renderCalendar();
-
-                }
-
-                document.getElementById("nextMonth").onclick = function () {
-
-                    month++;
-
-                    if (month > 11) {
-
-                        month = 0;
-
-                        year++;
-
-                    }
-
-                    bulan.selectedIndex = month;
-
-                    renderCalendar();
-
-                }
-
-                // ===============================
-                // DROPDOWN BULAN
-                // ===============================
-
-                bulan.addEventListener("change", function () {
-
-                    month = this.selectedIndex;
-
-                    renderCalendar();
-
-                });
-            </script>
+    </script>
 </body>
 
 </html>

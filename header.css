@@ -28,11 +28,6 @@
         /* ==========================
         LOGO
         ========================== */
-
-        /* ==========================
-   LOGO
-========================== */
-
         .logo{
             display:flex;
             align-items:center;
@@ -64,7 +59,7 @@
         }
 
         .logo-svg text{
-            fill:#7c7877;
+            fill:#ffffff;
             font-size:18px;
             font-weight:700;
             letter-spacing:3px;
