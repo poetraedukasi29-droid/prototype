@@ -61,85 +61,84 @@
             z-index: -1;
         }
 
-        /* HEADER */
+        /* ==========================
+        HEADER
+        ========================== */
 
-        header {
-            background: #5e603a;
-            ;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 40px;
+        header{
+            width:100%;
+            height:90px;
+            background:#5e603a;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:0 50px;
+            border-bottom:2px solid rgba(255,255,255,.3);
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        /* ==========================
+        LOGO
+        ========================== */
+
+        .logo{
+            display:flex;
+            align-items:center;
+            gap:15px;
         }
 
-        .logo-img {
-
-            width: 75px;
-            height: 75px;
-
-            border-radius: 50%;
-            overflow: hidden;
-
-            background: white;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .logo img{
+            width:60px;
+            height:60px;
+            border-radius:50%;
+            object-fit:cover;
         }
 
-        .logo-img img {
-
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-
+        .logo-text{
+            display:flex;
+            flex-direction:column;
         }
 
-        .logo-text h2 {
-
-            color: #ffff;
-            font-size: 30px;
-
+        .logo-text h2{
+            color:#fff;
+            font-size:38px;
+            font-weight:700;
+            line-height:1.1;
         }
 
-        .logo-text p {
-
-            color: #ffff;
-            font-size: 14px;
-
+        .logo-text p{
+            margin-top:5px;
+            color:#d8f0e5;
+            font-size:15px;
+            font-weight:400;
         }
 
-        nav {
-            display: flex;
-            gap: 30px;
+        /* ==========================
+        NAVIGATION
+        ========================== */
+
+        nav{
+            display:flex;
+            align-items:center;
+            gap:20px;
         }
 
-        nav a {
-
-            text-decoration: none;
-            background: #907c68;
-            color: white;
-            padding: 16px 35px;
-            border-radius: 40px;
-            font-size: 18px;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
-            transition: .3s;
-
+        nav a{
+            text-decoration:none;
+            background:#f2f2f2;
+            color:#5e603a;
+            padding:15px 35px;
+            border-radius:50px;
+            font-size:18px;
+            font-weight:600;
+            transition:0.3s;
         }
 
-        nav a:hover {
-
-            background: #ffff;
-            transform: translateY(-3px);
-
+        nav a:hover,
+        nav a.active{
+            background:#ffffff;
+            transform:translateY(-2px);
         }
+
 
 
         /* SLIDER */
@@ -250,6 +249,44 @@
                 font-size: 28px;
             }
 
+            /* ==========================
+        RESPONSIVE
+        ========================== */
+
+        @media(max-width:768px){
+
+            header{
+                flex-direction:column;
+                height:auto;
+                padding:20px;
+                gap:20px;
+            }
+
+            .logo{
+                justify-content:center;
+            }
+
+            .logo-text h2{
+                font-size:30px;
+            }
+
+            .logo-text p{
+                font-size:14px;
+            }
+
+            nav{
+                width:100%;
+                flex-wrap:wrap;
+                justify-content:center;
+            }
+
+            nav a{
+                width:100%;
+                text-align:center;
+            }
+
+        }
+
         }
     </style>
 
@@ -257,26 +294,22 @@
 
 <body>
 
-    <!-- HEADER -->
     <header>
 
         <div class="logo">
+            <img src="Image/logo.png" alt="Logo">
 
-            <div class="logo-img">
-                <img src="Image/logo.png" alt="Logo">
-            </div>
             <div class="logo-text">
                 <h2>LocalOutdoor</h2>
-                <p>Booking Gunung Sindoro</p>
+                <p>Explore Nature</p>
             </div>
-            <nav>
-                <a href="index.html">BERANDA</a>
-                <a href="Panduan_Booking.html">PANDUAN BOOKING</a>
-                <a href="Cek_Kuota.html">CEK KUOTA</a>
-                <a href="pembayaran.html">PEMBAYARAN</a>
-            </nav>
-
         </div>
+
+        <nav>
+            <a href="index.html" class="active">Beranda</a>
+            <a href="Panduan_Booking.html">Panduan Booking</a>
+            <a href="Cek_Kuota.html">Cek Kuota</a>
+        </nav>
 
     </header>
 
@@ -301,10 +334,6 @@
 
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>© 2026 LocalOutdoor | Booking Online Gunung Sindoro</p>
-    </footer>
 
     <script>
 
