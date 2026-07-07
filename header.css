@@ -29,36 +29,46 @@
         LOGO
         ========================== */
 
+        /* ==========================
+   LOGO
+========================== */
+
         .logo{
             display:flex;
             align-items:center;
-            gap:15px;
         }
 
-        .logo img{
-            width:60px;
-            height:60px;
-            border-radius:50%;
-            object-fit:cover;
-        }
-
-        .logo-text{
+        .logo-circle{
+            position:relative;
+            width:180px;
+            height:140px;
             display:flex;
-            flex-direction:column;
+            justify-content:center;
+            align-items:center;
         }
 
-        .logo-text h2{
-            color:#fff;
-            font-size:38px;
+        .logo-circle img{
+            position:absolute;
+            width:95px;
+            height:95px;
+            object-fit:contain;
+            border-radius:50%;
+            top:38px;
+        }
+
+        .logo-svg{
+            position:absolute;
+            width:180px;
+            height:140px;
+            overflow:visible;
+        }
+
+        .logo-svg text{
+            fill:#7c7877;
+            font-size:18px;
             font-weight:700;
-            line-height:1.1;
-        }
-
-        .logo-text p{
-            margin-top:5px;
-            color:#d8f0e5;
-            font-size:15px;
-            font-weight:400;
+            letter-spacing:3px;
+            text-transform:uppercase;
         }
 
         /* ==========================

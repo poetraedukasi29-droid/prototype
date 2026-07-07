@@ -225,11 +225,28 @@
 <body>
     <header>
         <div class="logo">
-            <img src="assets/logo.png" alt="Logo">
-            <div>
-                <h2>LocalOutdoor</h2>
-                <span>Explore Nature</span>
+
+            <div class="logo-circle">
+
+                <svg class="logo-svg" viewBox="0 0 300 200">
+
+                    <defs>
+                        <path id="curve"
+                            d="M45,145 A105,105 0 0,1 255,145" />
+                    </defs>
+
+                    <text>
+                        <textPath href="#curve" startOffset="50%" text-anchor="middle">
+                            Localoutdoor
+                        </textPath>
+                    </text>
+
+                </svg>
+
+                <img src="assets/logo.png" alt="Logo">
+
             </div>
+
         </div>
 
         <nav>

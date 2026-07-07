@@ -134,7 +134,39 @@
         .empty {
             visibility: hidden;
         }
+main{
+    width:90%;
+    margin:40px auto;
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:40px;
+    align-items:start;
+}
 
+/* BAGIAN KIRI */
+
+.left{
+    color:white;
+    padding-right:30px;
+}
+
+.left h1{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.left p{
+    font-size:20px;
+    line-height:1.8;
+    text-align:justify;
+}
+
+/* BAGIAN KANAN */
+
+.right{
+    border-left:2px solid rgba(255,255,255,.3);
+    padding-left:35px;
+}
         @media(max-width:992px){
 
     .right{
@@ -152,6 +184,46 @@
     .calendar{
         padding:18px;
     }
+    .left{
+    color:#fff;
+    padding-right:35px;
+}
+
+.left h1{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.left p{
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:30px;
+    text-align:justify;
+}
+
+.syarat-box{
+    background:#ffffff;
+    border-radius:20px;
+    padding:25px 30px;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+.syarat-box h2{
+    color:#5E603A;
+    margin-bottom:15px;
+    font-size:26px;
+}
+
+.syarat-box ul{
+    padding-left:20px;
+}
+
+.syarat-box li{
+    color:#444;
+    margin-bottom:12px;
+    line-height:1.7;
+    font-size:16px;
+}
 
 }
     </style>
@@ -161,11 +233,28 @@
     <header>
 
         <div class="logo">
-            <img src="assets/logo.png" alt="Logo">
-            <div>
-                <h2>LocalOutdoor</h2>
-                <span>Explore Nature</span>
+
+            <div class="logo-circle">
+
+                <svg class="logo-svg" viewBox="0 0 300 200">
+
+                    <defs>
+                        <path id="curve"
+                            d="M45,145 A105,105 0 0,1 255,145" />
+                    </defs>
+
+                    <text>
+                        <textPath href="#curve" startOffset="50%" text-anchor="middle">
+                            Localoutdoor
+                        </textPath>
+                    </text>
+
+                </svg>
+
+                <img src="assets/logo.png" alt="Logo">
+
             </div>
+
         </div>
 
         <nav>
@@ -179,41 +268,73 @@
     <!-- ================= MAIN ================= -->
 
     <main>
-                <!-- KANAN -->
-                <section class="right">
+    
 
-                    <a href="Booking_Online/pendaftaran.html" class="menu-button">
-                        Booking Online
-                    </a>
-                    <a href="kontak.html" class="menu-button">
-                        Kontak
-                    </a>
+            <!-- KIRI -->
+            <section class="left">
+
+                <h1>Layanan Booking</h1>
+
+                <p>
+                    Selamat datang di layanan booking pendakian Gunung Sindoro.
+                    Silakan melakukan pemesanan tiket secara online melalui tombol
+                    <b>Booking Online</b>. Pastikan Anda memilih tanggal pendakian
+                    sesuai dengan kuota yang masih tersedia.
+                </p>
+
+                <div class="syarat-box">
+
+                    <h2>Persyaratan SIMAKSI Sindoro</h2>
+
+                    <ul>
+                        <li>Mengisi formulir pendaftaran secara lengkap.</li>
+                        <li>Membawa kartu identitas (KTP/KTM/SIM).</li>
+                        <li>Dalam kondisi sehat jasmani dan rohani.</li>
+                        <li>Membawa perlengkapan pendakian yang sesuai standar.</li>
+                        <li>Mematuhi seluruh peraturan Basecamp dan pengelola.</li>
+                        <li>Tidak membuang sampah di jalur pendakian.</li>
+                        <li>Melakukan registrasi ulang saat tiba di basecamp.</li>
+                    </ul>
+
+                </div>
+
+            </section>
+
+            <!-- KANAN -->
+            <section class="right">
+
+                <a href="Booking_Online/pendaftaran.html" class="menu-button">
+                    Booking Online
+                </a>
+
+                <a href="kontak.html" class="menu-button">
+                    Kontak
+                </a>
 
                 <div class="calendar">
 
                     <div class="calendar-header">
-                    <button id="prevMonth">&#10094;</button>
-                    <h3 id="monthYear"></h3>
+                        <button id="prevMonth">&#10094;</button>
+                        <h3 id="monthYear"></h3>
+                        <button id="nextMonth">&#10095;</button>
+                    </div>
 
-                    <button id="nextMonth">&#10095;</button>
+                    <div class="weekdays">
+                        <span>Min</span>
+                        <span>Sen</span>
+                        <span>Sel</span>
+                        <span>Rab</span>
+                        <span>Kam</span>
+                        <span>Jum</span>
+                        <span>Sab</span>
+                    </div>
+
+                    <div id="calendarDays"></div>
 
                 </div>
 
-                <div class="weekdays">
-                    <span>Min</span>
-                    <span>Sen</span>
-                    <span>Sel</span>
-                    <span>Rab</span>
-                    <span>Kam</span>
-                    <span>Jum</span>
-                    <span>Sab</span>
-                </div>
+            </section>
 
-                <div id="calendarDays"></div>
-
-            </div>
-
-        </section>
     </main>
 
             <script>
@@ -267,16 +388,9 @@
                         div.innerHTML = d;
 
                         div.onclick = function () {
-
-                            tanggal.value = d;
-
-                            updateKuota();
-
-                            document.querySelectorAll(".day").forEach(x => x.classList.remove("today"));
-
-                            div.classList.add("today");
-
-                        }
+                        document.querySelectorAll(".day").forEach(x => x.classList.remove("today"));
+                        div.classList.add("today");
+                    }
 
                         calendarDays.appendChild(div);
 
