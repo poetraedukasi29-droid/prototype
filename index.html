@@ -6,289 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LocalOutdoor</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* Background utama */
-        body::before {
-            content: "";
-
-            position: fixed;
-            top: 0;
-            left: 0;
-
-            width: 100%;
-            height: 100%;
-
-            background: url("Image/Sindoro3.jpg") no-repeat center center;
-            background-size: cover;
-
-            filter: blur(8px);
-            transform: scale(1.1);
-
-            z-index: -2;
-        }
-
-        /* Overlay biar tulisan lebih jelas */
-        body::after {
-            content: "";
-
-            position: fixed;
-            top: 0;
-            left: 0;
-
-            width: 100%;
-            height: 100%;
-
-            background: rgba(0, 0, 0, 0.25);
-
-            z-index: -1;
-        }
-
-        /* ==========================
-        HEADER
-        ========================== */
-
-        header{
-            width:100%;
-            height:90px;
-            background:#5e603a;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:0 50px;
-            border-bottom:2px solid rgba(255,255,255,.3);
-        }
-
-        /* ==========================
-        LOGO
-        ========================== */
-
-        .logo{
-            display:flex;
-            align-items:center;
-            gap:15px;
-        }
-
-        .logo img{
-            width:60px;
-            height:60px;
-            border-radius:50%;
-            object-fit:cover;
-        }
-
-        .logo-text{
-            display:flex;
-            flex-direction:column;
-        }
-
-        .logo-text h2{
-            color:#fff;
-            font-size:38px;
-            font-weight:700;
-            line-height:1.1;
-        }
-
-        .logo-text p{
-            margin-top:5px;
-            color:#d8f0e5;
-            font-size:15px;
-            font-weight:400;
-        }
-
-        /* ==========================
-        NAVIGATION
-        ========================== */
-
-        nav{
-            display:flex;
-            align-items:center;
-            gap:20px;
-        }
-
-        nav a{
-            text-decoration:none;
-            background:#f2f2f2;
-            color:#5e603a;
-            padding:15px 35px;
-            border-radius:50px;
-            font-size:18px;
-            font-weight:600;
-            transition:0.3s;
-        }
-
-        nav a:hover,
-        nav a.active{
-            background:#ffffff;
-            transform:translateY(-2px);
-        }
-
-
-
-        /* SLIDER */
-
-        .slider {
-            width: 85%;
-            max-width: 1200px;
-            margin: 40px auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            background: transparent;
-            /* hilangkan kotak putih */
-            padding: 0;
-        }
-
-        .banner {
-            width: 100%;
-            max-width: 1100px;
-            height: 420px;
-
-            overflow: hidden;
-
-            border-radius: 20px;
-        }
-
-        .banner img {
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-
-            display: block;
-        }
-
-
-        .arrow {
-
-            background: white;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            border: none;
-            font-size: 28px;
-            color: #2f6d58;
-            cursor: pointer;
-            transition: .3s;
-
-        }
-
-        .arrow:hover {
-
-            background: #2f6d58;
-            color: white;
-
-        }
-
-        /* FOOTER */
-
-        footer {
-            margin-top: auto;
-            background: #5e603a;
-            ;
-            padding: 18px;
-            text-align: center;
-        }
-
-        footer p {
-            color: #ffff;
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        @media(max-width:768px) {
-
-            header {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            nav {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            nav a {
-                text-align: center;
-                font-size: 18px;
-            }
-
-            .slider {
-                width: 95%;
-                height: auto;
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .banner img {
-                height: 250px;
-            }
-
-            .arrow {
-                font-size: 40px;
-            }
-
-            .logo h2 {
-                font-size: 28px;
-            }
-
-            /* ==========================
-        RESPONSIVE
-        ========================== */
-
-        @media(max-width:768px){
-
-            header{
-                flex-direction:column;
-                height:auto;
-                padding:20px;
-                gap:20px;
-            }
-
-            .logo{
-                justify-content:center;
-            }
-
-            .logo-text h2{
-                font-size:30px;
-            }
-
-            .logo-text p{
-                font-size:14px;
-            }
-
-            nav{
-                width:100%;
-                flex-wrap:wrap;
-                justify-content:center;
-            }
-
-            nav a{
-                width:100%;
-                text-align:center;
-            }
-
-        }
-
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="header.css">
 
 </head>
 
@@ -313,24 +34,21 @@
 
     </header>
 
+    
     <!-- SLIDER -->
     <section class="slider">
 
-        <button class="arrow" onclick="prevSlide()">
-            <i class="fa-solid fa-circle-arrow-left"></i>
-        </button>
+        <button class="arrow prev">❮</button>
 
         <div class="banner">
-            <img id="slide" src="Image/Sindoro1.jpg">
-            <img id="slide" src="Image/Sindoro2.jpg">
-            <img id="slide" src="Image/Sindoro3.jpg">
-            <img id="slide" src="Image/Sindoro4.jpg">
-            <img id="slide" src="Image/Sindoro5.jpg">
+            <img id="slide" src="Image/Sindoro1.jpg" id="slide">
+            <img id="slide" src="Image/Sindoro2.jpg" id="slide">
+            <img id="slide" src="Image/Sindoro3.jpg" id="slide">
+            <img id="slide" src="Image/Sindoro4.jpg" id="slide">
+            <img id="slide" src="Image/Sindoro5.jpg" id="slide">
         </div>
 
-        <button class="arrow" onclick="nextSlide()">
-            <i class="fa-solid fa-circle-arrow-right"></i>
-        </button>
+        <button class="arrow next">❯</button>
 
     </section>
 
@@ -345,9 +63,6 @@
         ];
 
         let current = 0;
-
-        const slide = document.getElementById("slide");
-
         function showSlide(index) {
             slide.src = images[index];
         }
@@ -374,6 +89,45 @@
 
         setInterval(nextSlide, 5000);
 
+    </script>
+
+    <script>
+
+    let index = 0;
+
+    const slide = document.getElementById("slide");
+
+    function nextSlide(){
+        index++;
+        if(index >= images.length){
+            index = 0;
+        }
+        slide.src = images[index];
+    }
+
+    function prevSlide(){
+        index--;
+        if(index < 0){
+            index = images.length - 1;
+        }
+        slide.src = images[index];
+    }
+
+    setInterval(nextSlide,3000);
+
+    document.querySelector(".next").onclick = nextSlide;
+    document.querySelector(".prev").onclick = prevSlide;
+    </script>
+    <script>
+    window.addEventListener("load",function(){
+
+        const fade=document.querySelectorAll(".fade");
+
+        fade.forEach((item)=>{
+            item.classList.add("show");
+        });
+
+    });
     </script>
 
 </body>
