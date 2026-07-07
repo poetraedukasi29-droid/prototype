@@ -844,8 +844,7 @@
     togglePanel(pendakiPanel, pendakiToggle, null);
     // Setelah pengguna selesai memilih jumlah pendaki, simpan draft dan langsung ke halaman pembayaran
     try { localStorage.setItem('bookingDraft', JSON.stringify({ jalur: jalurText.textContent, tanggal: dateText.textContent, dewasa, anak, total_pendaki: dewasa + anak, harga: summaryHarga.textContent })); } catch(e) { console.warn(e); }
-    window.location.href = 'pembayaran.html';
-  });
+});
 
   function saveDraftAndGo() {
     try {
