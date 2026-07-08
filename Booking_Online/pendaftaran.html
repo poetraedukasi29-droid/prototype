@@ -73,16 +73,59 @@
       font-size: 16px;
     }
 
-    main {
-      display: flex;
-      justify-content: center;
-      padding: 60px 20px;
+    main{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:60px 20px;
+}
+
+.booking-layout{
+    display:flex;
+    gap:30px;
+    width:100%;
+    max-width:1200px;
+    align-items:flex-start;
+}
+
+.summary-card{
+    flex:1;
+    background:#fff;
+    border-radius:22px;
+    padding:28px;
+    box-shadow:0 12px 28px rgba(0,0,0,.08);
+    border:1px solid #e6e6e6;
+    position:sticky;
+    top:30px;
+}
+
+.actions-group{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin-top:35px;
+}
+
+@media(max-width:900px){
+
+    .booking-layout{
+        flex-direction:column;
     }
+
+    .card,
+    .summary-card{
+        width:100%;
+    }
+
+    .summary-card{
+        position:static;
+    }
+}
 
     .card {
       background: var(--card-bg);
       width: 100%;
-      max-width: 620px;
+      max-width: 500px;
       border-radius: 24px;
       padding: 24px 30px 30px;
     }
@@ -175,13 +218,6 @@
     }
 
     /* --- GROUP TOMBOL AKSYON (SEJAJAR) --- */
-    .actions-group {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 20px;
-      padding-top: 35px;
-    }
 
     .next-btn {
       background: var(--bg-green);
@@ -476,105 +512,159 @@
 </header>
 
 <main>
-  <div class="card">
-    <h1>Localoutdoor</h1>
+  <div class="booking-layout">
 
-    <div class="field" id="jalurField">
-      <button class="select-row" id="jalurToggle" aria-expanded="false">
-        <span id="jalurText">Pilih Jalur</span>
-        <span class="arrow" id="jalurArrow"></span>
-      </button>
-      <div class="panel" id="jalurPanel">
-        <div class="jalur-option selected" data-jalur="Jalur Kledung">
-          <span>Jalur Kledung</span><span class="check">✓</span>
-        </div>
-        <div class="jalur-option" data-jalur="Jalur Sigedang">
-          <span>Jalur Sigedang</span><span class="check">✓</span>
-        </div>
-        <div class="jalur-option" data-jalur="Jalur Ndoro Arum">
-          <span>Jalur Ndoro Arum</span><span class="check">✓</span>
-        </div>
-        <div class="jalur-option" data-jalur="Jalur Bansari">
-          <span>Jalur Bansari</span><span class="check">✓</span>
-        </div>
-        <div class="jalur-option" data-jalur="Jalur Alang-Alang Sewu">
-          <span>Jalur Alang-Alang Sewu</span><span class="check">✓</span>
-        </div>
-        <div class="jalur-option" data-jalur="Jalur Bedakah">
-          <span>Jalur Bedakah</span><span class="check">✓</span>
-        </div>
-        <div class="jalur-option" data-jalur="Jalur Bowongso">
-          <span>Jalur Bowongso</span><span class="check">✓</span>
-        </div>
-        <div class="jalur-option" data-jalur="Jalur Anggrunggondok">
-          <span>Jalur Anggrunggondok</span><span class="check">✓</span>
-        </div>
+    <!-- CARD KIRI -->
+    <div class="card">
+
+  <h1>Localoutdoor</h1>
+
+  <!-- Jalur -->
+  <div class="field" id="jalurField">
+    <button class="select-row" id="jalurToggle" aria-expanded="false">
+      <span id="jalurText">Pilih Jalur</span>
+      <span class="arrow" id="jalurArrow"></span>
+    </button>
+
+    <div class="panel" id="jalurPanel">
+      <div class="jalur-option selected" data-jalur="Jalur Kledung">
+        <span>Jalur Kledung</span><span class="check">✓</span>
+      </div>
+
+      <div class="jalur-option" data-jalur="Jalur Sigedang">
+        <span>Jalur Sigedang</span><span class="check">✓</span>
+      </div>
+
+      <div class="jalur-option" data-jalur="Jalur Ndoro Arum">
+        <span>Jalur Ndoro Arum</span><span class="check">✓</span>
+      </div>
+
+      <div class="jalur-option" data-jalur="Jalur Bansari">
+        <span>Jalur Bansari</span><span class="check">✓</span>
+      </div>
+
+      <div class="jalur-option" data-jalur="Jalur Alang-Alang Sewu">
+        <span>Jalur Alang-Alang Sewu</span><span class="check">✓</span>
+      </div>
+
+      <div class="jalur-option" data-jalur="Jalur Bedakah">
+        <span>Jalur Bedakah</span><span class="check">✓</span>
+      </div>
+
+      <div class="jalur-option" data-jalur="Jalur Bowongso">
+        <span>Jalur Bowongso</span><span class="check">✓</span>
+      </div>
+
+      <div class="jalur-option" data-jalur="Jalur Anggrunggondok">
+        <span>Jalur Anggrunggondok</span><span class="check">✓</span>
       </div>
     </div>
+  </div>
 
-    <div class="field" id="dateField">
-      <button class="info-row" id="dateToggle" aria-expanded="false">
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <rect x="3" y="5" width="18" height="16" rx="2"/>
-            <line x1="3" y1="10" x2="21" y2="10"/>
-            <line x1="8" y1="3" x2="8" y2="7"/>
-            <line x1="16" y1="3" x2="16" y2="7"/>
-          </svg>
-        </div>
-        <span class="label" id="dateText">Pilih Tanggal</span>
-      </button>
-      <div class="panel calendar-panel" id="calendarPanel">
-        <div class="cal-header">
-          <button class="cal-nav" id="calPrev" type="button">&#8249;</button>
-          <span id="calMonthLabel"></span>
-          <button class="cal-nav" id="calNext" type="button">&#8250;</button>
-        </div>
-        <div class="cal-grid" id="calGrid"></div>
+  <!-- Tanggal -->
+  <div class="field" id="dateField">
+    <button class="info-row" id="dateToggle" aria-expanded="false">
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="5" width="18" height="16" rx="2"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+          <line x1="8" y1="3" x2="8" y2="7"/>
+          <line x1="16" y1="3" x2="16" y2="7"/>
+        </svg>
       </div>
+
+      <span class="label" id="dateText">Pilih Tanggal</span>
+    </button>
+
+    <div class="panel calendar-panel" id="calendarPanel">
+      <div class="cal-header">
+        <button class="cal-nav" id="calPrev" type="button">&#8249;</button>
+        <span id="calMonthLabel"></span>
+        <button class="cal-nav" id="calNext" type="button">&#8250;</button>
+      </div>
+
+      <div class="cal-grid" id="calGrid"></div>
+    </div>
+  </div>
+
+  <!-- Pendaki -->
+  <div class="field" id="pendakiField">
+
+    <p class="field-title">Pendaki</p>
+
+    <button class="info-row" id="pendakiToggle" aria-expanded="false">
+
+      <div class="icon">
+        <svg viewBox="0 0 24 24">
+          <circle cx="9" cy="7" r="3"/>
+          <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
+          <circle cx="17" cy="6" r="2.3"/>
+          <path d="M15.5 12.5c2.6.3 4.5 2.4 4.5 5.5"/>
+        </svg>
+      </div>
+
+      <span class="label" id="pendakiText">Jumlah Orang</span>
+
+    </button>
+
+    <div class="panel" id="pendakiPanel">
+
+      <div class="counter-row">
+
+        <div>
+          <div class="counter-label">Dewasa</div>
+          <div class="counter-sub">Usia 13 tahun ke atas</div>
+        </div>
+
+        <div class="counter-controls">
+          <button class="counter-btn" id="dewasaMinus" type="button">−</button>
+          <span class="counter-value" id="dewasaValue">1</span>
+          <button class="counter-btn" id="dewasaPlus" type="button">+</button>
+        </div>
+
+      </div>
+
+      <div class="counter-row">
+
+        <div>
+          <div class="counter-label">Anak</div>
+          <div class="counter-sub">Usia di bawah 13 tahun</div>
+        </div>
+
+        <div class="counter-controls">
+          <button class="counter-btn" id="anakMinus" type="button">−</button>
+          <span class="counter-value" id="anakValue">0</span>
+          <button class="counter-btn" id="anakPlus" type="button">+</button>
+        </div>
+
+      </div>
+
+      <button class="panel-done" id="pendakiDone" type="button">
+        Selesai
+      </button>
+
     </div>
 
-    <div class="field" id="pendakiField">
-      <p class="field-title">Pendaki</p>
-      <button class="info-row" id="pendakiToggle" aria-expanded="false">
-        <div class="icon">
-          <svg viewBox="0 0 24 24">
-            <circle cx="9" cy="7" r="3"/>
-            <path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/>
-            <circle cx="17" cy="6" r="2.3"/>
-            <path d="M15.5 12.5c2.6.3 4.5 2.4 4.5 5.5"/>
-          </svg>
-        </div>
-        <span class="label" id="pendakiText">Jumlah Orang</span>
-      </button>
-      <div class="panel" id="pendakiPanel">
-        <div class="counter-row">
-          <div>
-            <div class="counter-label">Dewasa</div>
-            <div class="counter-sub">Usia 13 tahun ke atas</div>
-          </div>
-          <div class="counter-controls">
-            <button class="counter-btn" id="dewasaMinus" type="button">&#8722;</button>
-            <span class="counter-value" id="dewasaValue">1</span>
-            <button class="counter-btn" id="dewasaPlus" type="button">+</button>
-          </div>
-        </div>
-        <div class="counter-row">
-          <div>
-            <div class="counter-label">Anak</div>
-            <div class="counter-sub">Usia di bawah 13 tahun</div>
-          </div>
-          <div class="counter-controls">
-            <button class="counter-btn" id="anakMinus" type="button">&#8722;</button>
-            <span class="counter-value" id="anakValue">0</span>
-            <button class="counter-btn" id="anakPlus" type="button">+</button>
-          </div>
-        </div>
-        <button class="panel-done" id="pendakiDone" type="button">Selesai</button>
-      </div>
-    </div>
+  </div>
 
+  <!-- Tombol -->
+  <div class="actions-group">
+    <a href="../Panduan_Booking.html" class="btn-back">
+      Kembali
+    </a>
+
+    <button class="next-btn" onclick="saveDraftAndGo()">
+      Next
+    </button>
+  </div>
+
+</div>
+    <!-- END CARD KIRI -->
+
+
+    <!-- CARD KANAN -->
     <div class="summary-card">
+
       <div class="summary-title">
         <span class="summary-icon">📋</span>
         <h2>Ringkasan Booking</h2>
@@ -594,22 +684,14 @@
         <span>👥 Pendaki</span>
         <span id="summaryPendaki">Jumlah Orang</span>
       </div>
-      
+
       <div class="summary-item total">
         <span>💰 Total Harga</span>
         <span id="summaryHarga">Rp0</span>
       </div>
+
     </div>
-
-   <div class="actions-group">
-    <a href="../Panduan_Booking.html" class="btn-back">
-        Kembali
-    </a>
-
-    <button class="next-btn" onclick="saveDraftAndGo()">
-        Next
-    </button>
-   </div>
+    <!-- END CARD KANAN -->
 
   </div>
 </main>
