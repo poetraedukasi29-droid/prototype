@@ -434,3 +434,5 @@
    opacity: 0;
    transition: opacity 0.35s ease;
  }
+
+.page-content{flex:1;}

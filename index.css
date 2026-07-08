@@ -2,12 +2,17 @@
    HOMEPAGE
    ========================================================== */
 
+html,
 body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  overflow-x: hidden;
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
 }
 
 body::before {
@@ -321,8 +326,16 @@ body::after {
    FOOTER
 ========================== */
 
+.page-content {
+    flex: 1;
+}
+
 .site-footer {
   margin-top: auto;
+  background: var(--forest-dark);
+    padding: 34px 20px;
+    text-align: center;
+    border-top: 1px solid var(--line);
 }
 
 /* ==========================
