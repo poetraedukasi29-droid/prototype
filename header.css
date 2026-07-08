@@ -1,107 +1,156 @@
+ 
+ 
  * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-        body {
-            background: #5e603a;
-            color: #fff;
-        }
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Poppins', sans-serif;
+ }
 
-        header{
-            width:100%;
-            height:90px;
-            background:#5e603a;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:0 50px;
-            border-bottom:2px solid rgba(255,255,255,.3);
-        }
+ body {
+     background: #5e603a;
+     color: #fff;
+ }
 
-         .right {
-            border-left: 2px solid rgba(255, 255, 255, .3);
-            padding-left: 35px;
-        }
+ header {
+     width: 100%;
+     height: 90px;
+     background: #5e603a;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 0 50px;
+     border-bottom: 2px solid rgba(255, 255, 255, .3);
+ }
 
-        /* ==========================
+ .right {
+     border-left: 2px solid rgba(255, 255, 255, .3);
+     padding-left: 35px;
+ }
+
+ /* ==========================
         LOGO
         ========================== */
-        .logo{
-            display:flex;
-            align-items:center;
-            transform: translateX(-45px);
-        }
-        
-        .logo-circle{
-            position:relative;
-            width:140px;
-            height:90px;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-        }
+ .logo {
+     display: flex;
+     align-items: center;
+     transform: translateX(-45px);
+ }
 
-       .logo-circle img{
-            position:absolute;
-            width:100px;
-            height:100px;
-            object-fit:contain;
-            top:1px;
-        }
-        .logo-svg{
-            position:absolute;
-            width:180px;
-            height:100px;
-            transform:translateY(-1px);
-        }
+ .logo-circle {
+     position: relative;
+     width: 140px;
+     height: 90px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
 
-        .logo-svg text{
-            fill:#ffffff;
-            font-size:18px;
-            font-weight:700;
-            letter-spacing:3px;
-            text-transform:uppercase;
-        }
+ .logo-circle img {
+     position: absolute;
+     width: 100px;
+     height: 100px;
+     object-fit: contain;
+     top: 1px;
+ }
 
-        /* ==========================
+ .logo-svg {
+     position: absolute;
+     width: 180px;
+     height: 100px;
+     transform: translateY(-1px);
+ }
+
+ .logo-svg text {
+     fill: #ffffff;
+     font-size: 18px;
+     font-weight: 700;
+     letter-spacing: 3px;
+     text-transform: uppercase;
+ }
+
+ /* ==========================
         NAVIGATION
         ========================== */
 
-        nav{
-            display:flex;
-            align-items:center;
-            gap:20px;
-        }
+ nav {
+     display: flex;
+     align-items: center;
+     gap: 20px;
+ }
 
-        nav a{
-            text-decoration:none;
-            background:#f2f2f2;
-            color:#5e603a;
-            padding:15px 35px;
-            border-radius:50px;
-            font-size:18px;
-            font-weight:600;
-            transition:0.3s;
-        }
+ nav a {
+     text-decoration: none;
+     background: #f2f2f2;
+     color: #5e603a;
+     padding: 15px 35px;
+     border-radius: 50px;
+     font-size: 18px;
+     font-weight: 600;
+     transition: 0.3s;
+ }
 
-        nav a:hover,
-        nav a.active{
-            background:#ffffff;
-            transform:translateY(-2px);
-        }
+ nav a:hover,
+ nav a.active {
+     background: #ffffff;
+     transform: translateY(-2px);
+ }
 
-        body{
-            opacity:0;
-            animation:fadeIn .5s ease forwards;
-        }
+ body{
+    opacity:1;
+    transform:scale(1);
+    transition:opacity .5s ease, transform .5s ease;
+}
 
-        @keyframes fadeIn{
-            from{
-                opacity:0;
-            }
-            to{
-                opacity:1;
-            }
-        }
+/* ==========================
+   PAGE TRANSITION
+========================== */
+
+body{
+    opacity:1;
+    transition:opacity .4s ease;
+}
+
+body.fade-out{
+    opacity:0;
+}
+
+body.fade-out{
+    opacity:0;
+    transform:scale(.98);
+}
+
+body.fade-in{
+    animation:fadeIn .5s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:scale(1.02);
+    }
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    animation:show .4s ease;
+}
+
+@keyframes show{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
