@@ -412,9 +412,8 @@
             // Menyimpan ke LocalStorage browser
             localStorage.setItem('data_booking_terakhir', JSON.stringify(bookingData));
 
-            // Notifikasi sukses beserta rincian data yang tersimpan
-            alert(`🎉 Booking Berhasil Disimpan!\n\nData telah berhasil direkam secara lokal di browser kamu.\nJumlah Pendaki: ${bookingData.total_peserta} orang.`);
-            console.log("Data Booking Tersimpan:", bookingData);
+            localStorage.setItem("data_booking_terakhir", JSON.stringify(bookingData));
+            window.location.href = "Booking_Berhasil.html";
         }
     </script>
     <script>
