@@ -31,8 +31,9 @@
         .logo{
             display:flex;
             align-items:center;
+            transform: translateX(-45px);
         }
-
+        
         .logo-circle{
             position:relative;
             width:140px;
@@ -42,18 +43,18 @@
             align-items:center;
         }
 
-        .logo-circle img{
+       .logo-circle img{
             position:absolute;
-            width:80px;
-            height:80px;
+            width:100px;
+            height:100px;
             object-fit:contain;
-            top:18px;
+            top:1px;
         }
-
         .logo-svg{
             position:absolute;
-            width:140px;
-            height:90px;
+            width:180px;
+            height:100px;
+            transform:translateY(-1px);
         }
 
         .logo-svg text{
