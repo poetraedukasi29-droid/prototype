@@ -58,6 +58,7 @@
         .kuota-box h1 {
             font-size: 45px;
         }
+
         /* ==========================
    CALENDAR
 ========================== */
@@ -118,13 +119,14 @@
             justify-content: center;
             align-items: center;
             border-radius: 8px;
-            cursor: pointer;
-            transition: .3s;
+
+            cursor: default;
+            pointer-events: none;
         }
 
         .day:hover {
-            background: #5e603a;
-            color: white;
+            background: transparent;
+            color: inherit;
         }
 
         .today {
@@ -202,7 +204,7 @@
                 <svg class="logo-svg" viewBox="0 0 300 200">
 
                     <defs>
-                         <path id="curve" d="M45,145 A105,105 0 0,1 255,145" />
+                        <path id="curve" d="M45,145 A105,105 0 0,1 255,145" />
                     </defs>
 
                     <text>
@@ -508,4 +510,5 @@
     </script>
     <script src="header.js"></script>
 </body>
+
 </html>
