@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tiket Pendakian</title>
+
+<style>
+
+body{
+    margin:0;
+    background:#f3f3f3;
+    font-family:Poppins,sans-serif;
+}
+
+.container{
+    width:700px;
+    margin:40px auto;
+}
+
+.ticket{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    border:2px dashed #5e603a;
+
+    box-shadow:0 10px 20px rgba(0,0,0,.15);
+
+}
+
+h1{
+    text-align:center;
+    color:#5e603a;
+}
+
+table{
+    width:100%;
+    margin-top:25px;
+    border-collapse:collapse;
+}
+
+td{
+    padding:12px;
+    border-bottom:1px solid #ddd;
+}
+
+.label{
+    font-weight:bold;
+    width:180px;
+}
+
+.btn-print{
+
+    margin-top:30px;
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:40px;
+
+    background:#5e603a;
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+}
+
+@media print{
+
+    .btn-print{
+        display:none;
+    }
+
+    body{
+        background:white;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="ticket">
+
+<h1>LOCALOUTDOOR</h1>
+
+<h2 align="center">Tiket Pendakian Gunung Sindoro</h2>
+
+<table>
+
+<tr>
+<td class="label">Nomor Booking</td>
+<td id="nomor"></td>
+</tr>
+
+<tr>
+<td class="label">Jalur</td>
+<td id="jalur"></td>
+</tr>
+
+<tr>
+<td class="label">Tanggal</td>
+<td id="tanggal"></td>
+</tr>
+
+<tr>
+<td class="label">Jumlah Pendaki</td>
+<td id="pendaki"></td>
+</tr>
+
+<tr>
+<td class="label">Total Pembayaran</td>
+<td id="harga"></td>
+</tr>
+
+<tr>
+<td class="label">Status</td>
+<td>LUNAS</td>
+</tr>
+
+</table>
+
+<button onclick="window.print()" class="btn-print">
+
+Cetak Tiket
+
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+const nomor = localStorage.getItem("nomor_booking");
+
+document.getElementById("nomor").innerHTML = nomor;
+
+const draft = JSON.parse(localStorage.getItem("bookingDraft"));
+
+if(draft){
+
+document.getElementById("jalur").innerHTML = draft.jalur;
+
+document.getElementById("tanggal").innerHTML = draft.tanggal;
+
+document.getElementById("pendaki").innerHTML = draft.total_pendaki + " Orang";
+
+document.getElementById("harga").innerHTML = draft.harga;
+
+}
+
+</script>
+
+</body>
+</html>

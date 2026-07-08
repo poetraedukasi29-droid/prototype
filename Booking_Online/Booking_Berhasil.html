@@ -10,15 +10,18 @@
 </head>
 <style>
     body{
+    margin:0;
     background:#5e603a;
     font-family:Poppins,sans-serif;
 }
 
 main{
+    width:100%;
+    height:100vh;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    min-height:80vh;
 }
 
 .success-card{
@@ -149,18 +152,20 @@ td{
 
         <p>
             Terima kasih telah melakukan booking pendakian Gunung Sindoro.
+            jangan lupa screenshoot
         </p>
 
-        <table>
-
-            <div class="info-item">
-                <span class="label">Nomor Booking</span>
-                <span class="value" id="bookingNumber"></span>
-            </div>
-
-        </table>
+        <div class="info-item">
+            <span class="label">Nomor Booking</span>
+            <span class="value" id="bookingNumber"></span>
+        </div>
 
         <div class="button-group">
+
+            <a href="tiket.html" class="btn">
+                Cetak Tiket
+            </a>
+
             <a href="../index.html" class="btn">
                 Kembali ke Beranda
             </a>
@@ -205,7 +210,6 @@ if(nomorLama){
     generateBooking();
 
 }
-
 </script>
 
 </body>
