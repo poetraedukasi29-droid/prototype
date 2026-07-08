@@ -113,22 +113,29 @@ td{
     background:#444;
 
 }
+
+.info-item{
+    margin:20px 0;
+    text-align:center;
+}
+
+.label{
+    display:block;
+    font-size:18px;
+    font-weight:600;
+    color:#666;
+    margin-bottom:8px;
+}
+
+.value{
+    display:block;
+    font-size:28px;
+    font-weight:bold;
+    color:#5e603a;
+}
+
 </style>
 <body>
-
-<header>
-
-    <div class="logo">
-
-        <div class="logo-circle">
-
-            <img src="Image/logo.png" alt="Logo">
-
-        </div>
-
-    </div>
-
-</header>
 
 <main>
 
@@ -146,25 +153,15 @@ td{
 
         <table>
 
-            <tr>
-                <td>Nomor Booking</td>
-                <td id="bookingNumber"></td>
-            </tr>
-
-            <tr>
-                <td>Status</td>
-                <td>Berhasil</td>
-            </tr>
+            <div class="info-item">
+                <span class="label">Nomor Booking</span>
+                <span class="value" id="bookingNumber"></span>
+            </div>
 
         </table>
 
         <div class="button-group">
-
-            <a href="#" class="btn">
-                Cetak Bukti Booking
-            </a>
-
-            <a href="index.html" class="btn">
+            <a href="../index.html" class="btn">
                 Kembali ke Beranda
             </a>
 
