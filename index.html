@@ -4,145 +4,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LocalOutdoor</title>
+    <title>LocalOutdoor | Booking Pendakian Gunung Sindoro</title>
+    <meta name="description" content="Cek kuota dan booking pendakian Gunung Sindoro secara online lewat LocalOutdoor.">
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link rel="icon" href="logo.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="header.css">
-
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
 
-    <header>
-        <div class="logo">
-
-            <div class="logo-circle">
-
-                <svg class="logo-svg" viewBox="0 0 300 200">
-
-                    <defs>
-                         <path id="curve" d="M45,145 A105,105 0 0,1 255,145" />
-                    </defs>
-
-                    <text>
-                        <textPath href="#curve" startOffset="50%" text-anchor="middle">
-                            Localoutdoor
-                        </textPath>
-                    </text>
-
-                </svg>
-
-                <img src="Image/logo.png" alt="Logo">
-
+    <header class="site-header">
+        <a href="index.html" class="brand">
+            <img src="logo.png" alt="Logo LocalOutdoor" class="brand-logo">
+            <div class="brand-text">
+                <span class="brand-name">LocalOutdoor</span>
+                <span class="brand-tagline">Jalur Resmi Gunung Sindoro</span>
             </div>
+        </a>
 
-        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
 
-        <nav>
-            <a href="index.html">Beranda</a>
+        <nav class="site-nav" id="siteNav">
+            <a href="index.html" class="active">Beranda</a>
             <a href="Panduan_Booking.html">Panduan Booking</a>
-            <a href="Cek_Kuota.html" class="active">Cek Kuota</a>
+            <a href="Cek_Kuota.html">Cek Kuota</a>
+            <a href="kontak.html">Kontak</a>
         </nav>
-
     </header>
 
-    
+    <!-- HERO -->
+    <section class="hero">
+        <span class="hero-eyebrow fade show">Basecamp Kledung &bull; Dataran Tinggi Dieng</span>
+        <h1 class="fade show delay1">Taklukkan Puncak Sindoro Bersama LocalOutdoor</h1>
+        <p class="fade show delay2">
+            Booking online, cek kuota real-time, dan urus SIMAKSI tanpa antre di basecamp.
+            Semua jalur resmi, semua dalam satu genggaman.
+        </p>
+        <div class="hero-actions fade show delay3">
+            <a href="Cek_Kuota.html" class="btn-hero solid">Cek Kuota Sekarang</a>
+            <a href="Panduan_Booking.html" class="btn-hero ghost">Lihat Panduan Booking</a>
+        </div>
+    </section>
+
     <!-- SLIDER -->
     <section class="slider">
 
-        <button class="arrow prev">❮</button>
+        <button class="arrow prev" aria-label="Foto sebelumnya">&#10094;</button>
 
-        <div class="banner">
-            <img id="slide" src="Image/Sindoro1.jpg" id="slide">
-            <img id="slide" src="Image/Sindoro2.jpg" id="slide">
-            <img id="slide" src="Image/Sindoro3.jpg" id="slide">
-            <img id="slide" src="Image/Sindoro4.jpg" id="slide">
-            <img id="slide" src="Image/Sindoro5.jpg" id="slide">
+        <div class="banner" id="banner">
+            <img src="Image/Sindoro1.jpg" alt="Puncak Gunung Sindoro saat pagi hari" class="active">
+            <img src="Image/Sindoro2.jpg" alt="Panorama Gunung Sindoro dari kejauhan">
+            <img src="Image/Sindoro3.jpg" alt="Gunung Sindoro diselimuti awan">
+            <img src="Image/Sindoro4.jpg" alt="Gunung Sindoro dengan langit biru cerah">
+            <img src="Image/Sindoro5.jpg" alt="Lautan awan di kaki Gunung Sindoro">
+            <div class="banner-caption">Gunung Sindoro &middot; 3.153 mdpl</div>
+            <div class="slider-dots" id="sliderDots"></div>
         </div>
 
-        <button class="arrow next">❯</button>
+        <button class="arrow next" aria-label="Foto berikutnya">&#10095;</button>
 
     </section>
 
+    <!-- FEATURES -->
+    <section class="features">
+
+        <div class="feature-card fade show">
+            <div class="feature-icon">&#128506;</div>
+            <h3>8 Jalur Resmi</h3>
+            <p>Kledung, Sigedang, Bansari, dan jalur resmi lainnya — semua dilengkapi kuota harian yang transparan.</p>
+        </div>
+
+        <div class="feature-card fade show delay1">
+            <div class="feature-icon">&#128197;</div>
+            <h3>Kuota Real-time</h3>
+            <p>Pantau sisa kuota per tanggal dan jalur langsung dari kalender interaktif sebelum kamu booking.</p>
+        </div>
+
+        <div class="feature-card fade show delay2">
+            <div class="feature-icon">&#9989;</div>
+            <h3>Booking Tanpa Antre</h3>
+            <p>Isi data pendaki, unggah SIMAKSI dan bukti bayar dari rumah. Tinggal registrasi ulang di basecamp.</p>
+        </div>
+
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-brand">LocalOutdoor</div>
+        <div class="footer-note">Copyright &copy; 2026 LocalOutdoor &mdash; Basecamp Kledung, Gunung Sindoro</div>
+    </footer>
 
     <script>
+        (function () {
+            const images = document.querySelectorAll("#banner img");
+            const dotsWrap = document.getElementById("sliderDots");
+            let current = 0;
+            let timer;
 
-        const images = [
-            "Image/Sindoro1.jpg",
-            "Image/Sindoro2.jpg",
-            "Image/Sindoro3.jpg",
-            "Image/Sindoro4.jpg"
-        ];
+            images.forEach((_, i) => {
+                const dot = document.createElement("button");
+                dot.setAttribute("aria-label", "Foto " + (i + 1));
+                if (i === 0) dot.classList.add("active");
+                dot.addEventListener("click", () => goTo(i));
+                dotsWrap.appendChild(dot);
+            });
 
-        let current = 0;
-        function showSlide(index) {
-            slide.src = images[index];
-        }
+            const dots = dotsWrap.querySelectorAll("button");
 
-        function nextSlide() {
-            current++;
-
-            if (current >= images.length) {
-                current = 0;
+            function render() {
+                images.forEach((img, i) => img.classList.toggle("active", i === current));
+                dots.forEach((dot, i) => dot.classList.toggle("active", i === current));
             }
 
-            showSlide(current);
-        }
-
-        function prevSlide() {
-            current--;
-
-            if (current < 0) {
-                current = images.length - 1;
+            function goTo(index) {
+                current = (index + images.length) % images.length;
+                render();
+                resetTimer();
             }
 
-            showSlide(current);
-        }
+            function next() { goTo(current + 1); }
+            function prev() { goTo(current - 1); }
 
-        setInterval(nextSlide, 5000);
+            function resetTimer() {
+                clearInterval(timer);
+                timer = setInterval(next, 4500);
+            }
 
+            document.querySelector(".next").addEventListener("click", next);
+            document.querySelector(".prev").addEventListener("click", prev);
+
+            render();
+            resetTimer();
+        })();
     </script>
 
-    <script>
-
-    let index = 0;
-
-    const slide = document.getElementById("slide");
-
-    function nextSlide(){
-        index++;
-        if(index >= images.length){
-            index = 0;
-        }
-        slide.src = images[index];
-    }
-
-    function prevSlide(){
-        index--;
-        if(index < 0){
-            index = images.length - 1;
-        }
-        slide.src = images[index];
-    }
-
-    setInterval(nextSlide,3000);
-
-    document.querySelector(".next").onclick = nextSlide;
-    document.querySelector(".prev").onclick = prevSlide;
-    </script>
-    <script>
-    window.addEventListener("load",function(){
-
-        const fade=document.querySelectorAll(".fade");
-
-        fade.forEach((item)=>{
-            item.classList.add("show");
-        });
-
-    });
-    </script>
     <script src="header.js"></script>
 </body>
 
