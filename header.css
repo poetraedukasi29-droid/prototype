@@ -91,3 +91,17 @@
             background:#ffffff;
             transform:translateY(-2px);
         }
+
+        body{
+            opacity:0;
+            animation:fadeIn .5s ease forwards;
+        }
+
+        @keyframes fadeIn{
+            from{
+                opacity:0;
+            }
+            to{
+                opacity:1;
+            }
+        }
