@@ -872,18 +872,22 @@
     const hargaDewasa = 35000;
     const hargaAnak = 20000;
     const total = (dewasa * hargaDewasa) + (anak * hargaAnak);
+    const totalLabel = "Rp" + total.toLocaleString("id-ID");
 
-    summaryHarga.textContent = "Rp" + total.toLocaleString("id-ID");
-    // Simpan draft booking ke localStorage agar bisa dibaca di halaman pembayaran
+    summaryHarga.textContent = totalLabel;
     const draft = {
       jalur: jalurText.textContent,
       tanggal: dateText.textContent,
       dewasa: dewasa,
       anak: anak,
       total_pendaki: dewasa + anak,
-      harga: summaryHarga.textContent
+      harga: totalLabel,
+      amount: total
     };
-    try { localStorage.setItem('bookingDraft', JSON.stringify(draft)); } catch(e) { console.warn('Gagal menyimpan draft', e); }
+    try {
+      localStorage.setItem('bookingDraft', JSON.stringify(draft));
+      localStorage.setItem('bookingAmount', String(total));
+    } catch(e) { console.warn('Gagal menyimpan draft', e); }
   }
 
   function updateCounterUI() {
@@ -937,15 +941,21 @@
   pendakiDone.addEventListener('click', (e) => {
     e.stopPropagation();
     togglePanel(pendakiPanel, pendakiToggle, null);
-    // Setelah pengguna selesai memilih jumlah pendaki, simpan draft dan langsung ke halaman pembayaran
-    try { localStorage.setItem('bookingDraft', JSON.stringify({ jalur: jalurText.textContent, tanggal: dateText.textContent, dewasa, anak, total_pendaki: dewasa + anak, harga: summaryHarga.textContent })); } catch(e) { console.warn(e); }
-});
+    try {
+      const total = (dewasa * 35000) + (anak * 20000);
+      localStorage.setItem('bookingDraft', JSON.stringify({ jalur: jalurText.textContent, tanggal: dateText.textContent, dewasa, anak, total_pendaki: dewasa + anak, harga: summaryHarga.textContent, amount: total }));
+      localStorage.setItem('bookingAmount', String(total));
+    } catch(e) { console.warn(e); }
+  });
 
   function saveDraftAndGo() {
+    const total = (dewasa * 35000) + (anak * 20000);
     try {
-      localStorage.setItem('bookingDraft', JSON.stringify({ jalur: jalurText.textContent, tanggal: dateText.textContent, dewasa, anak, total_pendaki: dewasa + anak, harga: summaryHarga.textContent }));
+      localStorage.setItem('bookingDraft', JSON.stringify({ jalur: jalurText.textContent, tanggal: dateText.textContent, dewasa, anak, total_pendaki: dewasa + anak, harga: summaryHarga.textContent, amount: total }));
+      localStorage.setItem('bookingAmount', String(total));
+      localStorage.setItem('paymentStatus', 'pending');
     } catch(e) { console.warn(e); }
-    window.location.href = 'pembayaran.html';
+    window.location.href = '../transaksi.html';
   }
 
   updateCounterUI();

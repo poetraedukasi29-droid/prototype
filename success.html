@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pembayaran Berhasil</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 560px;
+    }
+
+    h1 {
+      color: green;
+      font-size: 40px;
+      margin: 0;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 15px 25px;
+      background: #5e603a;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>✅</h1>
+    <h2>Transaksi Berhasil</h2>
+    <p>Pembayaran Open Trip berhasil diterima.</p>
+    <p><b>Status :</b> Lunas</p>
+    <p><b>Metode :</b> <span id="metodeText">-</span></p>
+    <p><b>Invoice :</b> <span id="invoiceText">-</span></p>
+    <p><b>Total :</b> <span id="totalText">-</span></p>
+
+    <button onclick="window.location.href='Booking_Online/pembayaran.html'">unggah berkas anda</button>
+  </div>
+
+  <script>
+    const metode = sessionStorage.getItem("metode") || "qris";
+    const invoice = sessionStorage.getItem("invoice") || "INV-00000000";
+    const amount = Number(sessionStorage.getItem("amount") || 180000);
+
+    const label = {
+      qris: "QRIS",
+      dana: "DANA",
+      bri: "Bank BRI"
+    }[metode] || "Tidak diketahui";
+
+    document.getElementById("metodeText").textContent = label;
+    document.getElementById("invoiceText").textContent = invoice;
+    document.getElementById("totalText").textContent = `Rp${amount.toLocaleString("id-ID")}`;
+  </script>
+</body>
+</html>

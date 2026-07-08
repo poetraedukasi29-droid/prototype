@@ -456,7 +456,12 @@
             nama_berkas_pembayaran: pembayaranFile.name
         };
 
+        const draft = JSON.parse(localStorage.getItem('bookingDraft') || 'null');
+        const amount = Number(draft?.amount || localStorage.getItem('bookingAmount') || 0);
+
         localStorage.setItem('data_booking_terakhir', JSON.stringify(bookingData));
+        sessionStorage.setItem('amount', String(amount));
+        sessionStorage.setItem('invoice', `INV-${Date.now().toString().slice(-8)}`);
         window.location.href = "Booking_Berhasil.html";
     }
 

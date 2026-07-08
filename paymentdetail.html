@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Detail Pembayaran</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 650px;
+      margin: 30px auto;
+      background: white;
+      padding: 28px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+      text-align: center;
+    }
+
+    h2 {
+      color: #5e603a;
+      margin-top: 0;
+    }
+
+    .booking-card,
+    .info-card {
+      background: #f8f8f8;
+      padding: 16px;
+      border-radius: 12px;
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    .booking-card h3,
+    .info-card h3,
+    .info-card h2 {
+      margin: 6px 0;
+    }
+
+    .booking-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 6px 0;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .booking-row:last-child {
+      border-bottom: none;
+    }
+
+    .timer-warning {
+      color: #d62828;
+    }
+
+    .timer-success {
+      color: #2e8b57;
+    }
+
+    img {
+      width: 230px;
+      margin: 16px 0;
+    }
+
+    .box {
+      background: #f1f1f1;
+      padding: 15px;
+      border-radius: 10px;
+      margin: 12px 0;
+    }
+
+    .copy,
+    .secondary-btn {
+      background: #5e603a;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 12px;
+      font-weight: bold;
+    }
+
+    .secondary-btn {
+      background: #777;
+      margin-left: 8px;
+    }
+
+    .copy:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    .status-box {
+      margin-top: 20px;
+      padding-top: 14px;
+      border-top: 1px solid #eee;
+    }
+
+    .status-pending {
+      color: orange;
+      font-weight: bold;
+    }
+
+    .status-success {
+      color: green;
+      font-weight: bold;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2e8b57;
+      color: white;
+      padding: 10px 16px;
+      border-radius: 999px;
+      display: none;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Detail Pembayaran</h2>
+
+    <div class="booking-card">
+      <h3>Ringkasan Booking</h3>
+      <div class="booking-row"><span>Jalur</span><strong id="bookingJalur">-</strong></div>
+      <div class="booking-row"><span>Tanggal</span><strong id="bookingTanggal">-</strong></div>
+      <div class="booking-row"><span>Pendaki</span><strong id="bookingPendaki">-</strong></div>
+      <div class="booking-row"><span>Total</span><strong id="bookingTotal">Rp0</strong></div>
+    </div>
+
+    <div class="info-card">
+      <p><strong>Invoice</strong></p>
+      <h3 id="invoice">-</h3>
+      <hr />
+      <p>Total Pembayaran</p>
+      <h2 id="total">Rp0</h2>
+      <hr />
+      <p>Sisa Waktu Pembayaran</p>
+      <h2 id="timer" class="timer-warning">24:00:00</h2>
+    </div>
+
+    <div id="isi"></div>
+
+    <div id="statusBox" class="status-box" style="display:none;">
+      <h3>Status Pembayaran</h3>
+      <p id="status" class="status-pending">🟡 Menunggu Pembayaran</p>
+      <button id="btnBayar" class="copy" onclick="verifikasi()">Saya Sudah Bayar</button>
+      <button class="secondary-btn" onclick="window.location.href='transaksi.html'">Pilih Metode Lain</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="payment.js"></script>
+</body>
+</html>

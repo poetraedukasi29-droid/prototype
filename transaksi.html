@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rekap Transaksi</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 680px;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      color: #5e603a;
+      margin-top: 0;
+    }
+
+    .summary-card {
+      background: #f8f8f8;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 20px 0;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid #e4e4e4;
+    }
+
+    .summary-row:last-child {
+      border-bottom: none;
+    }
+
+    .methods {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: block;
+      text-decoration: none;
+      background: #5e603a;
+      color: white;
+      padding: 14px 18px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .btn small {
+      display: block;
+      margin-top: 4px;
+      font-weight: normal;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Rekap Transaksi</h2>
+    <p>Silakan cek ringkasan booking sebelum melanjutkan pembayaran.</p>
+
+    <div class="summary-card">
+      <h3>Ringkasan Booking</h3>
+      <div class="summary-row"><span>Jalur</span><strong id="summaryJalur">-</strong></div>
+      <div class="summary-row"><span>Tanggal</span><strong id="summaryTanggal">-</strong></div>
+      <div class="summary-row"><span>Pendaki</span><strong id="summaryPendaki">-</strong></div>
+      <div class="summary-row"><span>Total</span><strong id="summaryHarga">Rp0</strong></div>
+    </div>
+
+    <div class="methods">
+      <a class="btn" href="paymentdetail.html?metode=qris">Bayar dengan QRIS <small>Scan kode QR cepat dan praktis</small></a>
+      <a class="btn" href="paymentdetail.html?metode=dana">Bayar dengan DANA <small>Transfer melalui aplikasi DANA</small></a>
+      <a class="btn" href="paymentdetail.html?metode=bri">Transfer Bank BRI <small>Transfer ke rekening BRI resmi</small></a>
+    </div>
+  </div>
+
+  <script>
+    function formatRupiah(nilai) {
+      return `Rp${Number(nilai).toLocaleString('id-ID')}`;
+    }
+
+    const draft = JSON.parse(localStorage.getItem('bookingDraft') || 'null');
+    const summaryJalur = document.getElementById('summaryJalur');
+    const summaryTanggal = document.getElementById('summaryTanggal');
+    const summaryPendaki = document.getElementById('summaryPendaki');
+    const summaryHarga = document.getElementById('summaryHarga');
+
+    if (draft) {
+      summaryJalur.textContent = draft.jalur || '-';
+      summaryTanggal.textContent = draft.tanggal || '-';
+      summaryPendaki.textContent = draft.total_pendaki ? `${draft.total_pendaki} Orang (${draft.dewasa || 0} Dewasa, ${draft.anak || 0} Anak)` : '-';
+      summaryHarga.textContent = draft.harga || formatRupiah(draft.amount || 0);
+    }
+  </script>
+</body>
+</html>
