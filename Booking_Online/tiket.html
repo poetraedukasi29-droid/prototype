@@ -136,37 +136,35 @@ td{
 
 </table>
 
-<button onclick="window.print()" class="btn-print">
-
-Cetak Tiket
-
+<button class="btn-print" onclick="window.print()">
+    Cetak Tiket
 </button>
+
 
 </div>
 
 </div>
 
 <script>
+    const nomor = localStorage.getItem("nomor_booking");
+    document.getElementById("nomor").innerHTML = nomor;
 
-const nomor = localStorage.getItem("nomor_booking");
+    const draft = JSON.parse(localStorage.getItem("bookingDraft"));
 
-document.getElementById("nomor").innerHTML = nomor;
+    if(draft){
+        document.getElementById("jalur").innerHTML = draft.jalur;
+        document.getElementById("tanggal").innerHTML = draft.tanggal;
+        document.getElementById("pendaki").innerHTML = draft.total_pendaki + " Orang";
+        document.getElementById("harga").innerHTML = draft.harga;
+    }
 
-const draft = JSON.parse(localStorage.getItem("bookingDraft"));
-
-if(draft){
-
-document.getElementById("jalur").innerHTML = draft.jalur;
-
-document.getElementById("tanggal").innerHTML = draft.tanggal;
-
-document.getElementById("pendaki").innerHTML = draft.total_pendaki + " Orang";
-
-document.getElementById("harga").innerHTML = draft.harga;
-
-}
+    // Setelah dialog print ditutup, kembali ke Beranda
+    window.onafterprint = function () {
+        window.location.href = "../index.html";
+    };
 
 </script>
+
 
 </body>
 </html>
