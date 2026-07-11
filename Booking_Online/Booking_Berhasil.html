@@ -17,11 +17,11 @@
 
 main{
     width:100%;
-    height:100vh;
-
+    min-height:calc(100vh - 90px);
     display:flex;
     justify-content:center;
     align-items:center;
+    padding:80px 0 40px;
 }
 
 .success-card{
@@ -140,24 +140,14 @@ td{
 </style>
 <body>
 
-<header class="site-header">
-    <a href="../index.html" class="brand">
-        <img src="../Image/logo.png" alt="Logo LocalOutdoor" class="brand-logo">
-        <div class="brand-text">
-            <span class="brand-name">LocalOutdoor</span>
-            <span class="brand-tagline">Jalur Resmi Gunung Sindoro</span>
+<header class="site-header" style="position:absolute; top:0; left:0; width:100%; padding:20px 30px 18px; display:flex; align-items:center; gap:14px; background:transparent; z-index:5; border-bottom:1px solid rgba(255,255,255,0.35);">
+    <a href="../index.html" class="brand" style="display:flex; align-items:center; gap:14px; color:#fff; text-decoration:none;">
+        <img src="../Image/logo.png" alt="Logo LocalOutdoor" style="width:48px; height:48px; object-fit:cover; border-radius:12px; border:2px solid rgba(255,255,255,.25);">
+        <div style="display:flex; flex-direction:column; line-height:1.1;">
+            <span style="font-size:18px; font-weight:700; color:#fff;">LocalOutdoor</span>
+            <span style="font-size:13px; color:rgba(255,255,255,.85);">Jalur Resmi Gunung Sindoro</span>
         </div>
     </a>
-
-    <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-    </button>
-
-    <nav class="site-nav" id="siteNav">
-        <a href="../index.html">Beranda</a>
-        <a href="../Panduan_Booking.html">Panduan Booking</a>
-        <a href="../Cek_Kuota.html">Cek Kuota</a>
-    </nav>
 </header>
 
 <main>

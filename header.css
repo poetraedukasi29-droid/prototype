@@ -6,6 +6,9 @@
  }
 
  body {
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
    background: #5e603a;
    color: #fff;
  }
@@ -154,6 +157,24 @@
    }
  }
 
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main.page-content {
+  flex: 1;
+}
+
+.site-footer {
+  margin-top: auto;
+}
+
  /* ==========================================================
    LOCALOUTDOOR — DESIGN TOKENS & SHARED HEADER
    ========================================================== */
@@ -194,10 +215,17 @@
    scroll-behavior: smooth;
  }
 
- body {
-   background: var(--forest);
-   color: #fff;
- }
+ html {
+    height: 100%;
+  }
+
+  body {
+    background: var(--forest);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
 
  a {
    color: inherit;
@@ -388,9 +416,50 @@
    font-family: var(--font-body);
  }
 
- /* ==========================
-   FOCUS / ACCESSIBILITY
-========================== */
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  flex: 1;
+}
+
+.site-footer {
+  margin-top: auto;
+}
+
+html,
+body {
+  min-height: 100%;
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+main.page-content,
+.page-content,
+body > main.page-content {
+  flex: 1 0 auto !important;
+  min-height: 0;
+}
+
+body > footer.site-footer,
+.site-footer {
+  margin-top: auto !important;
+  width: 100%;
+  position: relative !important;
+  z-index: 1 !important;
+}
 
  a:focus-visible,
  button:focus-visible,
