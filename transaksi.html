@@ -8,11 +8,61 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      background: #5e603a;
+      overflow-x: hidden;
+      animation: pageShow 0.4s ease;
+    }
+
+    @keyframes pageShow {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .trans-header {
+      width: 100%;
+      background: #5e603a;
+      padding: 14px clamp(20px, 5vw, 56px);
       display: flex;
-      justify-content: center;
       align-items: center;
-      min-height: 100vh;
+      gap: 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.28);
+    }
+
+    .trans-header a {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .trans-header img {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.55);
+    }
+
+    .trans-header .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
+
+    .trans-header .brand-name {
+      font-weight: 700;
+      font-size: 21px;
+      letter-spacing: 0.5px;
+      color: #fff;
+    }
+
+    .trans-header .brand-tagline {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
     }
 
     .container {
@@ -22,6 +72,7 @@
       padding: 30px;
       border-radius: 15px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      margin: 30px auto;
     }
 
     h2 {
@@ -74,6 +125,15 @@
   </style>
 </head>
 <body>
+  <header class="trans-header">
+    <a href="index.html">
+      <img src="Image/logo.png" alt="Logo LocalOutdoor">
+      <div class="brand-text">
+        <span class="brand-name">LocalOutdoor</span>
+        <span class="brand-tagline">Jalur Resmi Gunung Sindoro</span>
+      </div>
+    </a>
+  </header>
   <div class="container">
     <h2>Rekap Transaksi</h2>
     <p>Silakan cek ringkasan booking sebelum melanjutkan pembayaran.</p>

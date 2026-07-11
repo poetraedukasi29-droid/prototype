@@ -200,38 +200,24 @@
 
 <body>
 
-    <header>
-
-        <div class="logo">
-
-            <div class="logo-circle">
-
-                <svg class="logo-svg" viewBox="0 0 300 200">
-
-                    <defs>
-                        <path id="curve" d="M45,145 A105,105 0 0,1 255,145" />
-                    </defs>
-
-                    <text>
-                        <textPath href="#curve" startOffset="50%" text-anchor="middle">
-                            Localoutdoor
-                        </textPath>
-                    </text>
-
-                </svg>
-
-                <img src="Image/logo.png" alt="Logo">
-
+    <header class="site-header">
+        <a href="index.html" class="brand">
+            <img src="Image/logo.png" alt="Logo LocalOutdoor" class="brand-logo">
+            <div class="brand-text">
+                <span class="brand-name">LocalOutdoor</span>
+                <span class="brand-tagline">Jalur Resmi Gunung Sindoro</span>
             </div>
+        </a>
 
-        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
 
-        <nav>
+        <nav class="site-nav" id="siteNav">
             <a href="index.html">Beranda</a>
-            <a href="Panduan_Booking.html">Panduan Booking</a>
-            <a href="Cek_Kuota.html" class="active">Cek Kuota</a>
+            <a href="Panduan_Booking.html" class="active">Panduan Booking</a>
+            <a href="Cek_Kuota.html">Cek Kuota</a>
         </nav>
-
     </header>
 
     <!-- ================= MAIN ================= -->

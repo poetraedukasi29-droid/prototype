@@ -25,6 +25,12 @@
       background: var(--bg-green);
       font-family: 'Poppins', sans-serif;
       color: var(--text-dark);
+      animation: pageShow 0.4s ease;
+    }
+
+    @keyframes pageShow {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     header {
@@ -35,14 +41,29 @@
       border-bottom: 1px solid rgba(255,255,255,0.6);
     }
 
-    .brand { display: flex; align-items: center; gap: 10px; }
+    .brand { display: flex; align-items: center; gap: 14px; }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.15;
+    }
 
     .brand-name {
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
       color: #f2f2f2;
-      font-size: 18px;
+      font-size: 21px;
+      letter-spacing: 0.5px;
       white-space: nowrap;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
     }
 
     .logo {
@@ -505,8 +526,11 @@
 
 <header>
   <div class="brand">
-    <div class="logo">BIMBA RAYA</div>
-    <div class="brand-name">Localoutdoor</div>
+    <img src="../Image/logo.png" alt="Logo LocalOutdoor" class="brand-logo" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.55);flex-shrink:0;">
+    <div class="brand-text">
+      <span class="brand-name">LocalOutdoor</span>
+      <span class="brand-tagline">Jalur Resmi Gunung Sindoro</span>
+    </div>
   </div>
   <div class="booking-pill">BOOKING ONLINE</div>
 </header>
