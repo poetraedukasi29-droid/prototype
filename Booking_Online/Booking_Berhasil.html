@@ -5,23 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Booking Berhasil</title>
 
-    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="../header.css">
     
 </head>
 <style>
-    body{
-    margin:0;
-    background:#5e603a;
-    font-family:Poppins,sans-serif;
-}
+    html, body {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    body {
+        margin:0;
+        background:#5e603a;
+        font-family:Poppins,sans-serif;
+        display: flex;
+        flex-direction: column;
+    }
+
+    header {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 16px 30px;
+        border-bottom: 1px solid rgba(255,255,255,0.6);
+        flex-shrink: 0;
+    }
+
+    .brand { 
+        display: flex; 
+        align-items: center; 
+        gap: 14px; 
+        text-decoration: none;
+    }
+
+    .brand-text {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.15;
+    }
+
+    .brand-name {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        color: #f2f2f2;
+        font-size: 21px;
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+    }
+
+    .brand-tagline {
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.65);
+    }
+
+    .booking-pill {
+        flex: 1;
+        background: #efefef;
+        border-radius: 30px;
+        text-align: center;
+        padding: 14px 0;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        letter-spacing: 1px;
+        font-size: 16px;
+        color: #2f4f3a;
+    }
 
 main{
     width:100%;
-    min-height:calc(100vh - 90px);
+    flex: 1;
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:80px 0 40px;
+    padding:0 20px;
 }
 
 .success-card{
@@ -140,14 +199,15 @@ td{
 </style>
 <body>
 
-<header class="site-header" style="position:absolute; top:0; left:0; width:100%; padding:20px 30px 18px; display:flex; align-items:center; gap:14px; background:transparent; z-index:5; border-bottom:1px solid rgba(255,255,255,0.35);">
-    <a href="../index.html" class="brand" style="display:flex; align-items:center; gap:14px; color:#fff; text-decoration:none;">
-        <img src="../Image/logo.png" alt="Logo LocalOutdoor" style="width:48px; height:48px; object-fit:cover; border-radius:12px; border:2px solid rgba(255,255,255,.25);">
-        <div style="display:flex; flex-direction:column; line-height:1.1;">
-            <span style="font-size:18px; font-weight:700; color:#fff;">LocalOutdoor</span>
-            <span style="font-size:13px; color:rgba(255,255,255,.85);">Jalur Resmi Gunung Sindoro</span>
+<header>
+    <a href="../index.html" class="brand">
+        <img src="../Image/logo.png" alt="Logo LocalOutdoor" class="brand-logo" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.55);flex-shrink:0;">
+        <div class="brand-text">
+            <span class="brand-name">LocalOutdoor</span>
+            <span class="brand-tagline">Jalur Resmi Gunung Sindoro</span>
         </div>
     </a>
+    <div class="booking-pill">BOOKING ONLINE</div>
 </header>
 
 <main>
@@ -173,7 +233,7 @@ td{
         <div class="button-group">
 
             <a href="tiket.html" class="btn">
-                Cetak Tiket
+                Download Tiket
             </a>
 
             <a href="../index.html" class="btn">

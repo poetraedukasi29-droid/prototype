@@ -17,14 +17,18 @@
     --line-color:#5e603a;
     }
 
+    html, body { height: 100%; overflow: hidden; }
+
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      min-height: 100vh;
+      height: 100%;
       background: var(--bg-green);
       font-family: 'Poppins', sans-serif;
       color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
       animation: pageShow 0.4s ease;
     }
 
@@ -39,6 +43,7 @@
       gap: 20px;
       padding: 16px 30px;
       border-bottom: 1px solid rgba(255,255,255,0.6);
+      flex-shrink: 0;
     }
 
     .brand { display: flex; align-items: center; gap: 14px; }
@@ -95,10 +100,12 @@
     }
 
     main{
+    flex:1;
     display:flex;
     flex-direction:column;
     align-items:center;
-    padding:60px 20px;
+    padding:20px;
+    overflow:hidden;
 }
 
 .booking-layout{
@@ -106,19 +113,20 @@
     gap:30px;
     width:100%;
     max-width:1200px;
-    align-items:flex-start;
+    height:100%;
+    align-items:stretch;
 }
 
-.summary-card{
-    flex:1;
-    background:#fff;
-    border-radius:22px;
-    padding:28px;
-    box-shadow:0 12px 28px rgba(0,0,0,.08);
-    border:1px solid #e6e6e6;
-    position:sticky;
-    top:30px;
-}
+    .summary-card{
+      flex:1;
+      align-self:flex-start;
+      background:#fff;
+      border-radius:22px;
+      padding:28px;
+      box-shadow:0 12px 28px rgba(0,0,0,.08);
+      border:1px solid #e6e6e6;
+      overflow:hidden;
+    }
 
 .actions-group{
     display:flex;
@@ -779,7 +787,7 @@
   const bulanList = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
   const dowShort = ['M','S','S','R','K','J','S'];
 
-  let selectedDate = new Date(2026, 3, 14); // 14 April 2026
+  let selectedDate = new Date();
   let viewYear = selectedDate.getFullYear();
   let viewMonth = selectedDate.getMonth();
 
@@ -819,18 +827,24 @@
       const isToday = day === today.getDate() &&
         viewMonth === today.getMonth() &&
         viewYear === today.getFullYear();
+      const isPast = new Date(viewYear, viewMonth, day + 1) <= new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
 
       if (isSelected) el.classList.add('selected');
       if (isToday) el.classList.add('today');
 
-      el.addEventListener('click', (e) => {
-        e.stopPropagation();
-        selectedDate = new Date(viewYear, viewMonth, day);
-        dateText.textContent = formatFullDate(selectedDate);
-        updateSummary();
-        renderCalendar();
-        togglePanel(calendarPanel, dateToggle, null);
-      });
+      if (!isPast) {
+        el.addEventListener('click', (e) => {
+          e.stopPropagation();
+          selectedDate = new Date(viewYear, viewMonth, day);
+          dateText.textContent = formatFullDate(selectedDate);
+          updateSummary();
+          renderCalendar();
+          togglePanel(calendarPanel, dateToggle, null);
+        });
+      } else {
+        el.style.opacity = '0.35';
+        el.style.cursor = 'not-allowed';
+      }
 
       calGrid.appendChild(el);
     }
@@ -878,6 +892,7 @@
 
   let dewasa = 1;
   let anak = 0;
+  let pendakiConfirmed = false;
   const MIN_DEWASA = 1;
   const MAX_TOTAL = 20;
 
@@ -892,6 +907,11 @@
     summaryJalur.textContent = jalurText.textContent;
     summaryTanggal.textContent = dateText.textContent;
     summaryPendaki.textContent = pendakiText.textContent;
+
+    if (!pendakiConfirmed) {
+      summaryHarga.textContent = "-";
+      return;
+    }
 
     const hargaDewasa = 35000;
     const hargaAnak = 20000;
@@ -964,6 +984,8 @@
 
   pendakiDone.addEventListener('click', (e) => {
     e.stopPropagation();
+    pendakiConfirmed = true;
+    updateSummary();
     togglePanel(pendakiPanel, pendakiToggle, null);
     try {
       const total = (dewasa * 35000) + (anak * 20000);
@@ -973,6 +995,14 @@
   });
 
   function saveDraftAndGo() {
+    if (jalurText.textContent === "Pilih Jalur") {
+      alert("Silakan pilih Jalur pendakian terlebih dahulu!");
+      return;
+    }
+    if (dateText.textContent === "Pilih Tanggal") {
+      alert("Silakan pilih Tanggal pendakian terlebih dahulu!");
+      return;
+    }
     const total = (dewasa * 35000) + (anak * 20000);
     try {
       localStorage.setItem('bookingDraft', JSON.stringify({ jalur: jalurText.textContent, tanggal: dateText.textContent, dewasa, anak, total_pendaki: dewasa + anak, harga: summaryHarga.textContent, amount: total }));

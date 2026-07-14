@@ -5,11 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rekap Transaksi</title>
   <style>
+    html, body { height: 100%; overflow: hidden; }
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: #5e603a;
-      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
       animation: pageShow 0.4s ease;
     }
 
@@ -26,6 +29,7 @@
       align-items: center;
       gap: 14px;
       border-bottom: 1px solid rgba(255,255,255,0.28);
+      flex-shrink: 0;
     }
 
     .trans-header a {
@@ -72,7 +76,8 @@
       padding: 30px;
       border-radius: 15px;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-      margin: 30px auto;
+      margin: auto;
+      overflow: hidden;
     }
 
     h2 {
