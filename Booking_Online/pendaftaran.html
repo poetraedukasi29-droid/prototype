@@ -17,7 +17,11 @@
     --line-color:#5e603a;
     }
 
-    html, body { height: 100%; overflow: hidden; }
+    html, body{
+    min-height:100%;
+    overflow-y:auto;
+    overflow-x:hidden;
+    }
 
     * { box-sizing: border-box; }
 
@@ -113,7 +117,6 @@
     gap:30px;
     width:100%;
     max-width:1200px;
-    height:100%;
     align-items:flex-start;
     overflow:visible;
 }
@@ -126,6 +129,13 @@ main.calendar-open{
 .calendar-panel.show{
     display:block;
     z-index:9999;
+}
+
+.panel{
+    position:absolute;
+    z-index:9999;
+    max-height:420px;
+    overflow-y:auto;
 }
 
     .summary-card{
