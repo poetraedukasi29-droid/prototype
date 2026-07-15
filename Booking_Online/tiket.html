@@ -8,24 +8,39 @@
 
 <style>
 
-body{
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
     background:#f3f3f3;
     font-family:Poppins,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
 .container{
     width:700px;
-    margin:40px auto;
+    max-width:90%;
 }
 
 .ticket{
 
-    background:white;
+    background:#fff;
 
     border-radius:20px;
 
-    padding:30px;
+    padding:35px;
 
     border:2px dashed #5e603a;
 
@@ -36,31 +51,42 @@ body{
 h1{
     text-align:center;
     color:#5e603a;
+    margin-bottom:10px;
+}
+
+h2{
+    text-align:center;
+    margin-bottom:20px;
 }
 
 table{
     width:100%;
-    margin-top:25px;
     border-collapse:collapse;
 }
 
 td{
-    padding:12px;
+    padding:14px 12px;
     border-bottom:1px solid #ddd;
+    font-size:18px;
 }
 
 .label{
+    width:220px;
     font-weight:bold;
-    width:180px;
+}
+
+.status{
+    color:green;
+    font-weight:bold;
 }
 
 .btn-print{
 
-    margin-top:30px;
-
     width:100%;
 
-    padding:15px;
+    margin-top:30px;
+
+    padding:16px;
 
     border:none;
 
@@ -70,21 +96,79 @@ td{
 
     color:white;
 
-    font-size:18px;
+    font-size:20px;
 
     cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn-print:hover{
+
+    background:#4a4c2f;
+
+}
+
+@media(max-width:768px){
+
+.container{
+
+    width:95%;
+
+}
+
+.ticket{
+
+    padding:25px;
+
+}
+
+td{
+
+    font-size:15px;
+
+    padding:10px;
+
+}
+
+.label{
+
+    width:140px;
+
+}
+
+.btn-print{
+
+    font-size:17px;
+
+    padding:14px;
+
+}
 
 }
 
 @media print{
 
-    .btn-print{
-        display:none;
-    }
+.btn-print{
 
-    body{
-        background:white;
-    }
+display:none;
+
+}
+
+body{
+
+background:white;
+
+}
+
+.ticket{
+
+box-shadow:none;
+
+border:2px dashed #5e603a;
+
+}
 
 }
 
@@ -100,7 +184,7 @@ td{
 
 <h1>LOCALOUTDOOR</h1>
 
-<h2 align="center">Tiket Pendakian Gunung Sindoro</h2>
+<h2>Tiket Pendakian Gunung Sindoro</h2>
 
 <table>
 
@@ -131,40 +215,103 @@ td{
 
 <tr>
 <td class="label">Status</td>
-<td>LUNAS</td>
+<td class="status">LUNAS</td>
 </tr>
 
 </table>
 
-<button class="btn-print" onclick="window.print()">
-     Download Tiket
+<button class="btn-print" onclick="downloadTiket()">
+Download Tiket
 </button>
-
 
 </div>
 
 </div>
 
 <script>
-    const nomor = localStorage.getItem("nomor_booking");
-    document.getElementById("nomor").innerHTML = nomor;
 
-    const draft = JSON.parse(localStorage.getItem("bookingDraft"));
+//==============================
+// STATUS DOWNLOAD
+//==============================
 
-    if(draft){
-        document.getElementById("jalur").innerHTML = draft.jalur;
-        document.getElementById("tanggal").innerHTML = draft.tanggal;
-        document.getElementById("pendaki").innerHTML = draft.total_pendaki + " Orang";
-        document.getElementById("harga").innerHTML = draft.harga;
+let tiketSudahDidownload = false;
+
+//==============================
+// AMBIL DATA BOOKING
+//==============================
+
+const nomor = localStorage.getItem("nomor_booking");
+
+document.getElementById("nomor").textContent = nomor || "-";
+
+const draft = JSON.parse(localStorage.getItem("bookingDraft"));
+
+if(draft){
+
+    document.getElementById("jalur").textContent = draft.jalur;
+    document.getElementById("tanggal").textContent = draft.tanggal;
+    document.getElementById("pendaki").textContent = draft.total_pendaki + " Orang";
+    document.getElementById("harga").textContent = draft.harga;
+
+}
+
+//==============================
+// DOWNLOAD TIKET
+//==============================
+
+function downloadTiket(){
+
+    tiketSudahDidownload = true;
+
+    window.print();
+
+}
+
+//==============================
+// SELESAI PRINT
+//==============================
+
+window.onafterprint = function(){
+
+    window.location.href="../index.html";
+
+};
+
+//==============================
+// BLOKIR BACK
+//==============================
+
+history.pushState(null,null,location.href);
+
+window.addEventListener("popstate",function(){
+
+    if(!tiketSudahDidownload){
+
+        alert("Silakan download tiket terlebih dahulu sebelum kembali ke Beranda.");
+
+        history.pushState(null,null,location.href);
+
     }
 
-    // Setelah dialog print ditutup, kembali ke Beranda
-    window.onafterprint = function () {
-        window.location.href = "../index.html";
-    };
+});
+
+//==============================
+// BLOKIR REFRESH / TUTUP TAB
+//==============================
+
+window.addEventListener("beforeunload",function(e){
+
+    if(!tiketSudahDidownload){
+
+        e.preventDefault();
+
+        e.returnValue="";
+
+    }
+
+});
 
 </script>
-
 
 </body>
 </html>

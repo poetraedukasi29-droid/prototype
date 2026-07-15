@@ -1,271 +1,221 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking Berhasil</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Berhasil</title>
 
-    <link rel="stylesheet" href="../header.css">
-    
-</head>
+<link rel="stylesheet" href="../header.css">
+
 <style>
-    html, body {
-        height: 100%;
-        overflow: hidden;
-    }
 
-    body {
-        margin:0;
-        background:#5e603a;
-        font-family:Poppins,sans-serif;
-        display: flex;
-        flex-direction: column;
-    }
+html,body{
+    height:100%;
+    overflow:hidden;
+}
 
-    header {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        padding: 16px 30px;
-        border-bottom: 1px solid rgba(255,255,255,0.6);
-        flex-shrink: 0;
-    }
+body{
+    margin:0;
+    background:#5e603a;
+    font-family:Poppins,sans-serif;
+    display:flex;
+    flex-direction:column;
+}
 
-    .brand { 
-        display: flex; 
-        align-items: center; 
-        gap: 14px; 
-        text-decoration: none;
-    }
+header{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    padding:16px 30px;
+    border-bottom:1px solid rgba(255,255,255,.6);
+    flex-shrink:0;
+}
 
-    .brand-text {
-        display: flex;
-        flex-direction: column;
-        line-height: 1.15;
-    }
+.brand{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    text-decoration:none;
+}
 
-    .brand-name {
-        font-family: 'Poppins', sans-serif;
-        font-weight: 700;
-        color: #f2f2f2;
-        font-size: 21px;
-        letter-spacing: 0.5px;
-        white-space: nowrap;
-    }
+.brand-text{
+    display:flex;
+    flex-direction:column;
+    line-height:1.15;
+}
 
-    .brand-tagline {
-        font-size: 12px;
-        font-weight: 400;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        color: rgba(255,255,255,0.65);
-    }
+.brand-name{
+    font-weight:700;
+    color:#fff;
+    font-size:21px;
+}
 
-    .booking-pill {
-        flex: 1;
-        background: #efefef;
-        border-radius: 30px;
-        text-align: center;
-        padding: 14px 0;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 700;
-        letter-spacing: 1px;
-        font-size: 16px;
-        color: #2f4f3a;
-    }
+.brand-tagline{
+    font-size:12px;
+    color:rgba(255,255,255,.65);
+    letter-spacing:1px;
+}
+
+.booking-pill{
+    flex:1;
+    background:#efefef;
+    border-radius:30px;
+    text-align:center;
+    padding:14px 0;
+    font-weight:700;
+    color:#2f4f3a;
+}
 
 main{
-    width:100%;
-    flex: 1;
+    flex:1;
     display:flex;
     justify-content:center;
     align-items:center;
-    padding:0 20px;
 }
 
 .success-card{
-
     width:500px;
-
     background:#fff;
-
     border-radius:20px;
-
     padding:40px;
-
     text-align:center;
-
-    color:#444;
-
 }
 
 .check{
-
     width:90px;
     height:90px;
-
     margin:auto;
-
     border-radius:50%;
-
     background:#4CAF50;
-
-    color:white;
-
+    color:#fff;
     font-size:50px;
-
     display:flex;
-
     justify-content:center;
-
     align-items:center;
-
 }
 
 .success-card h1{
-
-    margin:20px 0;
-
     color:#4CAF50;
-
-}
-
-table{
-
-    width:100%;
-
-    margin:30px 0;
-
-}
-
-td{
-
-    padding:10px;
-
-}
-
-.button-group{
-
-    display:flex;
-
-    gap:15px;
-
-}
-
-.btn{
-
-    flex:1;
-
-    background:#5e603a;
-
-    color:white;
-
-    text-decoration:none;
-
-    padding:15px;
-
-    border-radius:40px;
-
-    transition:.3s;
-
-}
-
-.btn:hover{
-
-    background:#444;
-
 }
 
 .info-item{
-    margin:20px 0;
-    text-align:center;
+    margin:25px 0;
 }
 
 .label{
     display:block;
-    font-size:18px;
-    font-weight:600;
     color:#666;
     margin-bottom:8px;
 }
 
 .value{
-    display:block;
     font-size:28px;
     font-weight:bold;
     color:#5e603a;
 }
 
+.button-group{
+    display:flex;
+    gap:15px;
+}
+
+.btn{
+    flex:1;
+    background:#5e603a;
+    color:#fff;
+    text-decoration:none;
+    padding:15px;
+    border-radius:40px;
+    transition:.3s;
+    text-align:center;
+}
+
+.btn:hover{
+    background:#444;
+}
+
 </style>
+
+</head>
+
 <body>
 
 <header>
-    <a href="../index.html" class="brand">
-        <img src="../Image/logo.png" alt="Logo LocalOutdoor" class="brand-logo" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.55);flex-shrink:0;">
-        <div class="brand-text">
-            <span class="brand-name">LocalOutdoor</span>
-            <span class="brand-tagline">Jalur Resmi Gunung Sindoro</span>
-        </div>
-    </a>
-    <div class="booking-pill">BOOKING ONLINE</div>
+
+<a href="../index.html" class="brand">
+
+<img src="../Image/logo.png"
+style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.55);">
+
+<div class="brand-text">
+<span class="brand-name">LocalOutdoor</span>
+<span class="brand-tagline">Jalur Resmi Gunung Sindoro</span>
+</div>
+
+</a>
+
+<div class="booking-pill">
+BOOKING ONLINE
+</div>
+
 </header>
 
 <main>
 
-    <div class="success-card">
+<div class="success-card">
 
-        <div class="check">
-            ✓
-        </div>
+<div class="check">✓</div>
 
-        <h1>Booking Berhasil</h1>
+<h1>Booking Berhasil</h1>
 
-        <p>
-            Terima kasih telah melakukan booking pendakian Gunung Sindoro.
-            jangan lupa screenshoot
-        </p>
+<p>
+Terima kasih telah melakukan booking pendakian Gunung Sindoro.
+<br>
+Silakan download tiket terlebih dahulu.
+</p>
 
-        <div class="info-item">
-            <span class="label">Nomor Booking</span>
-            <span class="value" id="bookingNumber"></span>
-        </div>
+<div class="info-item">
+<span class="label">Nomor Booking</span>
+<span class="value" id="bookingNumber"></span>
+</div>
 
-        <div class="button-group">
+<div class="button-group">
 
-            <a href="tiket.html" class="btn">
-                Download Tiket
-            </a>
+<a href="tiket.html" class="btn" id="downloadBtn">
+Download Tiket
+</a>
 
-            <a href="../index.html" class="btn">
-                Kembali ke Beranda
-            </a>
+<a href="#" class="btn" id="homeBtn">
+Kembali ke Beranda
+</a>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </main>
 
 <script>
 
-const data = JSON.parse(localStorage.getItem("data_booking_terakhir"));
+// =========================
+// Generate Nomor Booking
+// =========================
 
 function generateBooking(){
 
     const now = new Date();
 
     const nomor =
-        "BK-" +
-        now.getFullYear() +
-        String(now.getMonth()+1).padStart(2,"0") +
-        String(now.getDate()).padStart(2,"0") +
-        "-" +
-        Math.floor(Math.random()*9000+1000);
+    "BK-"+
+    now.getFullYear()+
+    String(now.getMonth()+1).padStart(2,"0")+
+    String(now.getDate()).padStart(2,"0")+
+    "-" +
+    Math.floor(Math.random()*9000+1000);
 
     document.getElementById("bookingNumber").innerHTML = nomor;
 
-    // Simpan nomor booking
-    localStorage.setItem("nomor_booking", nomor);
+    localStorage.setItem("nomor_booking",nomor);
 
 }
 
@@ -280,6 +230,55 @@ if(nomorLama){
     generateBooking();
 
 }
+
+// =========================
+// WAJIB DOWNLOAD TIKET
+// =========================
+
+let sudahDownload = false;
+
+// klik download tiket
+document.getElementById("downloadBtn").addEventListener("click",function(){
+
+    sudahDownload = true;
+
+});
+
+// klik kembali ke beranda
+document.getElementById("homeBtn").addEventListener("click",function(e){
+
+    if(!sudahDownload){
+
+        e.preventDefault();
+
+        alert("Silakan download tiket terlebih dahulu sebelum kembali ke Beranda.");
+
+        return;
+
+    }
+
+    window.location.href="../index.html";
+
+});
+
+// =========================
+// Cegah tombol Back Browser
+// =========================
+
+history.pushState(null,null,location.href);
+
+window.addEventListener("popstate",function(){
+
+    if(!sudahDownload){
+
+        alert("Silakan download tiket terlebih dahulu.");
+
+        history.pushState(null,null,location.href);
+
+    }
+
+});
+
 </script>
 
 <script src="../header.js"></script>
