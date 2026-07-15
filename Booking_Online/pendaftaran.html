@@ -105,7 +105,7 @@
     flex-direction:column;
     align-items:center;
     padding:20px;
-    overflow:hidden;
+    overflow:visible;
 }
 
 .booking-layout{
@@ -115,6 +115,17 @@
     max-width:1200px;
     height:100%;
     align-items:flex-start;
+    overflow:visible;
+}
+
+/* hanya aktif saat kalender dibuka */
+main.calendar-open{
+    overflow:visible;
+}
+
+.calendar-panel.show{
+    display:block;
+    z-index:9999;
 }
 
     .summary-card{
@@ -169,7 +180,8 @@
     }
 
     .field {
-      position: relative;
+      position:relative;
+      overflow:visible;
       padding: 16px 0;
       border-bottom: 2px solid var(--line-color);
     }
@@ -731,13 +743,16 @@
 <script>
   // ---------- Utility: close all panels ----------
   function closeAllPanels(except) {
-    document.querySelectorAll('.panel').forEach(p => {
-      if (p !== except) p.classList.remove('show');
+     document.querySelectorAll('.panel').forEach(p => {
+        if (p !== except) p.classList.remove('show');
     });
+
     document.getElementById('jalurArrow').classList.remove('open');
     document.getElementById('jalurToggle').setAttribute('aria-expanded', 'false');
     document.getElementById('dateToggle').setAttribute('aria-expanded', 'false');
     document.getElementById('pendakiToggle').setAttribute('aria-expanded', 'false');
+
+    document.querySelector("main").classList.remove("calendar-open");
   }
 
   function togglePanel(panel, toggleBtn, arrowEl) {
@@ -865,11 +880,16 @@
   });
 
   dateToggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    viewYear = selectedDate.getFullYear();
-    viewMonth = selectedDate.getMonth();
-    renderCalendar();
-    togglePanel(calendarPanel, dateToggle, null);
+     e.stopPropagation();
+
+      viewYear = selectedDate.getFullYear();
+      viewMonth = selectedDate.getMonth();
+
+      renderCalendar();
+      togglePanel(calendarPanel, dateToggle, null);
+
+      document.querySelector("main")
+        .classList.toggle("calendar-open", calendarPanel.classList.contains("show"));
   });
 
   // ---------- PENDAKI counter ----------
@@ -1014,6 +1034,8 @@
 
   updateCounterUI();
   updateSummary();
+
+
 </script>
 
 </body>
