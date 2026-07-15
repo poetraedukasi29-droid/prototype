@@ -19,51 +19,50 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .pay-header {
-      width: 100%;
-      background: #5e603a;
-      padding: 14px clamp(20px, 5vw, 56px);
+    header {
       display: flex;
       align-items: center;
-      gap: 14px;
-      border-bottom: 1px solid rgba(255,255,255,0.28);
+      gap: 20px;
+      padding: 16px 30px;
+      border-bottom: 1px solid rgba(255,255,255,0.6);
+      flex-shrink: 0;
     }
 
-    .pay-header a {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      text-decoration: none;
-      color: inherit;
-    }
+    .brand { display: flex; align-items: center; gap: 14px; }
 
-    .pay-header img {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid rgba(255,255,255,0.55);
-    }
-
-    .pay-header .brand-text {
+    .brand-text {
       display: flex;
       flex-direction: column;
       line-height: 1.15;
     }
 
-    .pay-header .brand-name {
+    .brand-name {
+      font-family: 'Poppins', sans-serif;
       font-weight: 700;
+      color: #f2f2f2;
       font-size: 21px;
       letter-spacing: 0.5px;
-      color: #fff;
+      white-space: nowrap;
     }
 
-    .pay-header .brand-tagline {
+    .brand-tagline {
       font-size: 12px;
       font-weight: 400;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: rgba(255,255,255,0.65);
+    }
+
+    .booking-pill {
+      flex: 1;
+      background: #efefef;
+      border-radius: 30px;
+      text-align: center;
+      padding: 14px 0;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 16px;
     }
 
     .container {
@@ -182,14 +181,15 @@
   </style>
 </head>
 <body>
-  <header class="pay-header">
-    <a href="index.html">
-      <img src="Image/logo.png" alt="Logo LocalOutdoor">
+  <header>
+    <div class="brand">
+      <img src="Image/logo.png" alt="Logo LocalOutdoor" style="width:52px;height:52px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,0.55);flex-shrink:0;">
       <div class="brand-text">
         <span class="brand-name">LocalOutdoor</span>
         <span class="brand-tagline">Jalur Resmi Gunung Sindoro</span>
       </div>
-    </a>
+    </div>
+    <div class="booking-pill">BOOKING ONLINE</div>
   </header>
   <div class="container">
     <h2>Detail Pembayaran</h2>
